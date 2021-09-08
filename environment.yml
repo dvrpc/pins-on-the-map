@@ -1,0 +1,13 @@
+
+name: network_routing_v3
+channels:
+  - conda-forge
+dependencies:
+  - python=3.9*
+  - django
+  - gdal
+  - flake8
+  - psycopg2
+  - python-dotenv
+  - black
+  - pip
