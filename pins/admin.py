@@ -1,10 +1,8 @@
 from django.contrib.gis import admin
 
-# Register your models here.
-
-
-from .models import Pin, Severity, Topic
+from .models import Pin, Severity, Topic, MapUser, Survey, TagGroup, Tag, Comment
 
 admin.site.register(Pin, admin.GeoModelAdmin)
-admin.site.register(Severity)
-admin.site.register(Topic)
+
+for klass in [Severity, Topic, MapUser, Survey, TagGroup, Tag, Comment]:
+    admin.site.register(klass)
