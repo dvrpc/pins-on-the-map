@@ -1,5 +1,0 @@
-django
-gunicorn
-gdal
-psycopg2
-python-dotenv
