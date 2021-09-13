@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Pins on the Map</title>
+    <meta
+      name="viewport"
+      content="initial-scale=1,maximum-scale=1,user-scalable=no"
+    />
+
+    <!-- TO DO: clean up these values. -->
+    <meta name="author" content="DVRPC" />
+
+    <meta property="og:title" content="Pins on the Map" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="http://pins-on-the-map.dev.dvrpc.org" />
+    <meta
+      property="og:description"
+      content="A public engagement tool for planning projects"
+    />
+    <meta property="og:image" content="image.png" />
+
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <!-- LOAD MAPBOX -->
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css"
+      rel="stylesheet"
+    />
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js"></script>
+
+    <!-- LOAD CSS FROM THIS REPO -->
+    {% load static %}
+
+    <!-- prettier-ignore -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/map_style.css' %}">
+  </head>
+
+  <body>
+    <!-- your content here... -->
+    <div id="map">
+      <div id="header-block">
+        <div class="box-overlay">
+          <h1>
+            <a href="https://github.com/dvrpc/pins-on-the-map" target="_blank"
+              >Pins-on-the-Map</a
+            >
+            Demo
+          </h1>
+          <p>
+            This is a demo of the current state of OMAD's new crowdsourcing web
+            application for planning projects.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- prettier-ignore -->
+    <script defer type="module" src="{% static 'js/landing_page.js' %}"></script>
+  </body>
+</html>
