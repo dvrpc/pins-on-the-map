@@ -26,17 +26,12 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
     <!-- LOAD MAPBOX -->
-    <link
-      href="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css"
-      rel="stylesheet"
-    />
-    <script src="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js"></script>
 
     <!-- LOAD CSS FROM THIS REPO -->
     {% load static %}
 
     <!-- prettier-ignore -->
-    <link rel="stylesheet" type="text/css" href="{% static 'css/map_style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'main.css' %}">
   </head>
 
   <body>
@@ -59,6 +54,6 @@
     </div>
 
     <!-- prettier-ignore -->
-    <script defer type="module" src="{% static 'js/landing_page.js' %}"></script>
+    <script defer type="module" src="{% static 'index-bundle.js' %}"></script>
   </body>
 </html>
