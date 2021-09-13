@@ -11,4 +11,5 @@ dependencies:
   - black
   - gunicorn
   - whitenoise
+  - djangorestframework
   - pip
