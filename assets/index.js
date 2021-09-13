@@ -23,5 +23,31 @@ export { makeMap };
 const map = makeMap();
 
 map.on("load", function () {
-  // Do stuff
+  // Load pins from the API
+  let url = "/api/geo-pins";
+  var request = new XMLHttpRequest();
+  request.open("GET", url, true);
+  request.setRequestHeader("Access-Control-Allow-Origin", "*");
+  request.onload = function () {
+    if (this.status >= 200 && this.status < 400) {
+      // retrieve the JSON from the response
+      var json = JSON.parse(this.response);
+
+      console.log(json);
+
+      map.addSource("pin-data", {
+        type: "geojson",
+        data: json,
+      });
+      map.addLayer({
+        id: "pins",
+        type: "circle",
+        source: "pin-data",
+        paint: {
+          "circle-color": "rgb(57,83,164)",
+        },
+      });
+    }
+  };
+  request.send();
 });
