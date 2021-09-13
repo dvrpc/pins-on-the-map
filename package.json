@@ -1,0 +1,29 @@
+{
+  "name": "pins-on-the-map",
+  "version": "1.0.0",
+  "description": "Crowdsourcing web application that collects community feedback for planning projects",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack --mode development --watch --config assets/webpack.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dvrpc/pins-on-the-map.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dvrpc/pins-on-the-map/issues"
+  },
+  "homepage": "https://github.com/dvrpc/pins-on-the-map#readme",
+  "devDependencies": {
+    "css-loader": "^6.2.0",
+    "mini-css-extract-plugin": "^2.3.0",
+    "webpack": "^5.52.1",
+    "webpack-cli": "^4.8.0"
+  },
+  "dependencies": {
+    "mapbox-gl": "^2.4.1"
+  }
+}
