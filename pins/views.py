@@ -1,13 +1,11 @@
 from django.shortcuts import render
 
-# Create your views here.
-from django.http import HttpResponse
-
-
 from django.contrib.auth.models import User, Group
 from rest_framework import viewsets
 from rest_framework import permissions
-from .serializers import UserSerializer, GroupSerializer
+
+from .serializers import UserSerializer, GroupSerializer, PinSerializer
+from .models import Pin
 
 
 def index(request):
@@ -35,3 +33,13 @@ class GroupViewSet(viewsets.ModelViewSet):
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
     permission_classes = [permissions.IsAuthenticated]
+
+
+class PinViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint to see all pins
+    """
+
+    queryset = Pin.objects.all()
+    serializer_class = PinSerializer
+    permission_classes = [permissions.AllowAny]
