@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     "django.contrib.gis",
     "pins",
     "rest_framework",
+    "rest_framework_gis",
 ]
 
 MIDDLEWARE = [

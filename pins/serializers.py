@@ -1,5 +1,8 @@
 from django.contrib.auth.models import User, Group
 from rest_framework import serializers
+from rest_framework_gis.serializers import GeoFeatureModelSerializer
+
+
 from .models import Pin
 
 
@@ -19,3 +22,10 @@ class PinSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Pin
         fields = ["geom"]
+
+
+class PinGeoSerializer(GeoFeatureModelSerializer):
+    class Meta:
+        model = Pin
+        geo_field = "geom"
+        fields = "__all__"

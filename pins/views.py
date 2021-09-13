@@ -4,7 +4,9 @@ from django.contrib.auth.models import User, Group
 from rest_framework import viewsets
 from rest_framework import permissions
 
-from .serializers import UserSerializer, GroupSerializer, PinSerializer
+from django.core.serializers import serialize
+
+from .serializers import UserSerializer, GroupSerializer, PinSerializer, PinGeoSerializer
 from .models import Pin
 
 
@@ -42,4 +44,14 @@ class PinViewSet(viewsets.ModelViewSet):
 
     queryset = Pin.objects.all()
     serializer_class = PinSerializer
+    permission_classes = [permissions.AllowAny]
+
+
+class PinGeoViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint to see all pins as geojson
+    """
+
+    queryset = Pin.objects.all()
+    serializer_class = PinGeoSerializer
     permission_classes = [permissions.AllowAny]

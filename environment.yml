@@ -12,4 +12,5 @@ dependencies:
   - gunicorn
   - whitenoise
   - djangorestframework
+  - djangorestframework-gis
   - pip
