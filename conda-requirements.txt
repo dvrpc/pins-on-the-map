@@ -22,6 +22,7 @@ geos=3.9.1=he49afe7_2
 geotiff=1.6.0=h26421ea_6
 gettext=0.19.8.1=h7937167_1005
 giflib=5.2.1=hbcb3906_2
+gunicorn=20.1.0=py39h6e9494a_0
 hdf4=4.2.15=hefd3b78_3
 hdf5=1.12.1=nompi_h2f0ef1a_100
 icu=68.1=h74dc148_0
