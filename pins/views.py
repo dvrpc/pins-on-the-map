@@ -1,12 +1,10 @@
 from django.shortcuts import render
-
+from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User, Group
-from rest_framework import viewsets
-from rest_framework import permissions
-
-from django.core.serializers import serialize
-
-from .serializers import UserSerializer, GroupSerializer, PinSerializer, PinGeoSerializer
+from rest_framework import viewsets, permissions, status
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from .serializers import PinSerializer, UserSerializer, GroupSerializer, PinGeoSerializer
 from .models import Pin
 
 
@@ -14,6 +12,7 @@ def index(request):
     """
     This is the main landing page, at the root '/' path.
     """
+
     return render(request, "landing_page.html")
 
 
@@ -37,17 +36,7 @@ class GroupViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
 
 
-class PinViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint to see all pins
-    """
-
-    queryset = Pin.objects.all()
-    serializer_class = PinSerializer
-    permission_classes = [permissions.AllowAny]
-
-
-class PinGeoViewSet(viewsets.ModelViewSet):
+class PinGeoViewSet(viewsets.ReadOnlyModelViewSet):
     """
     API endpoint to see all pins as geojson
     """
@@ -55,3 +44,13 @@ class PinGeoViewSet(viewsets.ModelViewSet):
     queryset = Pin.objects.all()
     serializer_class = PinGeoSerializer
     permission_classes = [permissions.AllowAny]
+
+
+@api_view(["POST"])
+def add_pin(request):
+    if request.method == "POST":
+        serializer = PinSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
