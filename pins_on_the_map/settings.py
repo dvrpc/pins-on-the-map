@@ -32,7 +32,7 @@ SECRET_KEY = os.getenv("SECRET_KEY", None)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost", "pins-on-the-map.dev.dvrpc.org"]
+ALLOWED_HOSTS = ["127.0.0.1", "localhost", "pins-on-the-map.dev.dvrpc.org"]
 
 
 # Application definition
