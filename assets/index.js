@@ -1,6 +1,8 @@
 import "mapbox-gl/dist/mapbox-gl.css";
 import "./map_style.css";
 import mapboxgl from "mapbox-gl";
+import { click_pin } from "./js/click.js";
+import { hover_setup } from "./js/hover.js";
 
 mapboxgl.accessToken =
   "pk.eyJ1IjoiYWFyb25kdnJwYyIsImEiOiJja2NvN2s5dnAwaWR2MnptbzFwYmd2czVvIn0.Fcc34gzGME_zHR5q4RnSOg";
@@ -50,4 +52,8 @@ map.on("load", function () {
     }
   };
   request.send();
+
+  // Set up the click event & hover
+  click_pin(map);
+  hover_setup(map);
 });
