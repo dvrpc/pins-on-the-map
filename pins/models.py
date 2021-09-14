@@ -1,5 +1,6 @@
 from django.contrib.gis.db import models
 from django.contrib.gis.geos import Point
+import django
 
 
 class MapUser(models.Model):
@@ -25,6 +26,9 @@ class Survey(models.Model):
     prompt_2 = models.TextField()
     # etc ...
 
+    def __str__(self):
+        return self.prompt_1
+
 
 class TagGroup(models.Model):
     """
@@ -33,6 +37,9 @@ class TagGroup(models.Model):
     """
 
     title = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.title
 
 
 class Tag(models.Model):
@@ -46,17 +53,26 @@ class Tag(models.Model):
     description = models.TextField()
     tag_group = models.ForeignKey(TagGroup, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.title
+
 
 class Topic(models.Model):
     """Topic categories are used internally by DVRPC"""
 
     topic = models.CharField(max_length=100)
 
+    def __str__(self):
+        return self.topic
+
 
 class Severity(models.Model):
     """Severity categories are used interally by DVRPC"""
 
     severity = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.severity
 
 
 class Pin(models.Model):
@@ -75,7 +91,7 @@ class Pin(models.Model):
     """
 
     # general data necessary for each pin
-    created_on = models.DateTimeField()
+    created_on = models.DateTimeField(auto_now_add=True)
     visible = models.BooleanField(default=True)
 
     # The geometry should have a default value that allows
@@ -84,17 +100,20 @@ class Pin(models.Model):
     geom = models.PointField(default=Point(0.0, 0.0))
 
     # connect to user record
-    user_id = models.ForeignKey(MapUser, on_delete=models.CASCADE)
+    user_id = models.ForeignKey(MapUser, on_delete=models.CASCADE, blank=True, null=True)
 
     # connect to survey table that is customized per-project
-    survey_id = models.ForeignKey(Survey, on_delete=models.CASCADE)
+    survey_id = models.ForeignKey(Survey, on_delete=models.CASCADE, blank=True, null=True)
 
     # connect to public-facing tags
-    tags = models.ManyToManyField(Tag)
+    tags = models.ManyToManyField(Tag, blank=True, null=True)
 
     # connect to internal DVRPC fields
-    topics = models.ManyToManyField(Topic)
-    severity_level = models.ForeignKey(Severity, on_delete=models.CASCADE)
+    topics = models.ManyToManyField(Topic, blank=True, null=True)
+    # severity_level = models.ForeignKey(Severity, on_delete=models.CASCADE, blank=True, null=True)
+
+    def __str__(self):
+        return str(self.geom)
 
 
 class Comment(models.Model):
@@ -104,5 +123,8 @@ class Comment(models.Model):
     """
 
     text = models.TextField()
-    pin_id = models.ForeignKey(Pin, on_delete=models.CASCADE)
+    pin_id = models.ForeignKey(Pin, related_name="comments", on_delete=models.CASCADE)
     user_id = models.ForeignKey(MapUser, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.text
