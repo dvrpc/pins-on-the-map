@@ -1,4 +1,4 @@
-name: network_routing_v3
+name: pins-on-the-map
 channels:
   - conda-forge
 dependencies:
