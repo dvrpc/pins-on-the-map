@@ -35,12 +35,11 @@ map.on("load", function () {
       // retrieve the JSON from the response
       var json = JSON.parse(this.response);
 
-      console.log(json);
-
       map.addSource("pin-data", {
         type: "geojson",
         data: json,
       });
+
       map.addLayer({
         id: "pins",
         type: "circle",
