@@ -27,7 +27,7 @@ const add_marker_to_map = (map, lngLat, marker_list = MAP_MARKERS) => {
 
 const get_coords_of_marker = (marker_list = MAP_MARKERS) => {
   if (marker_list.length > 0) {
-    return marker_list.at(-1).getLngLat();
+    return marker_list[0].getLngLat();
   } else {
     return { lat: 0, lng: 0 };
   }
