@@ -5,7 +5,7 @@ const newPopup = () =>
    * Generate a new mapboxgl.Popup object
    */
   new mapboxgl.Popup({
-    closeButton: false,
+    closeButton: true,
     className: "i-am-a-popup",
   });
 

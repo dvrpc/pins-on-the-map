@@ -22,7 +22,8 @@ const hover_cursor = (map, layername) => {
 };
 
 const hover_setup = (map) => {
-  hover_cursor(map, "pins");
+  hover_cursor(map, "clusters");
+  hover_cursor(map, "unclustered-point");
 };
 
 export { hover_setup };

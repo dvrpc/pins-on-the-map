@@ -38,18 +38,56 @@
     <!-- your content here... -->
     <div id="map">
       <div id="header-block">
-        <div class="box-overlay">
-          <h1>
-            <a href="https://github.com/dvrpc/pins-on-the-map" target="_blank"
-              >Pins-on-the-Map</a
-            >
-            Demo
-          </h1>
-          <p>
-            This is a demo of the current state of OMAD's new crowdsourcing web
-            application for planning projects.
-          </p>
+        <div id="button-to-add-pin">
+          <div>
+            <img id="pin-icon" src="{% static 'img/img_pin.png' %}" alt="" />
+          </div>
+          <div>
+            Pin a
+            <br />
+            comment
+            <br />
+            to the map
+          </div>
         </div>
+        <img id="or-icon" src="{% static 'img/img_or.png' %}" alt="" />
+        <div id="button-to-add-comment">
+          <div>
+            Add a
+            <br />
+            general
+            <br />
+            comment
+          </div>
+          <div>
+            <img
+              id="comment-icon"
+              src="{% static 'img/img_general-comment.png' %}"
+              alt=""
+            />
+          </div>
+        </div>
+      </div>
+
+      <div id="click-map-text">
+        <h3>click the map to select a location</h3>
+      </div>
+
+      <div id="logo-card">
+        <img id="logo-main" src="{% static 'img/logo-main.png' %}" alt="" />
+        <img id="logo-dvrpc" src="{% static 'img/logo-dvrpc.png' %}" alt="" />
+        <br /><br />
+      </div>
+
+      <div id="survey-form">
+        <h1>What are your concerns?</h1>
+        <textarea name="" id="prompt_1" cols="3" rows="5"></textarea>
+
+        <!-- <div>
+          Select any relevant categories:
+          <div class=""></div>
+        </div> -->
+        <button id="submit-pin">submit your comment</button>
       </div>
     </div>
 
