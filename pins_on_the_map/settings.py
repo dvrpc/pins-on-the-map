@@ -89,15 +89,16 @@ WSGI_APPLICATION = "pins_on_the_map.wsgi.application"
 DATABASE_URL = os.getenv("DATABASE_URL", None)
 db_info = urlparse(DATABASE_URL)
 
+
 DATABASES = {
     "default": {
         "ENGINE": "django.contrib.gis.db.backends.postgis",
-        "NAME": "pins_db",
+        "NAME": "pins_demo",
         "USER": db_info.username,
         "PASSWORD": db_info.password,
         "HOST": db_info.hostname,
         "PORT": db_info.port,
-        # "OPTIONS": {"sslmode": "require"},
+        "OPTIONS": {"sslmode": "require"},
     },
 }
 
