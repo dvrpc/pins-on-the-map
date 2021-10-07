@@ -3,16 +3,20 @@ from rest_framework import serializers
 from rest_framework_gis.serializers import GeoFeatureModelSerializer
 
 
-from pins.models import Pin, Tag, TagGroup, Comment, Survey
+from pins.models import Pin, Tag, TagGroup, Comment
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
+    """This is the built-in Django user for authentication"""
+
     class Meta:
         model = User
         fields = ["url", "username", "email", "groups"]
 
 
 class GroupSerializer(serializers.HyperlinkedModelSerializer):
+    """This is the built-in Django groups tied to each 'User'"""
+
     class Meta:
         model = Group
         fields = ["url", "name"]
@@ -21,7 +25,7 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
 class PinSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Pin
-        fields = ["geom"]
+        fields = ["geom", "ip_address", "prompt_1"]
 
 
 class TagGroupSerializer(serializers.ModelSerializer):
@@ -44,19 +48,12 @@ class TagSerializer(serializers.ModelSerializer):
         fields = ["title", "tag_group"]
 
 
-class SurveySerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Survey
-        fields = ["prompt_1", "prompt_2"]
-
-
 class PinGeoSerializer(GeoFeatureModelSerializer):
 
     tags = TagSerializer(many=True, read_only=True)
     comments = CommentSerializer(many=True, read_only=True)
-    survey_id = SurveySerializer(read_only=True)
 
     class Meta:
         model = Pin
         geo_field = "geom"
-        fields = ["geom", "tags", "comments", "survey_id"]
+        fields = ["geom", "tags", "comments", "prompt_1"]

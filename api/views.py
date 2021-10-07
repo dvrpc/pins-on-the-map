@@ -2,8 +2,15 @@ from django.contrib.auth.models import User, Group
 from rest_framework import viewsets, permissions, status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from ipware import get_client_ip
 
-from .serializers import PinSerializer, UserSerializer, GroupSerializer, PinGeoSerializer
+
+from .serializers import (
+    PinSerializer,
+    UserSerializer,
+    GroupSerializer,
+    PinGeoSerializer,
+)
 from pins.models import Pin
 
 
@@ -40,8 +47,24 @@ class PinGeoViewSet(viewsets.ReadOnlyModelViewSet):
 @api_view(["POST"])
 def add_pin(request):
     if request.method == "POST":
-        serializer = PinSerializer(data=request.data)
+
+        # Get the user's IP address
+        client_ip, is_routable = get_client_ip(request)
+
+        if not client_ip:
+            client_ip = "999.8.7.6"
+
+        # Insert the IP address into the user's data dict
+        data = request.data.copy()
+        data["ip_address"] = client_ip
+
+        # Insert the record into the database
+        serializer = PinSerializer(data=data)
+
         if serializer.is_valid():
             serializer.save()
+            print("ADDED")
+            print(serializer)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
+
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
