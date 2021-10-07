@@ -13,4 +13,5 @@ dependencies:
   - whitenoise
   - djangorestframework
   - djangorestframework-gis
+  - django-ipware
   - pip
