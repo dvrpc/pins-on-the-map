@@ -3,7 +3,7 @@ from rest_framework import serializers
 from rest_framework_gis.serializers import GeoFeatureModelSerializer
 
 
-from .models import Pin, Tag, TagGroup, Comment, Survey
+from pins.models import Pin, Tag, TagGroup, Comment, Survey
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
