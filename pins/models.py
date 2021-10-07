@@ -106,10 +106,10 @@ class Pin(models.Model):
     survey_id = models.ForeignKey(Survey, on_delete=models.CASCADE, blank=True, null=True)
 
     # connect to public-facing tags
-    tags = models.ManyToManyField(Tag, blank=True, null=True)
+    tags = models.ManyToManyField(Tag, blank=True)
 
     # connect to internal DVRPC fields
-    topics = models.ManyToManyField(Topic, blank=True, null=True)
+    topics = models.ManyToManyField(Topic, blank=True)
     # severity_level = models.ForeignKey(Severity, on_delete=models.CASCADE, blank=True, null=True)
 
     def __str__(self):
