@@ -6,6 +6,7 @@ import { wire_click_logic } from "./js/click.js";
 import { hover_setup } from "./js/hover.js";
 import { setup_button_listeners } from "./js/click_main_buttons.js";
 import { load_pins_from_api } from "./js/load_data";
+import { setup_minor_button_listeners } from "./js/click_minor_buttons"
 
 const CLUSTER_LEVEL = 15;
 
@@ -17,4 +18,5 @@ map.on("load", function () {
   hover_setup(map);
 
   setup_button_listeners();
+  setup_minor_button_listeners();
 });
