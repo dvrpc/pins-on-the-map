@@ -140,3 +140,28 @@ textarea {
   background-color: var(--theme-blue);
   outline: 1px solid white;
 } */
+#bottom-buttons {
+  position: absolute;
+  bottom: 2vh;
+  left: 2vw;
+  display: flex;
+  width: auto;
+  z-index: 1;
+  align-items: center;
+  background-color: var(--theme-dark-gray);
+  border-radius: 7px;
+}
+.single-button {
+  height: 60px;
+  padding: 20px;
+  cursor: pointer;
+}
+
+
+.mapboxgl-ctrl-logo{
+  display: none !important;
+}
+
+.mapboxgl-ctrl-attrib-inner{
+  display: none !important;
+}
