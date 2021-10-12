@@ -41,4 +41,4 @@ class PinGeoSerializer(GeoFeatureModelSerializer):
     class Meta:
         model = Pin
         geo_field = "geom"
-        fields = ["geom", "tags", "comments", "prompt_1"]
+        fields = ["geom", "comments", "prompt_1"]
