@@ -1,8 +1,8 @@
 from django.contrib.gis import admin
 
-from .models import Pin, Topic, TagGroup, Tag, Comment
+from .models import Pin, Topic, Comment
 
 admin.site.register(Pin, admin.GeoModelAdmin)
 
-for klass in [Topic, TagGroup, Tag, Comment]:
+for klass in [Topic, Comment]:
     admin.site.register(klass)

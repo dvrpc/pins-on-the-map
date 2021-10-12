@@ -13,6 +13,8 @@ from .serializers import (
 )
 from pins.models import Pin
 
+from .configuration import TAGS
+
 
 class UserViewSet(viewsets.ModelViewSet):
     """
@@ -44,6 +46,11 @@ class PinGeoViewSet(viewsets.ReadOnlyModelViewSet):
     permission_classes = [permissions.AllowAny]
 
 
+@api_view(["GET"])
+def all_tags(request):
+    return Response(TAGS, status=status.HTTP_200_OK)
+
+
 @api_view(["POST"])
 def add_pin(request):
     if request.method == "POST":
@@ -57,6 +64,8 @@ def add_pin(request):
         # Insert the IP address into the user's data dict
         data = request.data.copy()
         data["ip_address"] = client_ip
+
+        print(data)
 
         # Insert the record into the database
         serializer = PinSerializer(data=data)

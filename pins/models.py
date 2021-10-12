@@ -2,33 +2,6 @@ from django.contrib.gis.db import models
 from django.contrib.gis.geos import Point
 
 
-class TagGroup(models.Model):
-    """
-    The public interface uses tags, which are presented
-    in groups of related tags
-    """
-
-    title = models.CharField(max_length=100)
-
-    def __str__(self):
-        return self.title
-
-
-class Tag(models.Model):
-    """
-    Each individual tag belogs to a TagGroup,
-    and has both a name and a description that will
-    appear in the interface when hovering over an info icon
-    """
-
-    title = models.CharField(max_length=100)
-    description = models.TextField()
-    tag_group = models.ForeignKey(TagGroup, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.title
-
-
 class Topic(models.Model):
     """Topic categories are used internally by DVRPC"""
 
@@ -39,19 +12,7 @@ class Topic(models.Model):
 
 
 class Pin(models.Model):
-    """
-    The Pin class includes links to:
-        - MapUser
-        - Survey
-        - Tag(s)
-        - Topic(s)
-        - Severity
-
-    It also includes attributes for geo location,
-    creation datetime, and map visibility.
-
-    Finally, each pin may have multiple Comment records.
-    """
+    """ """
 
     # general data necessary for each pin
     created_on = models.DateTimeField(auto_now_add=True)
@@ -70,11 +31,19 @@ class Pin(models.Model):
 
     ip_address = models.GenericIPAddressField(null=True)
 
-    # connect to public-facing tags
-    tags = models.ManyToManyField(Tag, blank=True)
-
     # connect to internal DVRPC fields
     topics = models.ManyToManyField(Topic, blank=True)
+
+    tag_1 = models.BooleanField(default=False)
+    tag_2 = models.BooleanField(default=False)
+    tag_3 = models.BooleanField(default=False)
+    tag_4 = models.BooleanField(default=False)
+    tag_5 = models.BooleanField(default=False)
+    tag_6 = models.BooleanField(default=False)
+    tag_7 = models.BooleanField(default=False)
+    tag_8 = models.BooleanField(default=False)
+    tag_9 = models.BooleanField(default=False)
+    tag_10 = models.BooleanField(default=False)
 
     def __str__(self):
         return str(self.geom)

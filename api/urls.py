@@ -14,4 +14,5 @@ urlpatterns = [
     path("", include(router.urls)),
     path("api-auth/", include("rest_framework.urls", namespace="rest_framework")),
     path("add-pin/", views.add_pin, name="index"),
+    path("tags/", views.all_tags, name="index"),
 ]
