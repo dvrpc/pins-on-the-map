@@ -10,7 +10,7 @@ const wire_click_logic = (map) => {
    */
   map.on("click", "unclustered-point", function (e) {
     var props = e.features[0].properties;
-    var tags = JSON.parse(props.tags);
+    console.log(props);
     var comments = JSON.parse(props.comments);
 
     var prompt_1 = props.prompt_1;
@@ -47,8 +47,5 @@ const wire_click_logic = (map) => {
     }
   });
 };
-
-
-
 
 export { wire_click_logic };
