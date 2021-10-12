@@ -48,4 +48,7 @@ const wire_click_logic = (map) => {
   });
 };
 
+
+
+
 export { wire_click_logic };
