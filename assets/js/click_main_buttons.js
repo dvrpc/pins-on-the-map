@@ -1,6 +1,6 @@
-import { set_display_to_id } from "./switches";
+import { set_display_to_id, user_wants_to_add_pin } from "./switches";
 import {
-  add_marker_to_map,
+  markers_are_not_on_the_map,
   get_coords_of_marker,
   remove_markers,
 } from "./markers";
@@ -11,6 +11,8 @@ const click_add_pin_button = () => {
   /* logic for when user clicks
    * the 'pin a comment...' button
    */
+
+  set_display_to_id("success-alert", "none");
 
   // turn on help text
   set_display_to_id("click-map-text", "inline");
@@ -24,8 +26,13 @@ const click_add_comment_button = () => {
    * the 'add a general comment...' button
    */
 
+  remove_markers();
+
   // make sure pin help text is off
   set_display_to_id("click-map-text", "none");
+
+  set_display_to_id("success-alert", "none");
+  set_display_to_id("warning-alert", "none");
 
   // make the text-based form visible
   set_display_to_id("survey-form", "inline");
@@ -34,24 +41,38 @@ const click_add_comment_button = () => {
 const add_pin_to_database = async () => {
   let lngLat = get_coords_of_marker();
 
+  let selected_tags = Array.from(document.getElementsByClassName("selected"));
+
+  let tag_names = selected_tags.map((tag) => tag.id);
+
+  console.log(selected_tags);
+  console.log(tag_names);
   var xhr = new XMLHttpRequest();
   xhr.open("POST", "/api/add-pin/", true);
   xhr.setRequestHeader("Content-Type", "application/json");
   let params = JSON.stringify({
     geom: `SRID=4326;POINT (${lngLat.lng} ${lngLat.lat})`,
     prompt_1: document.getElementById("prompt_1").value,
+    tags: tag_names,
   });
   console.log(params);
   xhr.send(params);
 };
 
 const click_submit_button = async () => {
-  add_pin_to_database().then(reload_pins(map));
-  remove_markers();
-  set_display_to_id("click-map-text", "none");
-  set_display_to_id("survey-form", "none");
+  if (user_wants_to_add_pin() && markers_are_not_on_the_map()) {
+    set_display_to_id("warning-alert", "inline-block");
+  } else {
+    add_pin_to_database()
+      .then(reload_pins(map))
+      .then(set_display_to_id("success-alert", "inline"));
+    remove_markers();
+    set_display_to_id("click-map-text", "none");
+    set_display_to_id("survey-form", "none");
+    set_display_to_id("warning-alert", "none");
 
-  document.getElementById("prompt_1").value = "";
+    document.getElementById("prompt_1").value = "";
+  }
 };
 
 const setup_button_listeners = () => {

@@ -33,4 +33,13 @@ const get_coords_of_marker = (marker_list = MAP_MARKERS) => {
   }
 };
 
-export { add_marker_to_map, remove_markers, get_coords_of_marker };
+const markers_are_not_on_the_map = (marker_list = MAP_MARKERS) => {
+  return !marker_list.length > 0;
+};
+
+export {
+  add_marker_to_map,
+  remove_markers,
+  get_coords_of_marker,
+  markers_are_not_on_the_map,
+};
