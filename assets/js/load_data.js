@@ -4,23 +4,14 @@ const CLUSTER_LEVEL = 15;
 
 const PIN_URL = "/api/get-pins";
 
-const load_pins_from_api = async (map) => {
-  // Load pins from the API
-  var request = new XMLHttpRequest();
-  request.open("GET", PIN_URL, true);
-  request.setRequestHeader("Access-Control-Allow-Origin", "*");
-  request.onload = function () {
-    if (this.status >= 200 && this.status < 400) {
-      // retrieve the JSON from the response
-      var json = JSON.parse(this.response);
+const add_pin_layers = (map) => {
 
-      map.addSource("pin-data", {
-        type: "geojson",
-        data: json,
-        cluster: true,
-        clusterMaxZoom: CLUSTER_LEVEL, // Max zoom to cluster points on
-        clusterRadius: 50, // Radius of each cluster when clustering points (defaults to 50)
-      });
+  // flush out any versions of these layers that may exist
+  let layers = [ "clusters", "cluster-count", "unclustered-point"];
+
+  layers.forEach(layer => {
+    if (map.getLayer(layer)) map.removeLayer(layer);
+  })
 
       // from https://docs.mapbox.com/mapbox-gl-js/example/cluster/
       map.addLayer({
@@ -72,13 +63,36 @@ const load_pins_from_api = async (map) => {
           "circle-stroke-color": "#fff",
         },
       });
+}
+
+
+const load_pins_from_api = async (map) => {
+  // Load pins from the API
+  var request = new XMLHttpRequest();
+  request.open("GET", PIN_URL, true);
+  request.setRequestHeader("Access-Control-Allow-Origin", "*");
+  request.onload = function () {
+    if (this.status >= 200 && this.status < 400) {
+      // retrieve the JSON from the response
+      var json = JSON.parse(this.response);
+
+      map.addSource("pin-data", {
+        type: "geojson",
+        data: json,
+        cluster: true,
+        clusterMaxZoom: CLUSTER_LEVEL, // Max zoom to cluster points on
+        clusterRadius: 50, // Radius of each cluster when clustering points (defaults to 50)
+      });
+
+      add_pin_layers(map)
+
     }
   };
   request.send();
 };
 
 const reload_pins = async (map) => {
-  await new Promise((r) => setTimeout(r, 50));
+  await new Promise((r) => setTimeout(r, 100));
   var request = new XMLHttpRequest();
   request.open("GET", PIN_URL, true);
   request.setRequestHeader("Access-Control-Allow-Origin", "*");
@@ -95,4 +109,4 @@ const reload_pins = async (map) => {
   };
   request.send();
 };
-export { load_pins_from_api, reload_pins };
+export { load_pins_from_api, reload_pins, add_pin_layers };
