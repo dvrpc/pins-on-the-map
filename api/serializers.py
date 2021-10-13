@@ -25,7 +25,21 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
 class PinSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Pin
-        fields = ["geom", "ip_address", "prompt_1"]
+        fields = [
+            "geom",
+            "ip_address",
+            "prompt_1",
+            "tag_1",
+            "tag_2",
+            "tag_3",
+            "tag_4",
+            "tag_5",
+            "tag_6",
+            "tag_7",
+            "tag_8",
+            "tag_9",
+            "tag_10",
+        ]
 
 
 class CommentSerializer(serializers.ModelSerializer):
@@ -41,4 +55,18 @@ class PinGeoSerializer(GeoFeatureModelSerializer):
     class Meta:
         model = Pin
         geo_field = "geom"
-        fields = ["geom", "comments", "prompt_1"]
+        fields = [
+            "geom",
+            "comments",
+            "prompt_1",
+            "tag_1",
+            "tag_2",
+            "tag_3",
+            "tag_4",
+            "tag_5",
+            "tag_6",
+            "tag_7",
+            "tag_8",
+            "tag_9",
+            "tag_10",
+        ]
