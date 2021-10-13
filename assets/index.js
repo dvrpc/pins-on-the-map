@@ -10,7 +10,6 @@ import {
   load_pins_from_api,
   add_tag_options_to_survey_form,
 } from "./js/load_data";
-import { setup_minor_button_listeners } from "./js/click_minor_buttons";
 
 const CLUSTER_LEVEL = 15;
 
@@ -22,7 +21,6 @@ map.on("load", function () {
   hover_setup(map);
 
   setup_button_listeners();
-  setup_minor_button_listeners();
 
   add_tag_options_to_survey_form(map);
 });
