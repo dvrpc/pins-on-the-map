@@ -11,8 +11,8 @@ const make_map = () => {
   return new mapboxgl.Map({
     container: "map",
     style: "mapbox://styles/dvrpcomad/cks6eiqga0tmc17p3ecw7ij53",
-    center: [-75.16365099150589, 39.95238882194495],
-    zoom: 14,
+    center: [-75.15672748733739, 39.97857408147478],
+    zoom: 16,
   });
 };
 
