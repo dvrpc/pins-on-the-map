@@ -115,14 +115,12 @@ const do_stuff_with_json = (map, json) => {
   survey.appendChild(group_div);
 
   Object.entries(json).forEach((item) => {
-    console.log(item);
-
     let id = item[0];
     let text = item[1];
 
     let tag_div = document.createElement("div");
     tag_div.className = "tag-button";
-    tag_div.id = id;
+    tag_div.id = "tag_" + id;
     tag_div.appendChild(document.createTextNode(text));
     group_div.appendChild(tag_div);
 
