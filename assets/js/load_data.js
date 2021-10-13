@@ -1,7 +1,8 @@
 import { fit_map_to_geojson } from "./zoom_to_layer";
 import { toggle_button_state } from "./switches";
+import { STUDY_AREA } from "./study_area";
 
-const CLUSTER_LEVEL = 15;
+const CLUSTER_LEVEL = 17;
 
 const PIN_URL = "/api/get-pins";
 const TAG_URL = "/api/tags";
@@ -22,13 +23,6 @@ const get_data_from_api = (map, url, inner_func) => {
 };
 
 const add_pin_layers = (map) => {
-  // flush out any versions of these layers that may exist
-  let layers = ["clusters", "cluster-count", "unclustered-point"];
-
-  layers.forEach((layer) => {
-    if (map.getLayer(layer)) map.removeLayer(layer);
-  });
-
   // from https://docs.mapbox.com/mapbox-gl-js/example/cluster/
   map.addLayer({
     id: "clusters",
@@ -93,6 +87,25 @@ const initial_pin_data_load = (map, json) => {
   add_pin_layers(map);
 };
 
+const load_study_area_from_geojson = (map) => {
+  // let url = "/static/geojson/study_area.geojson";
+
+  // console.log(url);
+  map.addSource("study-area-data", {
+    type: "geojson",
+    data: STUDY_AREA.features[0],
+  });
+
+  map.addLayer({
+    id: "study-area",
+    type: "fill",
+    source: "study-area-data",
+    paint: {
+      "fill-color": "rgba(0, 0, 0, 0.3)",
+    },
+  });
+};
+
 const load_pins_from_api = async (map) => {
   get_data_from_api(map, PIN_URL, initial_pin_data_load);
 };
@@ -154,4 +167,5 @@ export {
   reload_pins,
   add_pin_layers,
   add_tag_options_to_survey_form,
+  load_study_area_from_geojson,
 };

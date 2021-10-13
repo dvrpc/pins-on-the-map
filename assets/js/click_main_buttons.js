@@ -38,9 +38,7 @@ const click_add_comment_button = () => {
   set_display_to_id("survey-form", "inline");
 };
 
-const add_pin_to_database = async () => {
-  let lngLat = get_coords_of_marker();
-
+const add_pin_to_database = async (lngLat) => {
   let selected_tags = Array.from(document.getElementsByClassName("selected"));
 
   let data = {
@@ -65,7 +63,9 @@ const click_submit_button = async () => {
   if (user_wants_to_add_pin() && markers_are_not_on_the_map()) {
     set_display_to_id("warning-alert", "inline-block");
   } else {
-    add_pin_to_database()
+    let lngLat = get_coords_of_marker();
+
+    add_pin_to_database(lngLat)
       .then(reload_pins(map))
       .then(set_display_to_id("success-alert", "inline"));
     remove_markers();
