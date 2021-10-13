@@ -1,5 +1,6 @@
 import mapboxgl from "mapbox-gl";
-
+import { point_is_outside_study_area } from "./spatial_intersection";
+import { set_display_to_id } from "./switches";
 const MAP_MARKERS = []; // global to keep track of markers added to the map
 
 const remove_markers = (marker_list = MAP_MARKERS) => {
@@ -17,12 +18,17 @@ const add_marker_to_map = (map, lngLat, marker_list = MAP_MARKERS) => {
 
   remove_markers();
 
-  let marker = new mapboxgl.Marker({ color: "#00AEEF" })
-    .setLngLat(lngLat)
-    .addTo(map);
-  marker_list.push(marker);
+  if (point_is_outside_study_area(lngLat)) {
+    set_display_to_id("study-area-alert", "inline");
+  } else {
+    set_display_to_id("study-area-alert", "none");
+    let marker = new mapboxgl.Marker({ color: "#00AEEF" })
+      .setLngLat(lngLat)
+      .addTo(map);
+    marker_list.push(marker);
 
-  return marker;
+    return marker;
+  }
 };
 
 const get_coords_of_marker = (marker_list = MAP_MARKERS) => {
