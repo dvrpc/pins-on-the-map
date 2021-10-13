@@ -37,7 +37,7 @@ body {
 #header-block {
   position: absolute;
   top: 2vh;
-  left: 15vw;
+  left: 18vw;
   display: flex;
   /* width: 30vw;
   min-width: 300px;
@@ -55,6 +55,7 @@ body {
   color: white;
   padding: 0 10px;
   display: none;
+  border-radius: 5px;
 }
 #button-to-add-pin,
 #button-to-add-comment {
@@ -69,6 +70,7 @@ body {
   /* height: 10vh; */
   width: 200px;
   outline: 3px solid white;
+  box-shadow: 6px 6px 2px 1px rgba(0, 0, 0, 0.2);
 }
 
 #button-to-add-pin {
@@ -113,6 +115,7 @@ body {
   /* height: 200px; */
   z-index: 1;
   text-align: center;
+  box-shadow: 6px 6px 2px 1px rgba(0, 0, 0, 0.2);
 }
 #logo-main {
   width: 95%;
@@ -136,6 +139,8 @@ body {
   padding: 30px;
   display: none;
   color: white;
+  border-radius: 5px;
+  box-shadow: 6px 6px 2px 1px rgba(0, 0, 0, 0.2);
 }
 textarea {
   width: 100%;
@@ -157,6 +162,7 @@ textarea {
   align-items: center;
   background-color: var(--theme-dark-gray);
   border-radius: 7px;
+  box-shadow: 6px 6px 2px 1px rgba(0, 0, 0, 0.2);
 }
 .single-button {
   height: 60px;
@@ -183,6 +189,8 @@ textarea {
   margin: 5px;
   padding: 5px;
   border: 1px solid white;
+  cursor: pointer;
+  border-radius: 5px;
 }
 
 .selected {
@@ -190,6 +198,21 @@ textarea {
   color: black;
 }
 
+#submit-pin {
+  font-size: 16px;
+  margin-top: 20px;
+  padding: 10px;
+  border: 2px solid white;
+  border-radius: 5px;
+  background-color: #bcbec0;
+  cursor: pointer;
+}
+
+#submit-pin:hover {
+  background-color: black;
+  color: white;
+  border-color: var(--theme-blue);
+}
 @media only screen and (max-width: 760px) {
   #header-block {
     flex-direction: column;
