@@ -43,18 +43,20 @@ const add_pin_to_database = async () => {
 
   let selected_tags = Array.from(document.getElementsByClassName("selected"));
 
-  let tag_names = selected_tags.map((tag) => tag.id);
+  let data = {
+    geom: `SRID=4326;POINT (${lngLat.lng} ${lngLat.lat})`,
+    prompt_1: document.getElementById("prompt_1").value,
+  };
 
-  console.log(selected_tags);
-  console.log(tag_names);
+  selected_tags.forEach((tag) => {
+    data[tag.id] = true;
+  });
+
+  console.log(data);
   var xhr = new XMLHttpRequest();
   xhr.open("POST", "/api/add-pin/", true);
   xhr.setRequestHeader("Content-Type", "application/json");
-  let params = JSON.stringify({
-    geom: `SRID=4326;POINT (${lngLat.lng} ${lngLat.lat})`,
-    prompt_1: document.getElementById("prompt_1").value,
-    tags: tag_names,
-  });
+  let params = JSON.stringify(data);
   console.log(params);
   xhr.send(params);
 };
@@ -72,6 +74,11 @@ const click_submit_button = async () => {
     set_display_to_id("warning-alert", "none");
 
     document.getElementById("prompt_1").value = "";
+
+    // remove selected class from tag buttons
+    var elems = document.querySelectorAll(".selected");
+
+    elems.forEach((el) => el.classList.remove("selected"));
   }
 };
 
