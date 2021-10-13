@@ -19,7 +19,7 @@ const wire_click_logic = (map) => {
 
     map.flyTo({
       center: e.lngLat,
-      zoom: 16.5,
+      zoom: map.getZoom(),
       essential: true,
     });
   });
