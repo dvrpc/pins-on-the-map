@@ -9,8 +9,6 @@ const user_wants_to_add_pin = () => {
 const toggle_button_state = (div) => {
   let this_div = document.getElementById(div.target.id);
 
-  console.log(this_div.classList);
-
   if (this_div.classList.contains("selected")) {
     this_div.classList.remove("selected");
   } else {
