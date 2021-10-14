@@ -73,6 +73,25 @@
   overflow: auto;
 }
 
+/* DETAIL FORM at bottom-right */
+#info-box {
+  position: absolute;
+  z-index: 1;
+  bottom: 20px;
+  right: 20px;
+  width: 60vw;
+  max-height: 80vh;
+  background-color: var(--theme-dark-gray);
+  padding: 30px;
+  display: inline;
+  color: white;
+  border-radius: 5px;
+  box-shadow: var(--box-shadow);
+  overflow: auto;
+  font-size: 14px;
+  line-height: 28px;
+}
+
 .close-box-button {
   margin-left: 15px;
   color: white;
