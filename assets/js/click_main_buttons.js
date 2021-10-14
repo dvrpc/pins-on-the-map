@@ -13,6 +13,7 @@ const click_add_pin_button = () => {
    */
 
   set_display_to_id("success-alert", "none");
+  set_display_to_id("detail-form", "none");
 
   // turn on help text
   set_display_to_id("click-map-text", "inline");
@@ -33,6 +34,7 @@ const click_add_comment_button = () => {
 
   set_display_to_id("success-alert", "none");
   set_display_to_id("warning-alert", "none");
+  set_display_to_id("detail-form", "none");
 
   // make the text-based form visible
   set_display_to_id("survey-form", "inline");
@@ -47,16 +49,17 @@ const add_pin_to_database = async (lngLat) => {
   };
 
   selected_tags.forEach((tag) => {
-    data[tag.id] = true;
+    let tag_id = tag.id.replace("user-input-", "");
+    data[tag_id] = true;
   });
 
-  console.log(data);
   var xhr = new XMLHttpRequest();
   xhr.open("POST", "/api/add-pin/", true);
   xhr.setRequestHeader("Content-Type", "application/json");
   let params = JSON.stringify(data);
-  console.log(params);
   xhr.send(params);
+
+  return data;
 };
 
 const click_submit_button = async () => {
@@ -66,6 +69,9 @@ const click_submit_button = async () => {
     let lngLat = get_coords_of_marker();
 
     add_pin_to_database(lngLat)
+      .then((data) => {
+        console.log(data);
+      })
       .then(reload_pins(map))
       .then(set_display_to_id("success-alert", "inline"));
     remove_markers();
