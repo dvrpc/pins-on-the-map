@@ -5,6 +5,8 @@ from rest_framework_gis.serializers import GeoFeatureModelSerializer
 
 from pins.models import Pin, Comment
 
+from .configuration import TAGS
+
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     """This is the built-in Django user for authentication"""
@@ -23,6 +25,8 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class PinSerializer(serializers.HyperlinkedModelSerializer):
+    """This is the upload serializer, which accepts all 10 tags by default"""
+
     class Meta:
         model = Pin
         fields = [
@@ -49,6 +53,10 @@ class CommentSerializer(serializers.ModelSerializer):
 
 
 class PinGeoSerializer(GeoFeatureModelSerializer):
+    """
+    This is the read-only geo view of the pins,
+    which only provides the number of tags that have been configured
+    """
 
     comments = CommentSerializer(many=True, read_only=True)
 
@@ -59,14 +67,4 @@ class PinGeoSerializer(GeoFeatureModelSerializer):
             "geom",
             "comments",
             "prompt_1",
-            "tag_1",
-            "tag_2",
-            "tag_3",
-            "tag_4",
-            "tag_5",
-            "tag_6",
-            "tag_7",
-            "tag_8",
-            "tag_9",
-            "tag_10",
-        ]
+        ] + [f"tag_{x}" for x in range(1, len(TAGS) + 1)]
