@@ -5,12 +5,6 @@ body {
   margin: 0;
 }
 
-:root {
-  --theme-yellow: #ffe100;
-  --theme-blue: #00aeef;
-  --theme-dark-gray: rgba(109, 110, 113, 0.9);
-}
-
 body {
   margin: 0;
   padding: 0;
@@ -27,29 +21,6 @@ body {
   z-index: 0;
 }
 
-#header-block {
-  position: absolute;
-  top: 2vh;
-  left: 18vw;
-  display: flex;
-  /* width: 30vw;
-  min-width: 300px;
-  max-width: 700px; */
-  z-index: 1;
-  align-items: center;
-}
-#click-map-text {
-  position: absolute;
-  top: 22vh;
-  left: 2vw;
-  display: flex;
-  z-index: 1;
-  background-color: var(--theme-dark-gray);
-  color: white;
-  padding: 0 10px;
-  display: none;
-  border-radius: 5px;
-}
 #button-to-add-pin,
 #button-to-add-comment {
   /* margin: 3%; */
@@ -98,18 +69,7 @@ body {
   padding-left: 10px;
   padding-right: 10px;
 }
-#logo-card {
-  background-color: black;
-  color: white;
-  position: absolute;
-  top: 0vh;
-  left: 2vw;
-  width: 150px;
-  /* height: 200px; */
-  z-index: 1;
-  text-align: center;
-  box-shadow: 6px 6px 2px 1px rgba(0, 0, 0, 0.2);
-}
+
 #logo-main {
   width: 95%;
   height: 95%;
@@ -121,20 +81,6 @@ body {
   object-fit: cover;
 }
 
-#survey-form {
-  position: absolute;
-  z-index: 1;
-  bottom: 20px;
-  right: 20px;
-  width: 400px;
-  height: 400px;
-  background-color: var(--theme-dark-gray);
-  padding: 30px;
-  display: none;
-  color: white;
-  border-radius: 5px;
-  box-shadow: 6px 6px 2px 1px rgba(0, 0, 0, 0.2);
-}
 textarea {
   width: 100%;
   resize: none;
@@ -191,6 +137,19 @@ textarea {
   color: black;
 }
 
+.tag-for-existing-pin {
+  margin: 5px;
+  padding: 5px;
+  border: 1px solid white;
+  border-radius: 5px;
+  display: none;
+}
+
+.selected-blue {
+  background-color: var(--theme-blue);
+  display: inline;
+}
+
 #submit-pin {
   font-size: 16px;
   margin-top: 20px;
@@ -201,17 +160,27 @@ textarea {
   cursor: pointer;
 }
 
-#submit-pin:hover {
+#submit-reaction {
+  margin-top: 20px;
+  padding: 8px;
+  border: 2px solid white;
+  border-radius: 5px;
+  background-color: #bcbec0;
+  cursor: pointer;
+}
+#submit-pin:hover,
+#submit-reaction:hover {
   background-color: black;
   color: white;
   border-color: var(--theme-blue);
 }
+
 @media only screen and (max-width: 760px) {
-  #header-block {
+  /* #header-block {
     flex-direction: column;
     right: 10px;
     left: auto;
-  }
+  } */
   #or-icon {
     max-height: 30px;
     /* margin: -3% 0% -3% 0%; */

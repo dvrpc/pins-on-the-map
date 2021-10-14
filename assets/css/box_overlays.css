@@ -1,0 +1,88 @@
+/* LOGOS at top-left */
+
+#logo-card {
+  background-color: black;
+  color: white;
+  position: absolute;
+  top: 0vh;
+  left: 2vw;
+  width: 150px;
+  /* height: 200px; */
+  z-index: 1;
+  text-align: center;
+  box-shadow: var(--box-shadow);
+}
+
+/* MAIN BUTTONS to right of logo-card */
+#header-block {
+  position: absolute;
+  top: 2vh;
+  left: 18vw;
+  display: flex;
+  /* width: 30vw;
+    min-width: 300px;
+    max-width: 700px; */
+  z-index: 1;
+  align-items: center;
+}
+
+/* HELP TEXT below logo-card */
+#click-map-text {
+  position: absolute;
+  top: 22vh;
+  left: 2vw;
+  display: flex;
+  z-index: 1;
+  background-color: var(--theme-dark-gray);
+  color: white;
+  padding: 0 10px;
+  display: none;
+  border-radius: 5px;
+}
+
+/* SURVEY FORM at bottom-right */
+#survey-form {
+  position: absolute;
+  z-index: 1;
+  bottom: 20px;
+  right: 20px;
+  width: 400px;
+  height: 400px;
+  background-color: var(--theme-dark-gray);
+  padding: 30px;
+  display: none;
+  color: white;
+  border-radius: 5px;
+  box-shadow: var(--box-shadow);
+}
+
+/* DETAIL FORM at bottom-right */
+#detail-form {
+  position: absolute;
+  z-index: 1;
+  bottom: 20px;
+  right: 20px;
+  width: 40vw;
+  max-height: 80vh;
+  background-color: var(--theme-dark-gray);
+  padding: 30px;
+  display: none;
+  color: white;
+  border-radius: 5px;
+  box-shadow: var(--box-shadow);
+  overflow: auto;
+}
+
+.close-box-button {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.close-box-button:hover {
+  color: var(--theme-yellow);
+}
