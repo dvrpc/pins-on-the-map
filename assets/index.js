@@ -1,6 +1,8 @@
 import "mapbox-gl/dist/mapbox-gl.css";
+import "./css/settings.css";
 import "./css/map_style.css";
 import "./css/alerts.css";
+import "./css/box_overlays.css";
 
 import { map } from "./js/map";
 import { wire_click_logic } from "./js/click.js";
@@ -11,6 +13,7 @@ import {
   add_tag_options_to_survey_form,
   load_study_area_from_geojson,
 } from "./js/load_data";
+import { set_display_to_id } from "./js/switches";
 
 const CLUSTER_LEVEL = 15;
 
@@ -26,3 +29,11 @@ map.on("load", function () {
 
   add_tag_options_to_survey_form(map);
 });
+
+document.getElementById("close-form").onclick = () => {
+  set_display_to_id("survey-form", "none");
+  set_display_to_id("click-map-text", "none");
+};
+document.getElementById("close-details").onclick = () => {
+  set_display_to_id("detail-form", "none");
+};
