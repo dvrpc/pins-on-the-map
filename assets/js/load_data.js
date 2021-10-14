@@ -120,42 +120,36 @@ const reload_pins = async (map) => {
   get_data_from_api(map, PIN_URL, reload_pins_from_api);
 };
 
-const do_stuff_with_json = (map, json) => {
-  let survey = document.getElementById("user-input");
+const add_tags_to_div = (div_id, json, tag_class) => {
+  let main_div = document.getElementById(div_id);
 
   let group_div = document.createElement("div");
   group_div.className = "tag-group";
-  survey.appendChild(group_div);
+  main_div.appendChild(group_div);
 
   Object.entries(json).forEach((item) => {
     let id = item[0];
     let text = item[1];
 
     let tag_div = document.createElement("div");
-    tag_div.className = "tag-button";
-    tag_div.id = "tag_" + id;
+    tag_div.className = tag_class;
+    tag_div.id = div_id + "-tag_" + id;
     tag_div.appendChild(document.createTextNode(text));
     group_div.appendChild(tag_div);
 
     tag_div.addEventListener("click", toggle_button_state);
   });
+};
 
-  // json.forEach((tag_group) => {
-  //   let group_div = document.createElement("div");
-  //   group_div.className = "tag-group";
-  //   // group_div.appendChild(document.createTextNode(tag_group.title));
-  //   survey.appendChild(group_div);
+const do_stuff_with_json = (map, json) => {
+  let div_data = [
+    { id: "user-input", classname: "tag-button" },
+    { id: "detail-tags", classname: "tag-for-existing-pin" },
+  ];
 
-  //   tag_group.tags.forEach((tag) => {
-  //     let tag_div = document.createElement("div");
-  //     tag_div.className = "tag-button";
-  //     tag_div.id = tag.title;
-  //     tag_div.appendChild(document.createTextNode(tag.title));
-  //     group_div.appendChild(tag_div);
-
-  //     tag_div.addEventListener("click", toggle_button_state);
-  //   });
-  // });
+  div_data.forEach((div) => {
+    add_tags_to_div(div.id, json, div.classname);
+  });
 };
 
 const add_tag_options_to_survey_form = (map) => {
