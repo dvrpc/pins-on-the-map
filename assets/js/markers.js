@@ -22,7 +22,7 @@ const add_marker_to_map = (map, lngLat, marker_list = MAP_MARKERS) => {
     set_display_to_id("study-area-alert", "inline");
   } else {
     set_display_to_id("study-area-alert", "none");
-    let marker = new mapboxgl.Marker({ color: "#00AEEF" })
+    let marker = new mapboxgl.Marker({ color: "#00AEEF", draggable: true })
       .setLngLat(lngLat)
       .addTo(map);
     marker_list.push(marker);
