@@ -1,3 +1,8 @@
+"""
+Load environment variables that are 
+prefixed with "TAG" into memory
+"""
+
 import os
 from dotenv import find_dotenv, load_dotenv
 
@@ -9,6 +14,3 @@ for i in range(1, 11):
     txt = os.getenv(f"TAG_{i}", None)
     if txt:
         TAGS[i] = txt
-
-
-print(TAGS)
