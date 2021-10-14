@@ -1,7 +1,11 @@
 import mapboxgl from "mapbox-gl";
 import { add_marker_to_map } from "./markers";
 import { bindPopup } from "./popup";
-import { user_wants_to_add_pin, set_display_to_id } from "./switches";
+import {
+  user_wants_to_add_pin,
+  set_display_to_id,
+  set_mouse_to_crosshair,
+} from "./switches";
 
 const show_detail_for_existing_pin = (e, map) => {
   // Add content to the DETAIL FORM
@@ -90,6 +94,7 @@ const wire_click_logic = (map) => {
   map.on("click", "unclustered-point", (e) => {
     if (!user_wants_to_add_pin()) {
       show_detail_for_existing_pin(e, map);
+      set_display_to_id("survey-form", "none");
     }
   });
 
@@ -108,6 +113,7 @@ const wire_click_logic = (map) => {
   map.on("click", (e) => {
     if (user_wants_to_add_pin()) {
       add_marker_to_map(map, e.lngLat);
+      set_mouse_to_crosshair(map);
     }
   });
 };

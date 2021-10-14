@@ -1,4 +1,9 @@
-import { set_display_to_id, user_wants_to_add_pin } from "./switches";
+import {
+  set_display_to_id,
+  user_wants_to_add_pin,
+  set_mouse_to_crosshair,
+  set_mouse_to_normal,
+} from "./switches";
 import {
   markers_are_not_on_the_map,
   get_coords_of_marker,
@@ -14,12 +19,15 @@ const click_add_pin_button = () => {
 
   set_display_to_id("success-alert", "none");
   set_display_to_id("detail-form", "none");
+  set_display_to_id("info-box", "none");
 
   // turn on help text
   set_display_to_id("click-map-text", "inline");
 
   // make the text-based form visible
   set_display_to_id("survey-form", "inline");
+
+  set_mouse_to_crosshair(map);
 };
 
 const click_add_comment_button = () => {
@@ -28,9 +36,11 @@ const click_add_comment_button = () => {
    */
 
   remove_markers();
+  set_mouse_to_normal(map);
 
   // make sure pin help text is off
   set_display_to_id("click-map-text", "none");
+  set_display_to_id("info-box", "none");
 
   set_display_to_id("success-alert", "none");
   set_display_to_id("warning-alert", "none");
@@ -71,6 +81,7 @@ const click_submit_button = async () => {
     add_pin_to_database(lngLat)
       .then((data) => {
         console.log(data);
+        set_mouse_to_normal(map);
       })
       .then(reload_pins(map))
       .then(set_display_to_id("success-alert", "inline"));
