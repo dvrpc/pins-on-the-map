@@ -37,3 +37,12 @@ document.getElementById("close-form").onclick = () => {
 document.getElementById("close-details").onclick = () => {
   set_display_to_id("detail-form", "none");
 };
+
+document.getElementById("close-info").onclick = () => {
+  set_display_to_id("info-box", "none");
+};
+
+document.getElementById("info-toggle").onclick = () => {
+  set_display_to_id("info-box", "inline");
+  set_display_to_id("survey-form", "none");
+};
