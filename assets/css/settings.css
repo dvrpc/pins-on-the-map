@@ -4,3 +4,20 @@
   --theme-dark-gray: rgba(109, 110, 113, 0.9);
   --box-shadow: 6px 6px 2px 1px rgba(0, 0, 0, 0.2);
 }
+
+.blue {
+  color: var(--theme-blue);
+}
+
+.yellow {
+  color: var(--theme-yellow);
+}
+
+.blue,
+.yellow {
+  font-size: 120%;
+}
+
+a {
+  color: var(--theme-blue);
+}
