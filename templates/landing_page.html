@@ -44,6 +44,10 @@
           >&times;</span
         >
         <p>Thank you for sharing your comment!</p>
+        <p>
+          Please feel free to add another one and/or explore comments left by
+          others.
+        </p>
       </div>
 
       <div id="warning-alert" class="alert">
@@ -65,7 +69,9 @@
           onclick="this.parentElement.style.display='none';"
           >&times;</span
         >
-        <p>Please add a pin within the project's study area.</p>
+        <p>
+          Please click within the project's study area to add a pin to the map
+        </p>
       </div>
 
       <div id="header-block">
@@ -111,6 +117,8 @@
       </div>
 
       <div id="survey-form">
+        <span id="close-form" class="close-box-button">&times;</span>
+
         <h1>What are your concerns?</h1>
 
         <div id="user-input">
@@ -120,6 +128,24 @@
         </div>
 
         <button id="submit-pin">submit your comment</button>
+      </div>
+
+      <div id="detail-form">
+        <span id="close-details" class="close-box-button">&times;</span>
+
+        <h2 id="topic-title">Topics</h2>
+        <div id="detail-tags"></div>
+
+        <h2>Initial Comment</h2>
+        <p id="detail-prompt"></p>
+
+        <h2>Reactions</h2>
+        <p>To do</p>
+
+        <h2>Do you have a reaction to share?</h2>
+        <textarea name="" id="" cols="10" rows="2"></textarea>
+
+        <button id="submit-reaction">submit your reaction</button>
       </div>
 
       <div id="bottom-buttons">
