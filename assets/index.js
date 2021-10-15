@@ -10,10 +10,10 @@ import { hover_setup } from "./js/hover.js";
 import { setup_button_listeners } from "./js/click_main_buttons.js";
 import {
   load_pins_from_api,
-  add_tag_options_to_survey_form,
   load_study_area_from_geojson,
 } from "./js/load_data";
 import { set_display_to_id } from "./js/switches";
+import { add_tag_options_to_map } from "./js/load_tags";
 
 const CLUSTER_LEVEL = 15;
 
@@ -27,7 +27,7 @@ map.on("load", function () {
 
   setup_button_listeners();
 
-  add_tag_options_to_survey_form(map);
+  add_tag_options_to_map(map);
 });
 
 document.getElementById("close-form").onclick = () => {
@@ -45,4 +45,5 @@ document.getElementById("close-info").onclick = () => {
 document.getElementById("info-toggle").onclick = () => {
   set_display_to_id("info-box", "inline");
   set_display_to_id("survey-form", "none");
+  set_display_to_id("detail-form", "none");
 };
