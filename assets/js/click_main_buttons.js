@@ -3,6 +3,7 @@ import {
   user_wants_to_add_pin,
   set_mouse_to_crosshair,
   set_mouse_to_normal,
+  select_pin_by_id,
 } from "./switches";
 import {
   markers_are_not_on_the_map,
@@ -63,13 +64,26 @@ const add_pin_to_database = async (lngLat) => {
     data[tag_id] = true;
   });
 
-  var xhr = new XMLHttpRequest();
-  xhr.open("POST", "/api/add-pin/", true);
-  xhr.setRequestHeader("Content-Type", "application/json");
-  let params = JSON.stringify(data);
-  xhr.send(params);
+  let new_id = -1;
 
-  return data;
+  return fetch("/api/add-pin/", {
+    method: "POST",
+    credentials: "same-origin",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      new_id = data.pin_id;
+      return new_id;
+    })
+    .catch((ex) => {
+      console.log("parsing failed", ex);
+    });
 };
 
 const click_submit_button = async () => {
@@ -78,13 +92,13 @@ const click_submit_button = async () => {
   } else {
     let lngLat = get_coords_of_marker();
 
-    add_pin_to_database(lngLat)
-      .then((data) => {
-        console.log(data);
-        set_mouse_to_normal(map);
-      })
-      .then(reload_pins(map))
-      .then(set_display_to_id("success-alert", "inline"));
+    let new_id = await add_pin_to_database(lngLat);
+
+    console.log(new_id);
+    set_mouse_to_normal(map);
+    reload_pins(map, new_id);
+    set_display_to_id("success-alert", "inline");
+
     remove_markers();
     set_display_to_id("click-map-text", "none");
     set_display_to_id("survey-form", "none");
