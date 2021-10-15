@@ -58,3 +58,10 @@ document.getElementById("filter-button").onclick = () => {
   set_display_to_id("survey-form", "none");
   set_display_to_id("detail-form", "none");
 };
+
+document.getElementById("logo-city").onclick = () => {
+  window.open("http://www.phillyotis.com/", "_blank").focus();
+};
+document.getElementById("logo-dvrpc").onclick = () => {
+  window.open("https://www.dvrpc.org/", "_blank").focus();
+};

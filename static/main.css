@@ -9,6 +9,7 @@
   --theme-yellow: #ffe100;
   --theme-blue: #00aeef;
   --theme-dark-gray: rgba(109, 110, 113, 0.9);
+  --theme-light-gray: rgba(172, 172, 172, 0.9);
   --box-shadow: 6px 6px 2px 1px rgba(0, 0, 0, 0.2);
 }
 
@@ -55,6 +56,20 @@ body {
   width: 100%;
   height: 100%;
   z-index: 0;
+
+  /* font-weight: 700; */
+
+  /* font-style: normal; */
+
+  font-family: "Roboto", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: industry, sans-serif;
 }
 
 #button-to-add-pin,
@@ -72,6 +87,7 @@ body {
   max-width: 200px;
   outline: 3px solid white;
   box-shadow: 6px 6px 2px 1px rgba(0, 0, 0, 0.2);
+  font-family: industry, sans-serif;
 }
 
 #button-to-add-pin {
@@ -168,29 +184,31 @@ textarea {
   display: inline;
 }
 
+#submit-pin,
+#submit-reaction {
+  border: 2px solid white;
+  border-radius: 5px;
+  background-color: black;
+  color: var(--theme-yellow);
+  cursor: pointer;
+  font-family: industry, sans-serif;
+}
+
 #submit-pin {
   font-size: 16px;
   margin-top: 20px;
   padding: 10px;
-  border: 2px solid white;
-  border-radius: 5px;
-  background-color: #bcbec0;
-  cursor: pointer;
 }
 
 #submit-reaction {
   margin-top: 20px;
   padding: 8px;
-  border: 2px solid white;
-  border-radius: 5px;
-  background-color: #bcbec0;
-  cursor: pointer;
 }
 #submit-pin:hover,
 #submit-reaction:hover {
-  background-color: black;
-  color: white;
-  border-color: var(--theme-blue);
+  background-color: var(--theme-blue);
+  color: black;
+  border-color: white;
 }
 
 @media only screen and (max-width: 760px) {
