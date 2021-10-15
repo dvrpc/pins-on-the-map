@@ -41,9 +41,20 @@ document.getElementById("close-details").onclick = () => {
 document.getElementById("close-info").onclick = () => {
   set_display_to_id("info-box", "none");
 };
+document.getElementById("close-filter").onclick = () => {
+  set_display_to_id("filter-box", "none");
+};
 
-document.getElementById("info-toggle").onclick = () => {
+document.getElementById("about-button").onclick = () => {
   set_display_to_id("info-box", "inline");
+  set_display_to_id("survey-form", "none");
+  set_display_to_id("detail-form", "none");
+  set_display_to_id("filter-box", "none");
+};
+
+document.getElementById("filter-button").onclick = () => {
+  set_display_to_id("filter-box", "inline");
+  set_display_to_id("info-box", "none");
   set_display_to_id("survey-form", "none");
   set_display_to_id("detail-form", "none");
 };

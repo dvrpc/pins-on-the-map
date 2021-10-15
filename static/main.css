@@ -68,7 +68,8 @@ body {
   display: flex;
   align-items: center;
   /* height: 10vh; */
-  width: 200px;
+  width: 18vw;
+  max-width: 200px;
   outline: 3px solid white;
   box-shadow: 6px 6px 2px 1px rgba(0, 0, 0, 0.2);
 }
@@ -81,8 +82,8 @@ body {
 #button-to-add-comment {
   background-color: var(--theme-blue);
   color: white;
-  text-align: right;
-  justify-content: end;
+  /* text-align: right; */
+  justify-content: start;
   /* align-content: end;  */
   /* margin-left: auto; */
 }
@@ -94,13 +95,13 @@ body {
 }
 
 #pin-icon {
-  max-height: 50px;
+  max-height: 40px;
   z-index: 2;
   padding-left: 10px;
   padding-right: 10px;
 }
 #comment-icon {
-  max-height: 50px;
+  max-height: 40px;
   z-index: 2;
   padding-left: 10px;
   padding-right: 10px;
@@ -110,7 +111,7 @@ body {
   width: 90%;
   height: 90%;
   object-fit: cover;
-  padding: 40px 10px 20px 10px;
+  padding: 60px 10px 20px 10px;
 }
 
 textarea {
@@ -119,22 +120,7 @@ textarea {
   font: 12px/20px Helvetica Neue, Arial, Helvetica, sans-serif;
   /* border: 3px solid var(--theme-yellow); */
 }
-/* button {
-  background-color: var(--theme-blue);
-  outline: 1px solid white;
-} */
-#bottom-buttons {
-  position: absolute;
-  bottom: 2vh;
-  left: 2vw;
-  display: flex;
-  width: auto;
-  z-index: 1;
-  align-items: center;
-  background-color: var(--theme-dark-gray);
-  border-radius: 7px;
-  box-shadow: 6px 6px 2px 1px rgba(0, 0, 0, 0.2);
-}
+
 .single-button {
   height: 60px;
   padding: 20px;
@@ -254,8 +240,8 @@ textarea {
   z-index: 1;
 
   position: absolute;
-  top: 1vh;
-  right: 4vw;
+  top: 60px;
+  right: 1vw;
   padding: 20px;
   margin-bottom: 15px;
   display: none;
@@ -403,7 +389,7 @@ textarea {
 /* MAIN BUTTONS to right of logo-card */
 #header-block {
   position: absolute;
-  top: 6vh;
+  top: 8vh;
   left: 25vw;
   display: flex;
   /* width: 30vw;
@@ -411,6 +397,7 @@ textarea {
     max-width: 700px; */
   z-index: 1;
   align-items: center;
+  /* height: 300px; */
 }
 
 /* HELP TEXT below logo-card */
@@ -471,6 +458,25 @@ textarea {
   background-color: var(--theme-dark-gray);
   padding: 30px;
   display: inline;
+  color: white;
+  border-radius: 5px;
+  box-shadow: var(--box-shadow);
+  overflow: auto;
+  font-size: 14px;
+  line-height: 28px;
+}
+
+/* FILTER FORM at bottom-right */
+#filter-box {
+  position: absolute;
+  z-index: 1;
+  bottom: 20px;
+  right: 20px;
+  width: 60vw;
+  max-height: 80vh;
+  background-color: var(--theme-dark-gray);
+  padding: 30px;
+  display: none;
   color: white;
   border-radius: 5px;
   box-shadow: var(--box-shadow);

@@ -21,6 +21,7 @@ const click_add_pin_button = () => {
   set_display_to_id("success-alert", "none");
   set_display_to_id("detail-form", "none");
   set_display_to_id("info-box", "none");
+  set_display_to_id("filter-box", "none");
 
   // turn on help text
   set_display_to_id("click-map-text", "inline");
@@ -42,6 +43,7 @@ const click_add_comment_button = () => {
   // make sure pin help text is off
   set_display_to_id("click-map-text", "none");
   set_display_to_id("info-box", "none");
+  set_display_to_id("filter-box", "none");
 
   set_display_to_id("success-alert", "none");
   set_display_to_id("warning-alert", "none");

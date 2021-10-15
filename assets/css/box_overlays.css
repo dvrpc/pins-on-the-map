@@ -100,7 +100,7 @@
 /* MAIN BUTTONS to right of logo-card */
 #header-block {
   position: absolute;
-  top: 6vh;
+  top: 8vh;
   left: 25vw;
   display: flex;
   /* width: 30vw;
@@ -108,6 +108,7 @@
     max-width: 700px; */
   z-index: 1;
   align-items: center;
+  /* height: 300px; */
 }
 
 /* HELP TEXT below logo-card */
@@ -168,6 +169,25 @@
   background-color: var(--theme-dark-gray);
   padding: 30px;
   display: inline;
+  color: white;
+  border-radius: 5px;
+  box-shadow: var(--box-shadow);
+  overflow: auto;
+  font-size: 14px;
+  line-height: 28px;
+}
+
+/* FILTER FORM at bottom-right */
+#filter-box {
+  position: absolute;
+  z-index: 1;
+  bottom: 20px;
+  right: 20px;
+  width: 60vw;
+  max-height: 80vh;
+  background-color: var(--theme-dark-gray);
+  padding: 30px;
+  display: none;
   color: white;
   border-radius: 5px;
   box-shadow: var(--box-shadow);
