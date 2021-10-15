@@ -1,26 +1,8 @@
 import { fit_map_to_geojson } from "./zoom_to_layer";
-import { toggle_button_state } from "./switches";
 import { STUDY_AREA } from "./study_area";
+import { get_data_from_api, PIN_URL, TAG_URL } from "./api";
 
 const CLUSTER_LEVEL = 17;
-
-const PIN_URL = "/api/get-pins";
-const TAG_URL = "/api/tags";
-
-const get_data_from_api = (map, url, inner_func) => {
-  var request = new XMLHttpRequest();
-  request.open("GET", url, true);
-  request.setRequestHeader("Access-Control-Allow-Origin", "*");
-  request.onload = function () {
-    if (this.status >= 200 && this.status < 400) {
-      // retrieve the JSON from the response
-      var json = JSON.parse(this.response);
-
-      return inner_func(map, json);
-    }
-  };
-  request.send();
-};
 
 const add_pin_layers = (map) => {
   // from https://docs.mapbox.com/mapbox-gl-js/example/cluster/
@@ -73,9 +55,27 @@ const add_pin_layers = (map) => {
       "circle-stroke-color": "#fff",
     },
   });
+
+  map.addLayer({
+    id: "selected-pin",
+    type: "circle",
+    source: "pin-data",
+    paint: {
+      "circle-stroke-color": "yellow",
+      "circle-radius": 15,
+      "circle-stroke-width": 3,
+      "circle-opacity": 0,
+    },
+    filter: ["==", "pin_id", 2],
+  });
 };
 
 const initial_pin_data_load = (map, json) => {
+  Object.entries(json.features).forEach((item) => {
+    console.log(item);
+    item[1].properties.pin_id = item[1].id;
+  });
+
   map.addSource("pin-data", {
     type: "geojson",
     data: json,
@@ -83,6 +83,8 @@ const initial_pin_data_load = (map, json) => {
     clusterMaxZoom: CLUSTER_LEVEL, // Max zoom to cluster points on
     clusterRadius: 50, // Radius of each cluster when clustering points (defaults to 50)
   });
+
+  console.log(json);
 
   add_pin_layers(map);
 };
@@ -111,55 +113,29 @@ const load_pins_from_api = async (map) => {
 };
 
 const reload_pins_from_api = async (map, json) => {
+  Object.entries(json.features).forEach((item) => {
+    item[1].properties.pin_id = item[1].id;
+    console.log(item[1]);
+  });
+
   map.getSource("pin-data").setData(json);
 };
 
-const reload_pins = async (map) => {
+const reload_pins = async (map, selected_id) => {
   await new Promise((r) => setTimeout(r, 100));
 
-  get_data_from_api(map, PIN_URL, reload_pins_from_api);
-};
+  get_data_from_api(map, PIN_URL, reload_pins_from_api).then(async () => {
+    await new Promise((r) => setTimeout(r, 100));
+    let filter = ["==", "pin_id", selected_id];
+    console.log(filter);
 
-const add_tags_to_div = (div_id, json, tag_class) => {
-  let main_div = document.getElementById(div_id);
-
-  let group_div = document.createElement("div");
-  group_div.className = "tag-group";
-  main_div.appendChild(group_div);
-
-  Object.entries(json).forEach((item) => {
-    let id = item[0];
-    let text = item[1];
-
-    let tag_div = document.createElement("div");
-    tag_div.className = tag_class;
-    tag_div.id = div_id + "-tag_" + id;
-    tag_div.appendChild(document.createTextNode(text));
-    group_div.appendChild(tag_div);
-
-    tag_div.addEventListener("click", toggle_button_state);
+    map.setFilter("selected-pin", filter);
   });
-};
-
-const do_stuff_with_json = (map, json) => {
-  let div_data = [
-    { id: "user-input", classname: "tag-button" },
-    { id: "detail-tags", classname: "tag-for-existing-pin" },
-  ];
-
-  div_data.forEach((div) => {
-    add_tags_to_div(div.id, json, div.classname);
-  });
-};
-
-const add_tag_options_to_survey_form = (map) => {
-  get_data_from_api(map, TAG_URL, do_stuff_with_json);
 };
 
 export {
   load_pins_from_api,
   reload_pins,
   add_pin_layers,
-  add_tag_options_to_survey_form,
   load_study_area_from_geojson,
 };

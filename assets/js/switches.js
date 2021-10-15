@@ -16,4 +16,23 @@ const toggle_button_state = (div) => {
   }
 };
 
-export { set_display_to_id, user_wants_to_add_pin, toggle_button_state };
+const set_mouse_to_crosshair = (map) => {
+  map.getCanvas().style.cursor = "crosshair";
+};
+
+const set_mouse_to_normal = (map) => {
+  map.getCanvas().style.cursor = "";
+};
+
+const select_pin_by_id = (map, pin_id) => {
+  map.setFilter("selected-pin", ["==", "pin_id", pin_id]);
+};
+
+export {
+  set_display_to_id,
+  user_wants_to_add_pin,
+  toggle_button_state,
+  set_mouse_to_crosshair,
+  set_mouse_to_normal,
+  select_pin_by_id,
+};

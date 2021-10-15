@@ -1,3 +1,5 @@
+import { user_wants_to_add_pin } from "./switches";
+
 const hover_cursor = (map, layername) => {
   /**
    * For the provided layername, set the cursor to use a
@@ -9,15 +11,17 @@ const hover_cursor = (map, layername) => {
    */
 
   // change mouse tip to pointer finger
-  map.on(
-    "mouseenter",
-    layername,
-    () => (map.getCanvas().style.cursor = "pointer")
-  );
+  map.on("mouseenter", layername, () => {
+    if (!user_wants_to_add_pin()) {
+      map.getCanvas().style.cursor = "pointer";
+    }
+  });
 
   // change mouse tip upon leaving feature
   map.on("mouseleave", layername, function (e) {
-    map.getCanvas().style.cursor = "";
+    if (!user_wants_to_add_pin()) {
+      map.getCanvas().style.cursor = "";
+    }
   });
 };
 

@@ -93,7 +93,7 @@ db_info = urlparse(DATABASE_URL)
 DATABASES = {
     "default": {
         "ENGINE": "django.contrib.gis.db.backends.postgis",
-        "NAME": "pins_demo",
+        "NAME": "cbm_demo",
         "USER": db_info.username,
         "PASSWORD": db_info.password,
         "HOST": db_info.hostname,

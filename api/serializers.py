@@ -30,6 +30,7 @@ class PinSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Pin
         fields = [
+            "pin_id",
             "geom",
             "ip_address",
             "prompt_1",
@@ -64,7 +65,9 @@ class PinGeoSerializer(GeoFeatureModelSerializer):
         model = Pin
         geo_field = "geom"
         fields = [
+            # "pin_id",
             "geom",
             "comments",
             "prompt_1",
+            "pin_id",
         ] + [f"tag_{x}" for x in range(1, len(TAGS) + 1)]

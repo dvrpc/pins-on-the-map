@@ -12,6 +12,23 @@
   --box-shadow: 6px 6px 2px 1px rgba(0, 0, 0, 0.2);
 }
 
+.blue {
+  color: var(--theme-blue);
+}
+
+.yellow {
+  color: var(--theme-yellow);
+}
+
+.blue,
+.yellow {
+  font-size: 120%;
+}
+
+a {
+  color: var(--theme-blue);
+}
+
 /*!****************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./assets/css/map_style.css ***!
   \****************************************************************************/
@@ -239,8 +256,8 @@ textarea {
   z-index: 1;
 
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 1vh;
+  right: 4vw;
   padding: 20px;
   margin-bottom: 15px;
   display: none;
@@ -359,6 +376,25 @@ textarea {
   border-radius: 5px;
   box-shadow: var(--box-shadow);
   overflow: auto;
+}
+
+/* DETAIL FORM at bottom-right */
+#info-box {
+  position: absolute;
+  z-index: 1;
+  bottom: 20px;
+  right: 20px;
+  width: 60vw;
+  max-height: 80vh;
+  background-color: var(--theme-dark-gray);
+  padding: 30px;
+  display: inline;
+  color: white;
+  border-radius: 5px;
+  box-shadow: var(--box-shadow);
+  overflow: auto;
+  font-size: 14px;
+  line-height: 28px;
 }
 
 .close-box-button {
