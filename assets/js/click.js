@@ -47,7 +47,7 @@ const show_detail_for_existing_pin = (e, map) => {
   // TODO: handle comments
   set_display_to_id("detail-form", "block");
 
-  console.log(props);
+  console.log(e.features[0].id);
 
   // console.log(props);
   // // var comments = JSON.parse(props.comments);
@@ -56,11 +56,13 @@ const show_detail_for_existing_pin = (e, map) => {
 
   // bindPopup(map, prompt_1, e);
 
-  // map.flyTo({
-  //   center: e.lngLat,
-  //   zoom: map.getZoom(),
-  //   essential: true,
-  // });
+  map.flyTo({
+    center: e.lngLat,
+    zoom: map.getZoom(),
+    essential: true,
+  });
+
+  map.setFilter("selected-pin", ["==", "pin_id", e.features[0].id]);
 };
 
 const ungroup_a_pin_cluster = (e, map) => {
@@ -95,6 +97,7 @@ const wire_click_logic = (map) => {
     if (!user_wants_to_add_pin()) {
       show_detail_for_existing_pin(e, map);
       set_display_to_id("survey-form", "none");
+      set_display_to_id("info-box", "none");
     }
   });
 
