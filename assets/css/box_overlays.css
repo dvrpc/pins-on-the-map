@@ -1,14 +1,98 @@
+/* TOP NAVBAR */
+
+#navbar {
+  position: absolute;
+  top: 0hv;
+  left: 0;
+  width: 100vw;
+  height: 50px;
+  background-color: #333333;
+  z-index: 1;
+  /* display: flex;
+  /* align-content: center; */
+}
+
+#box-for-logos {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  position: absolute;
+  top: 0hv;
+  right: 0;
+  width: 50vw;
+  height: 50px;
+  z-index: 3;
+}
+#box-for-buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: absolute;
+  top: 0hv;
+  left: 0;
+  width: 90vw;
+  height: 50px;
+}
+
+#logo-dvrpc,
+#logo-city {
+  height: 25px;
+  width: auto;
+  cursor: pointer;
+}
+
+#logo-dvrpc {
+  padding-right: 10px;
+  margin-right: 10px;
+  border-right: 1px solid #a19fa0;
+}
+#logo-city {
+  margin-right: 10px;
+}
+
+#filter-button,
+#about-button {
+  color: #a19fa0;
+  cursor: pointer;
+}
+
+#filter-button {
+  margin-right: 25vw;
+}
+#about-button {
+  margin-left: 25vw;
+  margin-right: 3vw;
+}
+#filter-icon,
+#about-icon {
+  height: 20px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
+#project-extent-img {
+  width: 95%;
+  height: 95%;
+  /* margin: 5px; */
+}
+
+#filter-button:hover,
+#about-button:hover {
+  color: var(--theme-blue);
+}
+
 /* LOGOS at top-left */
 
 #logo-card {
-  background-color: black;
+  background-color: white;
   color: white;
   position: absolute;
   top: 0vh;
   left: 2vw;
-  width: 150px;
+  width: 20vw;
   /* height: 200px; */
-  z-index: 1;
+  z-index: 2;
   text-align: center;
   box-shadow: var(--box-shadow);
 }
@@ -16,8 +100,8 @@
 /* MAIN BUTTONS to right of logo-card */
 #header-block {
   position: absolute;
-  top: 2vh;
-  left: 18vw;
+  top: 6vh;
+  left: 25vw;
   display: flex;
   /* width: 30vw;
     min-width: 300px;

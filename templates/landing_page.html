@@ -25,8 +25,6 @@
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
-    <!-- LOAD MAPBOX -->
-
     <!-- LOAD CSS FROM THIS REPO -->
     {% load static %}
 
@@ -37,6 +35,36 @@
   <body>
     <!-- your content here... -->
     <div id="map">
+      <div id="navbar">
+        <div id="box-for-logos">
+          <img
+            id="logo-city"
+            src="{% static 'images/city-logo.png' %}"
+            alt=""
+          />
+          <img
+            id="logo-dvrpc"
+            src="{% static 'images/DVRPC-logo.png' %}"
+            alt=""
+          />
+        </div>
+
+        <div id="box-for-buttons">
+          <div id="about-button">
+            <img id="about-icon" src="{% static 'images/info.png' %}" alt="" />
+            How to Use the Map
+          </div>
+          <div id="filter-button">
+            <img
+              id="filter-icon"
+              src="{% static 'images/filter.png' %}"
+              alt=""
+            />
+
+            Filter Feedback
+          </div>
+        </div>
+      </div>
       <div id="success-alert" class="alert">
         <span
           class="closebtn"
@@ -111,9 +139,7 @@
       </div>
 
       <div id="logo-card">
-        <img id="logo-main" src="{% static 'img/logo-main.png' %}" alt="" />
-        <img id="logo-dvrpc" src="{% static 'img/logo-dvrpc.png' %}" alt="" />
-        <br /><br />
+        <img id="logo-main" src="{% static 'images/CBM-logo.png' %}" alt="" />
       </div>
 
       <div id="survey-form">
@@ -189,7 +215,7 @@
         </p>
       </div>
 
-      <div id="bottom-buttons">
+      <!-- <div id="bottom-buttons">
         <img
           id="info-toggle"
           class="single-button"
@@ -202,7 +228,7 @@
           src="{% static 'img/img_filter-feedback.png' %}"
           alt=""
         />
-      </div>
+      </div> -->
     </div>
 
     <!-- prettier-ignore -->

@@ -9,9 +9,11 @@ body {
   margin: 0;
   padding: 0;
   font-size: 12px;
-  font-family: 12px/20px Helvetica Neue, Arial, Helvetica, sans-serif;
 }
 
+.headings {
+  font-family: "Oswald", sans-serif;
+}
 #map {
   position: absolute;
   top: 0;
@@ -71,14 +73,10 @@ body {
 }
 
 #logo-main {
-  width: 95%;
-  height: 95%;
+  width: 90%;
+  height: 90%;
   object-fit: cover;
-}
-#logo-dvrpc {
-  width: 80%;
-  height: 80%;
-  object-fit: cover;
+  padding: 40px 10px 20px 10px;
 }
 
 textarea {
