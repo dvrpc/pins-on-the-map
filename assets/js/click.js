@@ -37,12 +37,12 @@ const show_detail_for_existing_pin = (e, map) => {
     }
   });
 
-  // Show the topic heading if at least 1 topic was applied to this pin
-  if (document.getElementsByClassName("selected-blue").length > 0) {
-    set_display_to_id("topic-title", "inline");
-  } else {
-    set_display_to_id("topic-title", "none");
-  }
+  // // Show the topic heading if at least 1 topic was applied to this pin
+  // if (document.getElementsByClassName("selected-blue").length > 0) {
+  //   set_display_to_id("topic-title", "inline");
+  // } else {
+  //   set_display_to_id("topic-title", "none");
+  // }
 
   // TODO: handle comments
   set_display_to_id("detail-form", "block");

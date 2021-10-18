@@ -191,8 +191,9 @@ textarea {
 }
 
 .selected-blue {
-  background-color: var(--theme-blue);
+  background-color: var(--theme-light-gray);
   display: inline;
+  color: white;
 }
 
 #submit-pin,
@@ -508,7 +509,7 @@ textarea {
   }
   #button-to-add-pin,
   #button-to-add-comment {
-    width: 110px;
+    width: 135px;
     font-size: 12px;
   }
   #pin-icon {
@@ -577,7 +578,7 @@ textarea {
   }
 
   textarea {
-    height: 10vh;
+    height: 3vh;
   }
   .tag-button {
     margin: 2px;
@@ -589,13 +590,22 @@ textarea {
   }
 
   .alert {
-    bottom: 40vh;
-    top: auto;
+    top: 20vh;
   }
   #success-alert,
   #warning-alert,
   #study-area-alert {
     width: 87vw;
+  }
+
+  #click-map-text {
+    top: 52vh;
+  }
+
+  .tag-for-existing-pin {
+    margin: 4px;
+    padding: 4px;
+    font-size: 11px;
   }
 }
 
