@@ -14,7 +14,7 @@
   }
   #button-to-add-pin,
   #button-to-add-comment {
-    width: 110px;
+    width: 135px;
     font-size: 12px;
   }
   #pin-icon {
@@ -83,7 +83,7 @@
   }
 
   textarea {
-    height: 10vh;
+    height: 3vh;
   }
   .tag-button {
     margin: 2px;
@@ -95,12 +95,21 @@
   }
 
   .alert {
-    bottom: 40vh;
-    top: auto;
+    top: 20vh;
   }
   #success-alert,
   #warning-alert,
   #study-area-alert {
     width: 87vw;
+  }
+
+  #click-map-text {
+    top: 52vh;
+  }
+
+  .tag-for-existing-pin {
+    margin: 4px;
+    padding: 4px;
+    font-size: 11px;
   }
 }

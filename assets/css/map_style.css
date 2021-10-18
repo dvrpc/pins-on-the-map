@@ -145,8 +145,9 @@ textarea {
 }
 
 .selected-blue {
-  background-color: var(--theme-blue);
+  background-color: var(--theme-light-gray);
   display: inline;
+  color: white;
 }
 
 #submit-pin,
