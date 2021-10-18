@@ -19,7 +19,7 @@
   position: absolute;
   top: 0hv;
   right: 0;
-  width: 50vw;
+  /* width: 40vw; */
   height: 50px;
   z-index: 3;
 }
@@ -29,8 +29,8 @@
   align-items: center;
   position: absolute;
   top: 0hv;
-  left: 0;
-  width: 90vw;
+  left: 25vw;
+  /* width: 80vw; */
   height: 50px;
 }
 
@@ -56,11 +56,11 @@
   cursor: pointer;
 }
 
-#filter-button {
+/* #filter-button {
   margin-right: 25vw;
-}
+} */
 #about-button {
-  margin-left: 25vw;
+  margin-left: 0vw;
   margin-right: 3vw;
 }
 #filter-icon,
@@ -131,8 +131,8 @@
   z-index: 1;
   bottom: 20px;
   right: 20px;
-  width: 400px;
-  height: 400px;
+  width: min(30vw, 400px);
+  height: auto;
   background-color: var(--theme-dark-gray);
   padding: 30px;
   display: none;

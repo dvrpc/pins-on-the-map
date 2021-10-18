@@ -3,6 +3,7 @@ import "./css/settings.css";
 import "./css/map_style.css";
 import "./css/alerts.css";
 import "./css/box_overlays.css";
+import "./css/mobile.css";
 
 import { map } from "./js/map";
 import { wire_click_logic } from "./js/click.js";
