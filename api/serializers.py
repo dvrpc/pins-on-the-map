@@ -3,7 +3,7 @@ from rest_framework import serializers
 from rest_framework_gis.serializers import GeoFeatureModelSerializer
 
 
-from pins.models import Pin, Comment
+from pins.models import Pin, Comment, MapUser
 
 from .configuration import TAGS
 
@@ -50,7 +50,13 @@ class PinSerializer(serializers.HyperlinkedModelSerializer):
 class CommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comment
-        fields = ["text"]
+        fields = ["text", "pin_id", "ip_address"]
+
+
+class MapUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = MapUser
+        fields = ["ip_address", "responded_to_survey_question", "q1"]
 
 
 class PinGeoSerializer(GeoFeatureModelSerializer):
