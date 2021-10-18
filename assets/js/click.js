@@ -44,17 +44,15 @@ const show_detail_for_existing_pin = (e, map) => {
   //   set_display_to_id("topic-title", "none");
   // }
 
-  // TODO: handle comments
+  document.getElementById("selected-pin-id").innerText = props.pin_id;
+
+  JSON.parse(props.comments).forEach((comment) => {
+    console.log(comment.text);
+  });
+
   set_display_to_id("detail-form", "block");
 
   console.log(e.features[0].id);
-
-  // console.log(props);
-  // // var comments = JSON.parse(props.comments);
-
-  // var prompt_1 = props.prompt_1;
-
-  // bindPopup(map, prompt_1, e);
 
   map.flyTo({
     center: e.lngLat,
