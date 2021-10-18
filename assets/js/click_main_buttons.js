@@ -88,6 +88,43 @@ const add_pin_to_database = async (lngLat) => {
     });
 };
 
+const add_comment_to_database = async (comment) => {
+  let data = {
+    pin_id: document.getElementById("selected-pin-id").innerText,
+    text: comment,
+  };
+
+  return fetch("/api/add-comment/", {
+    method: "POST",
+    credentials: "same-origin",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      return data;
+    })
+    .catch((ex) => {
+      console.log("parsing failed", ex);
+    });
+};
+
+const click_comment_submit_button = async () => {
+  let comment = document.getElementById("comment-text").value;
+
+  console.log(comment);
+
+  let data = await add_comment_to_database(comment);
+
+  console.log("Thank you for your comment!");
+
+  document.getElementById("comment-text").value = "";
+};
+
 const click_submit_button = async () => {
   if (user_wants_to_add_pin() && markers_are_not_on_the_map()) {
     set_display_to_id("warning-alert", "inline-block");
@@ -127,6 +164,10 @@ const setup_button_listeners = () => {
   document
     .getElementById("submit-pin")
     .addEventListener("click", click_submit_button);
+
+  document
+    .getElementById("submit-reaction")
+    .addEventListener("click", click_comment_submit_button);
 };
 
 export { setup_button_listeners };
