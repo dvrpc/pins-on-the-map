@@ -121,6 +121,9 @@ const click_comment_submit_button = async () => {
   let data = await add_comment_to_database(comment);
 
   console.log("Thank you for your comment!");
+  console.log(data);
+
+  reload_pins(map, data.pin_id);
 
   document.getElementById("comment-text").value = "";
 };
