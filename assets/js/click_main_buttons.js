@@ -4,6 +4,7 @@ import {
   set_mouse_to_crosshair,
   set_mouse_to_normal,
   select_pin_by_id,
+  clear_selected_pin,
 } from "./switches";
 import {
   markers_are_not_on_the_map,
@@ -123,9 +124,12 @@ const click_comment_submit_button = async () => {
   console.log("Thank you for your comment!");
   console.log(data);
 
-  reload_pins(map, data.pin_id);
-
-  document.getElementById("comment-text").value = "";
+  reload_pins(map).then(() => {
+    document.getElementById("comment-text").value = "";
+    set_display_to_id("success-alert-for-comment", "inline");
+    set_display_to_id("detail-form", "none");
+    clear_selected_pin(map);
+  });
 };
 
 const click_submit_button = async () => {

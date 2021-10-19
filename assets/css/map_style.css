@@ -180,3 +180,17 @@ textarea {
 #reaction-header {
   display: none;
 }
+
+#pin-data {
+  display: flex;
+  margin-bottom: 15px;
+}
+
+#pin-main-comment {
+  padding: 5px;
+  width: 60%;
+}
+
+#pin-main-tags {
+  width: 40%;
+}

@@ -1,4 +1,3 @@
-import { fit_map_to_geojson } from "./zoom_to_layer";
 import { STUDY_AREA } from "./study_area";
 import { get_data_from_api, PIN_URL, TAG_URL } from "./api";
 
@@ -127,18 +126,20 @@ const reload_pins_from_api = async (map, json) => {
   map.getSource("pin-data").setData(json);
 };
 
-const reload_pins = async (map, selected_id) => {
+const reload_pins = async (map, selected_id = false) => {
   // wait a beat for the upstream action
   await new Promise((r) => setTimeout(r, 100));
 
   // load pin data from API
   get_data_from_api(map, PIN_URL, reload_pins_from_api).then(async () => {
-    // wait a beat
-    await new Promise((r) => setTimeout(r, 100));
+    if (selected_id) {
+      // wait a beat
+      await new Promise((r) => setTimeout(r, 100));
 
-    // highlight the single pin that was added/updated
-    let filter = ["==", "pin_id", selected_id];
-    map.setFilter("selected-pin", filter);
+      // highlight the single pin that was added/updated
+      let filter = ["==", "pin_id", selected_id];
+      map.setFilter("selected-pin", filter);
+    }
   });
 };
 

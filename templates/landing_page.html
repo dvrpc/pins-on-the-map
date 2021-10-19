@@ -84,6 +84,15 @@
         </p>
       </div>
 
+      <div id="success-alert-for-comment" class="alert">
+        <span
+          class="closebtn"
+          onclick="this.parentElement.style.display='none';"
+          >&times;</span
+        >
+        <p>Thank you for sharing your reaction!</p>
+      </div>
+
       <div id="warning-alert" class="alert">
         <span
           class="closebtn"
@@ -160,10 +169,18 @@
 
       <div id="detail-form">
         <span id="close-details" class="close-box-button">&times;</span>
-        <h2>Comment</h2>
-        <p id="detail-prompt"></p>
 
-        <div id="detail-tags"></div>
+        <div id="pin-data">
+          <div id="pin-main-comment">
+            <h2>Comment</h2>
+            <p id="detail-prompt"></p>
+          </div>
+
+          <div id="pin-main-tags">
+            <h2>Topics</h2>
+            <div id="detail-tags"></div>
+          </div>
+        </div>
 
         <h2 id="reaction-header">Reactions</h2>
         <div id="comments-for-pin"></div>

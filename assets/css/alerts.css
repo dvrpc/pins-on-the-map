@@ -11,23 +11,17 @@
 
   width: 25vw;
   font-size: 16px;
-}
 
-#success-alert {
-  background-color: rgba(94, 187, 79, 0.8);
+  background-color: rgba(94, 187, 79, 0.8); /*all are green unless overridden*/
   color: white;
 }
 
 #warning-alert {
   background-color: rgba(248, 147, 28, 0.8);
-  color: white;
-  /* width: 35vw; */
 }
 
 #study-area-alert {
   background-color: rgba(248, 147, 28, 0.8);
-  color: white;
-  /* width: 35vw; */
 }
 
 /* The close button */

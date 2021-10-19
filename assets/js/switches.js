@@ -28,6 +28,10 @@ const select_pin_by_id = (map, pin_id) => {
   map.setFilter("selected-pin", ["==", "pin_id", pin_id]);
 };
 
+const clear_selected_pin = (map) => {
+  select_pin_by_id(map, -1);
+};
+
 export {
   set_display_to_id,
   user_wants_to_add_pin,
@@ -35,4 +39,5 @@ export {
   set_mouse_to_crosshair,
   set_mouse_to_normal,
   select_pin_by_id,
+  clear_selected_pin,
 };
