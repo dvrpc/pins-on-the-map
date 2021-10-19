@@ -13,7 +13,7 @@ import {
   load_pins_from_api,
   load_study_area_from_geojson,
 } from "./js/load_data";
-import { set_display_to_id } from "./js/switches";
+import { set_display_to_id, set_mouse_to_normal } from "./js/switches";
 import { add_tag_options_to_map } from "./js/load_tags";
 
 const CLUSTER_LEVEL = 15;
@@ -32,6 +32,7 @@ map.on("load", function () {
 });
 
 document.getElementById("close-form").onclick = () => {
+  set_mouse_to_normal(map);
   set_display_to_id("survey-form", "none");
   set_display_to_id("click-map-text", "none");
 };

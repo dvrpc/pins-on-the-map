@@ -223,6 +223,10 @@ textarea {
   border-color: white;
 }
 
+#reaction-header {
+  display: none;
+}
+
 /*!*************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./assets/css/alerts.css ***!
   \*************************************************************************/
@@ -249,13 +253,13 @@ textarea {
 #warning-alert {
   background-color: rgba(248, 147, 28, 0.8);
   color: white;
-  width: 35vw;
+  /* width: 35vw; */
 }
 
 #study-area-alert {
   background-color: rgba(248, 147, 28, 0.8);
   color: white;
-  width: 35vw;
+  /* width: 35vw; */
 }
 
 /* The close button */
@@ -569,7 +573,10 @@ textarea {
   }
 
   #detail-form {
+    /* height: 80vh !important; */
     max-height: 80vh;
+    height: auto;
+    overflow: auto;
   }
 
   .mapboxgl-ctrl-attrib {
