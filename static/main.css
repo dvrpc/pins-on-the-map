@@ -568,6 +568,10 @@ textarea {
     line-height: 18px;
   }
 
+  #detail-form {
+    max-height: 80vh;
+  }
+
   .mapboxgl-ctrl-attrib {
     display: none !important;
   }
