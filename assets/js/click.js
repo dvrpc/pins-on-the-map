@@ -51,14 +51,22 @@ const show_detail_for_existing_pin = (e, map) => {
     div.removeChild(div.firstChild);
   }
 
-  JSON.parse(props.comments).forEach((comment) => {
-    console.log(comment.text);
+  let comment_data = JSON.parse(props.comments);
 
-    let p = document.createElement("p");
-    p.innerText = comment.text;
-    // p.className = "comment-style";
-    div.appendChild(p);
-  });
+  if (comment_data.length > 0) {
+    set_display_to_id("reaction-header", "inline");
+
+    comment_data.forEach((comment) => {
+      console.log(comment.text);
+
+      let p = document.createElement("p");
+      p.innerText = comment.text;
+      // p.className = "comment-style";
+      div.appendChild(p);
+    });
+  } else {
+    set_display_to_id("reaction-header", "none");
+  }
 
   set_display_to_id("detail-form", "block");
 
