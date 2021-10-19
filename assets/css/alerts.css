@@ -21,13 +21,13 @@
 #warning-alert {
   background-color: rgba(248, 147, 28, 0.8);
   color: white;
-  width: 35vw;
+  /* width: 35vw; */
 }
 
 #study-area-alert {
   background-color: rgba(248, 147, 28, 0.8);
   color: white;
-  width: 35vw;
+  /* width: 35vw; */
 }
 
 /* The close button */
