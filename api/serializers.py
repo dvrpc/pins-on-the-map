@@ -48,12 +48,30 @@ class PinSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class CommentSerializer(serializers.ModelSerializer):
+    """
+    Used to create a comment
+    """
+
     class Meta:
         model = Comment
         fields = ["text", "pin_id", "ip_address"]
 
 
+class CommentViewSerializer(serializers.ModelSerializer):
+    """
+    Used for viewing comments grouped by parent pin
+    """
+
+    class Meta:
+        model = Comment
+        fields = ["text"]
+
+
 class MapUserSerializer(serializers.ModelSerializer):
+    """
+    Used to create/update a MapUser
+    """
+
     class Meta:
         model = MapUser
         fields = ["ip_address", "responded_to_survey_question", "q1"]
@@ -65,7 +83,7 @@ class PinGeoSerializer(GeoFeatureModelSerializer):
     which only provides the number of tags that have been configured
     """
 
-    comments = CommentSerializer(many=True, read_only=True)
+    comments = CommentViewSerializer(many=True, read_only=True)
 
     class Meta:
         model = Pin
