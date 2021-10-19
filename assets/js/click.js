@@ -46,13 +46,23 @@ const show_detail_for_existing_pin = (e, map) => {
 
   document.getElementById("selected-pin-id").innerText = props.pin_id;
 
+  let div = document.getElementById("comments-for-pin");
+  while (div.firstChild) {
+    div.removeChild(div.firstChild);
+  }
+
   JSON.parse(props.comments).forEach((comment) => {
     console.log(comment.text);
+
+    let p = document.createElement("p");
+    p.innerText = comment.text;
+    // p.className = "comment-style";
+    div.appendChild(p);
   });
 
   set_display_to_id("detail-form", "block");
 
-  console.log(e.features[0].id);
+  console.log();
 
   map.flyTo({
     center: e.lngLat,
