@@ -73,6 +73,13 @@
     line-height: 18px;
   }
 
+  #detail-form {
+    /* height: 80vh !important; */
+    max-height: 80vh;
+    height: auto;
+    overflow: auto;
+  }
+
   .mapboxgl-ctrl-attrib {
     display: none !important;
   }
