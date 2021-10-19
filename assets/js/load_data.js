@@ -4,6 +4,17 @@ import { get_data_from_api, PIN_URL, TAG_URL } from "./api";
 
 const CLUSTER_LEVEL = 17;
 
+const move_pin_id_to_props = (json) => {
+  // the `pin_id` value is at the top level,
+  // but we need it beneath `properties` for
+  // mapbox to be able to filter on it.
+  Object.entries(json.features).forEach((item) => {
+    item[1].properties.pin_id = item[1].id;
+  });
+
+  return json;
+};
+
 const add_pin_layers = (map) => {
   // from https://docs.mapbox.com/mapbox-gl-js/example/cluster/
   map.addLayer({
@@ -71,10 +82,7 @@ const add_pin_layers = (map) => {
 };
 
 const initial_pin_data_load = (map, json) => {
-  Object.entries(json.features).forEach((item) => {
-    console.log(item);
-    item[1].properties.pin_id = item[1].id;
-  });
+  var json = move_pin_id_to_props(json);
 
   map.addSource("pin-data", {
     type: "geojson",
@@ -113,22 +121,23 @@ const load_pins_from_api = async (map) => {
 };
 
 const reload_pins_from_api = async (map, json) => {
-  Object.entries(json.features).forEach((item) => {
-    item[1].properties.pin_id = item[1].id;
-    console.log(item[1]);
-  });
+  var json = move_pin_id_to_props(json);
 
+  // update geojson source with the new data
   map.getSource("pin-data").setData(json);
 };
 
 const reload_pins = async (map, selected_id) => {
+  // wait a beat for the upstream action
   await new Promise((r) => setTimeout(r, 100));
 
+  // load pin data from API
   get_data_from_api(map, PIN_URL, reload_pins_from_api).then(async () => {
+    // wait a beat
     await new Promise((r) => setTimeout(r, 100));
-    let filter = ["==", "pin_id", selected_id];
-    console.log(filter);
 
+    // highlight the single pin that was added/updated
+    let filter = ["==", "pin_id", selected_id];
     map.setFilter("selected-pin", filter);
   });
 };
