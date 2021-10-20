@@ -1,9 +1,9 @@
 from django.contrib.auth.models import User, Group
-from rest_framework import viewsets, permissions, status
+from rest_framework import viewsets, permissions, status, generics
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from ipware import get_client_ip
-
+from django_filters.rest_framework import DjangoFilterBackend
 
 from .serializers import (
     CommentSerializer,
@@ -46,6 +46,13 @@ class PinGeoViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Pin.objects.all()
     serializer_class = PinGeoSerializer
     permission_classes = [permissions.AllowAny]
+
+
+class PinFilterList(generics.ListAPIView):
+    queryset = Pin.objects.all()
+    serializer_class = PinGeoSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = [f"tag_{x}" for x in range(1, len(TAGS) + 1)]
 
 
 @api_view(["GET"])

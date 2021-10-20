@@ -1,5 +1,5 @@
 import { STUDY_AREA } from "./study_area";
-import { get_data_from_api, PIN_URL, TAG_URL } from "./api";
+import { get_data_from_api, PIN_URL } from "./api";
 
 const CLUSTER_LEVEL = 17;
 
@@ -143,9 +143,15 @@ const reload_pins = async (map, selected_id = false) => {
   });
 };
 
+const filter_pins = async (map, url) => {
+  console.log(url);
+  get_data_from_api(map, url, reload_pins_from_api);
+};
+
 export {
   load_pins_from_api,
   reload_pins,
   add_pin_layers,
   load_study_area_from_geojson,
+  filter_pins,
 };

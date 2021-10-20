@@ -194,3 +194,18 @@ textarea {
 #pin-main-tags {
   width: 40%;
 }
+
+.map-filters {
+  margin: 5px;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: var(--theme-dark-gray);
+  color: var(--theme-light-gray);
+  border: 1px solid var(--theme-light-gray);
+}
+
+.selected-filter {
+  border: 1px solid white;
+  color: white;
+  background-color: var(--philly-green);
+}

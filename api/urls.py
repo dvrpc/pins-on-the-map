@@ -16,4 +16,5 @@ urlpatterns = [
     path("add-pin/", views.add_pin, name="index"),
     path("add-comment/", views.add_comment, name="index"),
     path("tags/", views.all_tags, name="index"),
+    path("filter-pins/", views.PinFilterList.as_view(), name="index"),
 ]

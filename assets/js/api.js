@@ -1,5 +1,6 @@
 const PIN_URL = "/api/get-pins";
 const TAG_URL = "/api/tags";
+const FILTER_URL = "/api/filter-pins";
 
 const get_data_from_api = async (map, url, inner_func) => {
   /*
@@ -20,4 +21,4 @@ const get_data_from_api = async (map, url, inner_func) => {
   request.send();
 };
 
-export { get_data_from_api, PIN_URL, TAG_URL };
+export { get_data_from_api, PIN_URL, TAG_URL, FILTER_URL };

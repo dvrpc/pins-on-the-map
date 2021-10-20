@@ -1,7 +1,10 @@
 import { get_data_from_api, TAG_URL } from "./api";
-import { toggle_button_state } from "./switches";
+import {
+  toggle_tags_when_adding_pin,
+  toggle_tags_when_filtering_map,
+} from "./switches";
 
-const add_tags_to_div = (div_id, json, tag_class, user_can_toggle) => {
+const add_tags_to_div = (div_id, json, tag_class, toggle_func) => {
   let main_div = document.getElementById(div_id);
 
   let group_div = document.createElement("div");
@@ -18,20 +21,33 @@ const add_tags_to_div = (div_id, json, tag_class, user_can_toggle) => {
     tag_div.appendChild(document.createTextNode(text));
     group_div.appendChild(tag_div);
 
-    if (user_can_toggle) {
-      tag_div.addEventListener("click", toggle_button_state);
+    if (toggle_func) {
+      tag_div.addEventListener("click", toggle_func);
     }
   });
 };
 
 const add_tags_to_all_the_divs = (map, json) => {
   let div_data = [
-    { id: "user-input", classname: "tag-button", can_toggle: true },
-    { id: "detail-tags", classname: "tag-for-existing-pin", can_toggle: false },
+    {
+      id: "user-input",
+      classname: "tag-button",
+      toggle_func: toggle_tags_when_adding_pin,
+    },
+    {
+      id: "detail-tags",
+      classname: "tag-for-existing-pin",
+      toggle_func: false,
+    },
+    {
+      id: "filter-toggles",
+      classname: "map-filters",
+      toggle_func: toggle_tags_when_filtering_map,
+    },
   ];
 
   div_data.forEach((div) => {
-    add_tags_to_div(div.id, json, div.classname, div.can_toggle);
+    add_tags_to_div(div.id, json, div.classname, div.toggle_func);
   });
 };
 
