@@ -7,6 +7,10 @@ import {
   clear_selected_pin,
 } from "./switches";
 import {
+  add_comment_to_database,
+  add_pin_to_database,
+} from "./add_to_database";
+import {
   markers_are_not_on_the_map,
   get_coords_of_marker,
   remove_markers,
@@ -23,6 +27,7 @@ const click_add_pin_button = () => {
   set_display_to_id("detail-form", "none");
   set_display_to_id("info-box", "none");
   set_display_to_id("filter-box", "none");
+  clear_selected_pin(map);
 
   // turn on help text
   set_display_to_id("click-map-text", "inline");
@@ -45,6 +50,7 @@ const click_add_comment_button = () => {
   set_display_to_id("click-map-text", "none");
   set_display_to_id("info-box", "none");
   set_display_to_id("filter-box", "none");
+  clear_selected_pin(map);
 
   set_display_to_id("success-alert", "none");
   set_display_to_id("warning-alert", "none");
@@ -52,66 +58,6 @@ const click_add_comment_button = () => {
 
   // make the text-based form visible
   set_display_to_id("survey-form", "inline");
-};
-
-const add_pin_to_database = async (lngLat) => {
-  let selected_tags = Array.from(document.getElementsByClassName("selected"));
-
-  let data = {
-    geom: `SRID=4326;POINT (${lngLat.lng} ${lngLat.lat})`,
-    prompt_1: document.getElementById("prompt_1").value,
-  };
-
-  selected_tags.forEach((tag) => {
-    let tag_id = tag.id.replace("user-input-", "");
-    data[tag_id] = true;
-  });
-
-  let new_id = -1;
-
-  return fetch("/api/add-pin/", {
-    method: "POST",
-    credentials: "same-origin",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  })
-    .then((response) => {
-      return response.json();
-    })
-    .then((data) => {
-      new_id = data.pin_id;
-      return new_id;
-    })
-    .catch((ex) => {
-      console.log("parsing failed", ex);
-    });
-};
-
-const add_comment_to_database = async (comment) => {
-  let data = {
-    pin_id: document.getElementById("selected-pin-id").innerText,
-    text: comment,
-  };
-
-  return fetch("/api/add-comment/", {
-    method: "POST",
-    credentials: "same-origin",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  })
-    .then((response) => {
-      return response.json();
-    })
-    .then((data) => {
-      return data;
-    })
-    .catch((ex) => {
-      console.log("parsing failed", ex);
-    });
 };
 
 const click_comment_submit_button = async () => {

@@ -1,6 +1,5 @@
 import mapboxgl from "mapbox-gl";
 import { add_marker_to_map } from "./markers";
-import { bindPopup } from "./popup";
 import {
   user_wants_to_add_pin,
   set_display_to_id,
@@ -57,8 +56,6 @@ const show_detail_for_existing_pin = (e, map) => {
     set_display_to_id("reaction-header", "inline");
 
     comment_data.forEach((comment) => {
-      console.log(comment.text);
-
       let p = document.createElement("p");
       p.innerText = comment.text;
       // p.className = "comment-style";
@@ -69,8 +66,7 @@ const show_detail_for_existing_pin = (e, map) => {
   }
 
   set_display_to_id("detail-form", "block");
-
-  console.log();
+  set_display_to_id("filter-box", "none");
 
   map.flyTo({
     center: e.lngLat,

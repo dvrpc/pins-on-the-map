@@ -91,15 +91,10 @@ const initial_pin_data_load = (map, json) => {
     clusterRadius: 50, // Radius of each cluster when clustering points (defaults to 50)
   });
 
-  console.log(json);
-
   add_pin_layers(map);
 };
 
 const load_study_area_from_geojson = (map) => {
-  // let url = "/static/geojson/study_area.geojson";
-
-  // console.log(url);
   map.addSource("study-area-data", {
     type: "geojson",
     data: STUDY_AREA.features[0],
@@ -140,11 +135,18 @@ const reload_pins = async (map, selected_id = false) => {
       let filter = ["==", "pin_id", selected_id];
       map.setFilter("selected-pin", filter);
     }
+
+    // Remove the selected tag in the filter box
+
+    Array.from(document.getElementsByClassName("selected-filter")).forEach(
+      (tag) => {
+        tag.classList.remove("selected-filter");
+      }
+    );
   });
 };
 
 const filter_pins = async (map, url) => {
-  console.log(url);
   get_data_from_api(map, url, reload_pins_from_api);
 };
 

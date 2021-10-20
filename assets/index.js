@@ -13,7 +13,11 @@ import {
   load_pins_from_api,
   load_study_area_from_geojson,
 } from "./js/load_data";
-import { set_display_to_id, set_mouse_to_normal } from "./js/switches";
+import {
+  set_display_to_id,
+  set_mouse_to_normal,
+  clear_selected_pin,
+} from "./js/switches";
 import { add_tag_options_to_map } from "./js/load_tags";
 
 const CLUSTER_LEVEL = 15;
@@ -38,6 +42,7 @@ document.getElementById("close-form").onclick = () => {
 };
 document.getElementById("close-details").onclick = () => {
   set_display_to_id("detail-form", "none");
+  clear_selected_pin(map);
 };
 
 document.getElementById("close-info").onclick = () => {
@@ -52,6 +57,8 @@ document.getElementById("about-button").onclick = () => {
   set_display_to_id("survey-form", "none");
   set_display_to_id("detail-form", "none");
   set_display_to_id("filter-box", "none");
+  set_display_to_id("click-map-text", "none");
+  set_mouse_to_normal(map);
 };
 
 document.getElementById("filter-button").onclick = () => {
@@ -59,6 +66,9 @@ document.getElementById("filter-button").onclick = () => {
   set_display_to_id("info-box", "none");
   set_display_to_id("survey-form", "none");
   set_display_to_id("detail-form", "none");
+  set_display_to_id("click-map-text", "none");
+  set_mouse_to_normal(map);
+  clear_selected_pin(map);
 };
 
 document.getElementById("logo-city").onclick = () => {

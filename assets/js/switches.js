@@ -36,15 +36,7 @@ const toggle_tags_when_filtering_map = (div) => {
     document.getElementsByClassName("map-filters")
   );
 
-  // let tag_filter = ["any"];
-
   selected_tags.forEach((tag) => {
-    console.log(tag);
-    // if (tag.classList.contains("selected-filter") & div.target.id != tag.id) {
-    //   let tag_id = tag.id.replace("filter-toggles-", "");
-    //   tag_filter.push(["==", tag_id, true]);
-    // }
-
     if (tag.classList.contains("selected-filter") & (div.target.id != tag.id)) {
       tag.classList.remove("selected-filter");
     }
@@ -54,29 +46,6 @@ const toggle_tags_when_filtering_map = (div) => {
 
     filter_pins(map, url);
   });
-
-  // let all_layers_to_filter = [
-  //   {
-  //     layername: "clusters",
-  //     base_filter: ["has", "point_count"],
-  //   },
-  //   {
-  //     layername: "cluster-count",
-  //     base_filter: ["has", "point_count"],
-  //   },
-  //   {
-  //     layername: "unclustered_point",
-  //     base_filter: ["!", ["has", "point_count"]],
-  //   },
-  // ];
-
-  // all_layers_to_filter.forEach((layer) => {
-  //   if (map.getLayer(layer.layername)) {
-  //     let filter = ["all", layer.base_filter, tag_filter];
-  //     map.setFilter(layer.layername, filter);
-  //     console.log(filter);
-  //   }
-  // });
 };
 
 const set_mouse_to_crosshair = (map) => {
