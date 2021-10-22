@@ -74,7 +74,7 @@ class MapUserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = MapUser
-        fields = ["ip_address", "responded_to_survey_question", "q1"]
+        fields = ["ip_address", "responded_to_survey_question", "q1", "q2", "q3", "q4"]
 
 
 class PinGeoSerializer(GeoFeatureModelSerializer):
