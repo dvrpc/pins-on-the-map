@@ -83,3 +83,12 @@ document.getElementById("logo-city").onclick = () => {
 document.getElementById("logo-dvrpc").onclick = () => {
   window.open("https://www.dvrpc.org/", "_blank").focus();
 };
+
+document.getElementById("disclaimer-toggle").onclick = () => {
+  let disclaimer_div = document.getElementById("disclaimer");
+  if (disclaimer_div.style.display == "inline") {
+    disclaimer_div.style.display = "none";
+  } else {
+    disclaimer_div.style.display = "inline";
+  }
+};

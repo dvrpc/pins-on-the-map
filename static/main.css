@@ -279,6 +279,21 @@ hr {
   border: 0.5px solid white;
 }
 
+#info-footer {
+  display: flex;
+  justify-content: space-around;
+  font-size: 10px;
+}
+
+#disclaimer {
+  display: none;
+  font-size: 10px;
+}
+#disclaimer-toggle {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 /*!*************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./assets/css/alerts.css ***!
   \*************************************************************************/
