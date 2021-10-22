@@ -37,6 +37,10 @@ h5 {
   font-family: industry, sans-serif;
 }
 
+a {
+  color: white;
+}
+
 #button-to-add-pin,
 #button-to-add-comment {
   /* margin: 3%; */
