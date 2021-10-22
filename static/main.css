@@ -108,18 +108,21 @@ a {
   font-family: industry, sans-serif;
 }
 
+.nav-button-text {
+  font-size: 13px;
+}
 #button-to-add-pin {
   background-color: var(--theme-yellow);
   text-align: left;
+  display: flex;
+  align-items: center;
 }
 
 #button-to-add-comment {
   background-color: var(--theme-blue);
   color: white;
-  /* text-align: right; */
-  justify-content: start;
-  /* align-content: end;  */
-  /* margin-left: auto; */
+  display: flex;
+  align-items: center;
 }
 #or-icon {
   max-height: 50px;
@@ -135,15 +138,15 @@ a {
   padding-right: 10px;
 }
 #comment-icon {
-  max-height: 40px;
+  max-height: 30px;
   z-index: 2;
   padding-left: 10px;
   padding-right: 10px;
 }
 
 #logo-main {
-  width: 90%;
-  height: 90%;
+  width: 80%;
+  height: 80%;
   object-fit: cover;
   padding: 60px 10px 20px 10px;
 }
@@ -417,7 +420,7 @@ hr {
   position: absolute;
   top: 0vh;
   left: 2vw;
-  width: 20vw;
+  width: 21vw;
   /* height: 200px; */
   z-index: 2;
   text-align: center;
@@ -439,17 +442,30 @@ hr {
 }
 
 /* HELP TEXT below logo-card */
-#click-map-text {
+
+#ui-message {
   position: absolute;
   top: 22vh;
   left: 2vw;
-  display: flex;
   z-index: 1;
-  background-color: var(--theme-dark-gray);
   color: white;
+  display: flex;
+  flex-direction: column;
+}
+#click-map-text {
   padding: 0 10px;
-  display: none;
+
   border-radius: 5px;
+  background-color: var(--theme-dark-gray);
+  display: none;
+  margin-bottom: 20px;
+}
+#active-filter-text {
+  padding: 0 10px;
+
+  border-radius: 5px;
+  background-color: var(--theme-dark-gray);
+  display: none;
 }
 
 /* SURVEY FORM at bottom-right */

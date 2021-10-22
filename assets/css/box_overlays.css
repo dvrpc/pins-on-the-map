@@ -90,7 +90,7 @@
   position: absolute;
   top: 0vh;
   left: 2vw;
-  width: 20vw;
+  width: 21vw;
   /* height: 200px; */
   z-index: 2;
   text-align: center;
@@ -112,17 +112,30 @@
 }
 
 /* HELP TEXT below logo-card */
-#click-map-text {
+
+#ui-message {
   position: absolute;
   top: 22vh;
   left: 2vw;
-  display: flex;
   z-index: 1;
-  background-color: var(--theme-dark-gray);
   color: white;
+  display: flex;
+  flex-direction: column;
+}
+#click-map-text {
   padding: 0 10px;
-  display: none;
+
   border-radius: 5px;
+  background-color: var(--theme-dark-gray);
+  display: none;
+  margin-bottom: 20px;
+}
+#active-filter-text {
+  padding: 0 10px;
+
+  border-radius: 5px;
+  background-color: var(--theme-dark-gray);
+  display: none;
 }
 
 /* SURVEY FORM at bottom-right */

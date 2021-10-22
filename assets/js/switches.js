@@ -40,12 +40,20 @@ const toggle_tags_when_filtering_map = (div) => {
     if (tag.classList.contains("selected-filter") & (div.target.id != tag.id)) {
       tag.classList.remove("selected-filter");
     }
-
-    let tag_id = div.target.id.replace("filter-toggles-", "");
-    let url = FILTER_URL + "/?" + tag_id + "=True";
-
-    filter_pins(map, url);
   });
+
+  let tag_id = div.target.id.replace("filter-toggles-", "");
+  let url = FILTER_URL + "/?" + tag_id + "=True";
+
+  filter_pins(map, url);
+
+  let selected_tag_text = div.target.textContent;
+
+  let text_div = document.getElementById("active-filter-text");
+  text_div.innerHTML =
+    "<p>Showing all comments related to:<p><h3> " + selected_tag_text + "</h3>";
+
+  set_display_to_id("active-filter-text", "inline");
 };
 
 const set_mouse_to_crosshair = (map) => {

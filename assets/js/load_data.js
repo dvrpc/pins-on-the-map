@@ -1,5 +1,6 @@
 import { STUDY_AREA } from "./study_area";
 import { get_data_from_api, PIN_URL } from "./api";
+import { set_display_to_id } from "./switches";
 
 const CLUSTER_LEVEL = 17;
 
@@ -144,6 +145,9 @@ const reload_pins = async (map, selected_id = false) => {
       }
     );
   });
+
+  // make sure filter ui text is off
+  set_display_to_id("active-filter-text", "none");
 };
 
 const filter_pins = async (map, url) => {
