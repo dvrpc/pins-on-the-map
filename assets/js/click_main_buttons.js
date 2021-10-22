@@ -88,7 +88,6 @@ const click_submit_button = async () => {
     let data = await add_pin_to_database(lngLat);
     let new_id = data.pin_id;
 
-    console.log(data);
     set_mouse_to_normal(map);
     reload_pins(map, new_id);
     set_display_to_id("success-alert", "inline");
@@ -136,7 +135,6 @@ const click_demographic_submit_button = async () => {
   // RACE
   let race = [];
   document.querySelectorAll('[id ^= "race"]').forEach((el) => {
-    console.log(el);
     if (el.checked) {
       if (el.id == "race-other") {
         let custom_value = document.getElementById("race-other-input").value;
@@ -150,7 +148,6 @@ const click_demographic_submit_button = async () => {
   // purpose in study area
   let purpose = [];
   document.querySelectorAll('[id ^= "usage"]').forEach((el) => {
-    console.log(el);
     if (el.checked) {
       if (el.id == "usage-other") {
         let custom_value = document.getElementById("usage-other-input").value;
@@ -170,7 +167,8 @@ const click_demographic_submit_button = async () => {
   };
 
   let response = await add_user_info_to_database(user_data);
-  console.log(response);
+
+  set_display_to_id("demographic-survey", "none");
 };
 
 const setup_button_listeners = () => {
