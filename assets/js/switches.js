@@ -54,6 +54,8 @@ const toggle_tags_when_filtering_map = (div) => {
     "<p>Showing all comments related to:<p><h3> " + selected_tag_text + "</h3>";
 
   set_display_to_id("active-filter-text", "inline");
+
+  set_display_to_id("clear-filter-button", "inline");
 };
 
 const set_mouse_to_crosshair = (map) => {

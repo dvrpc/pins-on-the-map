@@ -218,6 +218,19 @@ textarea {
   background-color: var(--theme-dark-gray);
   color: var(--theme-light-gray);
   border: 1px solid var(--theme-light-gray);
+  cursor: pointer;
+}
+
+#clear-filter-button {
+  text-align: center;
+  margin: 5px;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: var(--philly-orange);
+  color: white;
+  border: 1px solid white;
+  cursor: pointer;
+  display: none;
 }
 
 .selected-filter {

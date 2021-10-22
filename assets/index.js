@@ -11,6 +11,7 @@ import { hover_setup } from "./js/hover.js";
 import { setup_button_listeners } from "./js/click_main_buttons.js";
 import {
   load_pins_from_api,
+  reload_pins,
   load_study_area_from_geojson,
 } from "./js/load_data";
 import {
@@ -91,4 +92,16 @@ document.getElementById("disclaimer-toggle").onclick = () => {
   } else {
     disclaimer_div.style.display = "inline";
   }
+};
+
+document.getElementById("clear-filter-button").onclick = () => {
+  reload_pins(map);
+
+  Array.from(document.getElementsByClassName("map-filters")).forEach((tag) => {
+    if (tag.classList.contains("selected-filter")) {
+      tag.classList.remove("selected-filter");
+    }
+  });
+
+  set_display_to_id("clear-filter-button", "none");
 };
