@@ -218,7 +218,7 @@
   max-height: 80vh;
   background-color: var(--theme-dark-gray);
   padding: 30px;
-  /* display: none; */
+  display: none;
   color: white;
   border-radius: 5px;
   box-shadow: var(--box-shadow);
