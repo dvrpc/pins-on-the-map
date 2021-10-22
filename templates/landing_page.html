@@ -226,8 +226,8 @@
         </p>
 
         <p>
-          This map was created to help share your thoughts about the study area
-          with the DVRPC / oTIS project team.
+          This map was created to help you share your thoughts about the study
+          area with the DVRPC / oTIS project team.
         </p>
         <p>
           If your comment is about a specific place, click the yellow button to
@@ -274,7 +274,7 @@
         <h1>Would you like to tell us about yourself?</h1>
 
         <div id="demo-layout">
-          <div>
+          <div class="demographic-question">
             <p>Are you of Spanish/Hispanic/Latino origin?</p>
             <div>
               <input
@@ -286,11 +286,12 @@
               <label for="yes">Yes</label>
             </div>
 
-            <div>
+            <div class="demographic-question">
               <input type="radio" id="hispanic-no" name="hispanic" value="no" />
               <label for="no">No</label>
             </div>
-
+          </div>
+          <div class="demographic-question">
             <p>
               With which race do you identify? <br />
               Select all that apply.
@@ -327,8 +328,7 @@
             </div>
           </div>
 
-          <hr />
-          <div>
+          <div class="demographic-question">
             <p>What is your age range?</p>
 
             <div>
@@ -362,7 +362,9 @@
               <input type="radio" id="age-a75" name="age" value="75+" />
               <label for="age-a75">75 years or over</label>
             </div>
+          </div>
 
+          <div class="demographic-question">
             <p>What is your primary purpose in the study area?</p>
 
             <div>
@@ -386,8 +388,15 @@
               </label>
             </div>
           </div>
+
+          <div class="demographic-question">
+            <p>What is your zipcode?</p>
+            <input type="text" id="zipcode" />
+          </div>
         </div>
-        <div id="submit-demographics">submit</div>
+        <div style="text-align: center">
+          <div id="submit-demographics">submit</div>
+        </div>
       </div>
     </div>
 

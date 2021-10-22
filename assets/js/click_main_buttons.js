@@ -158,12 +158,15 @@ const click_demographic_submit_button = async () => {
     }
   });
 
+  let zipcode = document.getElementById("zipcode").value;
+
   // send data to API
   let user_data = {
     q1: hispanic,
     q2: race,
     q3: age,
     q4: purpose,
+    q5: zipcode,
   };
 
   let response = await add_user_info_to_database(user_data);
