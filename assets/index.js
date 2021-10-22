@@ -19,6 +19,7 @@ import {
   clear_selected_pin,
 } from "./js/switches";
 import { add_tag_options_to_map } from "./js/load_tags";
+import { remove_markers } from "./js/markers";
 
 const CLUSTER_LEVEL = 15;
 
@@ -37,12 +38,17 @@ map.on("load", function () {
 
 document.getElementById("close-form").onclick = () => {
   set_mouse_to_normal(map);
+  remove_markers();
   set_display_to_id("survey-form", "none");
   set_display_to_id("click-map-text", "none");
 };
 document.getElementById("close-details").onclick = () => {
   set_display_to_id("detail-form", "none");
   clear_selected_pin(map);
+};
+
+document.getElementById("close-demographic-survey").onclick = () => {
+  set_display_to_id("demographic-survey", "none");
 };
 
 document.getElementById("close-info").onclick = () => {

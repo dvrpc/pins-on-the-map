@@ -151,7 +151,8 @@ textarea {
 }
 
 #submit-pin,
-#submit-reaction {
+#submit-reaction,
+#submit-demographics {
   border: 2px solid white;
   border-radius: 5px;
   background-color: black;
@@ -170,8 +171,16 @@ textarea {
   margin-top: 20px;
   padding: 8px;
 }
+
+#submit-demographics {
+  font-size: 16px;
+  margin-top: 20px;
+  padding: 10px;
+  width: 50%;
+}
 #submit-pin:hover,
-#submit-reaction:hover {
+#submit-reaction:hover,
+#submit-demographics:hover {
   background-color: var(--theme-blue);
   color: black;
   border-color: white;
@@ -192,7 +201,7 @@ textarea {
 }
 
 #pin-main-tags {
-  width: 40%;
+  width: 50%;
 }
 
 .map-filters {
@@ -208,4 +217,8 @@ textarea {
   border: 1px solid white;
   color: white;
   background-color: var(--philly-green);
+}
+
+hr {
+  border: 0.5px solid white;
 }

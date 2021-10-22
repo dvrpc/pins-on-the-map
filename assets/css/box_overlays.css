@@ -196,6 +196,28 @@
   line-height: 28px;
 }
 
+#demographic-survey {
+  position: absolute;
+  z-index: 1;
+  bottom: 20px;
+  right: 20px;
+  width: 60vw;
+  max-height: 80vh;
+  background-color: var(--theme-dark-gray);
+  padding: 30px;
+  /* display: none; */
+  color: white;
+  border-radius: 5px;
+  box-shadow: var(--box-shadow);
+  overflow: auto;
+}
+#demo-layout {
+  display: flex;
+}
+
+#demo-layout div {
+  padding: 0px 5px;
+}
 .close-box-button {
   margin-left: 15px;
   color: white;

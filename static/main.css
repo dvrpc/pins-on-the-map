@@ -200,7 +200,8 @@ textarea {
 }
 
 #submit-pin,
-#submit-reaction {
+#submit-reaction,
+#submit-demographics {
   border: 2px solid white;
   border-radius: 5px;
   background-color: black;
@@ -219,8 +220,16 @@ textarea {
   margin-top: 20px;
   padding: 8px;
 }
+
+#submit-demographics {
+  font-size: 16px;
+  margin-top: 20px;
+  padding: 10px;
+  width: 50%;
+}
 #submit-pin:hover,
-#submit-reaction:hover {
+#submit-reaction:hover,
+#submit-demographics:hover {
   background-color: var(--theme-blue);
   color: black;
   border-color: white;
@@ -241,7 +250,7 @@ textarea {
 }
 
 #pin-main-tags {
-  width: 40%;
+  width: 50%;
 }
 
 .map-filters {
@@ -257,6 +266,10 @@ textarea {
   border: 1px solid white;
   color: white;
   background-color: var(--philly-green);
+}
+
+hr {
+  border: 0.5px solid white;
 }
 
 /*!*************************************************************************!*\
@@ -506,6 +519,28 @@ textarea {
   line-height: 28px;
 }
 
+#demographic-survey {
+  position: absolute;
+  z-index: 1;
+  bottom: 20px;
+  right: 20px;
+  width: 60vw;
+  max-height: 80vh;
+  background-color: var(--theme-dark-gray);
+  padding: 30px;
+  /* display: none; */
+  color: white;
+  border-radius: 5px;
+  box-shadow: var(--box-shadow);
+  overflow: auto;
+}
+#demo-layout {
+  display: flex;
+}
+
+#demo-layout div {
+  padding: 0px 5px;
+}
 .close-box-button {
   margin-left: 15px;
   color: white;
@@ -587,7 +622,8 @@ textarea {
   #survey-form,
   #detail-form,
   #info-box,
-  #filter-box {
+  #filter-box,
+  #demographic-survey {
     width: 92vw;
     max-height: 39vh;
     padding: 10px;
@@ -600,7 +636,7 @@ textarea {
 
   #detail-form {
     /* height: 80vh !important; */
-    max-height: 80vh;
+    max-height: 70vh;
     height: auto;
     overflow: auto;
   }
@@ -643,6 +679,9 @@ textarea {
     margin: 4px;
     padding: 4px;
     font-size: 11px;
+  }
+  #demo-layout {
+    flex-direction: column;
   }
 }
 

@@ -62,7 +62,8 @@
   #survey-form,
   #detail-form,
   #info-box,
-  #filter-box {
+  #filter-box,
+  #demographic-survey {
     width: 92vw;
     max-height: 39vh;
     padding: 10px;
@@ -75,7 +76,7 @@
 
   #detail-form {
     /* height: 80vh !important; */
-    max-height: 80vh;
+    max-height: 70vh;
     height: auto;
     overflow: auto;
   }
@@ -118,5 +119,8 @@
     margin: 4px;
     padding: 4px;
     font-size: 11px;
+  }
+  #demo-layout {
+    flex-direction: column;
   }
 }

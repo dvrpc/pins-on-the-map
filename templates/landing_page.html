@@ -240,6 +240,129 @@
         <p>Click on a topic to see all related comments</p>
         <div id="filter-toggles"></div>
       </div>
+
+      <div id="demographic-survey">
+        <span id="close-demographic-survey" class="close-box-button"
+          >&times;</span
+        >
+        <h1>Would you like to tell us about yourself?</h1>
+
+        <div id="demo-layout">
+          <div>
+            <p>Are you of Spanish/Hispanic/Latino origin?</p>
+            <div>
+              <input
+                type="radio"
+                id="hispanic-yes"
+                name="hispanic"
+                value="yes"
+              />
+              <label for="yes">Yes</label>
+            </div>
+
+            <div>
+              <input type="radio" id="hispanic-no" name="hispanic" value="no" />
+              <label for="no">No</label>
+            </div>
+
+            <p>
+              With which race do you identify? <br />
+              Select all that apply.
+            </p>
+
+            <div>
+              <input type="checkbox" id="race-native-american" name="race-na" />
+              <label for="race-na"
+                >American Indian, Native American, or Alaska Native</label
+              >
+            </div>
+
+            <div>
+              <input type="checkbox" id="race-asian" name="race-asian" />
+              <label for="race-asian">Asian or Pacific Islander</label>
+            </div>
+
+            <div>
+              <input type="checkbox" id="race-black" name="race-black" />
+              <label for="race-black">Black or African American</label>
+            </div>
+
+            <div>
+              <input type="checkbox" id="race-white" name="race-white" />
+              <label for="race-white">White</label>
+            </div>
+
+            <div>
+              <input type="checkbox" id="race-other" name="race-other" />
+              <label for="race-other"
+                >Other:
+                <input type="text" id="race-other-input" style="width: 50%" />
+              </label>
+            </div>
+          </div>
+
+          <hr />
+          <div>
+            <p>What is your age range?</p>
+
+            <div>
+              <input type="radio" id="age-u18" name="age" value="u18" />
+              <label for="age-u18">Under 18</label>
+            </div>
+
+            <div>
+              <input type="radio" id="age-a18-34" name="age" value="18-34" />
+              <label for="age-a18-34">18 - 34</label>
+            </div>
+
+            <div>
+              <input type="radio" id="age-a35-44" name="age" value="35-44" />
+              <label for="age-a35-44">35 - 44</label>
+            </div>
+
+            <div>
+              <input type="radio" id="age-a45-54" name="age" value="45-54" />
+              <label for="age-a44-54">45 - 54</label>
+            </div>
+            <div>
+              <input type="radio" id="age-a55-64" name="age" value="55-64" />
+              <label for="age-a55-64">55 - 64</label>
+            </div>
+            <div>
+              <input type="radio" id="age-a65-74" name="age" value="65-74" />
+              <label for="age-a65-74">65 - 74</label>
+            </div>
+            <div>
+              <input type="radio" id="age-a75" name="age" value="75+" />
+              <label for="age-a75">75 years or over</label>
+            </div>
+
+            <p>What is your primary purpose in the study area?</p>
+
+            <div>
+              <input type="checkbox" id="usage-live" name="usage" />
+              <label for="usage-live">I live in the study area</label>
+            </div>
+            <div>
+              <input type="checkbox" id="usage-work" name="usage" />
+              <label for="usage-work">I work in the study area</label>
+            </div>
+            <div>
+              <input type="checkbox" id="usage-school" name="usage" />
+              <label for="race-school">I go to school in the study area</label>
+            </div>
+
+            <div>
+              <input type="checkbox" id="usage-other" name="usage" />
+              <label for="usage-other"
+                >Other:
+                <input type="text" id="usage-other-input" style="width: 50%" />
+              </label>
+            </div>
+          </div>
+        </div>
+        <div id="submit-demographics">submit</div>
+      </div>
     </div>
 
     <!-- prettier-ignore -->

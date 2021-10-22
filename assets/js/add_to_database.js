@@ -25,8 +25,7 @@ const add_pin_to_database = async (lngLat) => {
       return response.json();
     })
     .then((data) => {
-      new_id = data.pin_id;
-      return new_id;
+      return data;
     })
     .catch((ex) => {
       console.log("parsing failed", ex);
