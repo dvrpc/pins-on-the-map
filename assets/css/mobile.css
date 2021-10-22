@@ -74,6 +74,10 @@
     line-height: 18px;
   }
 
+  #demographic-survey {
+    max-height: 70vh;
+  }
+
   #detail-form {
     /* height: 80vh !important; */
     max-height: 70vh;
@@ -104,11 +108,14 @@
 
   .alert {
     top: 20vh;
+    font-size: 11px;
+    padding: 5px;
   }
   #success-alert,
+  #success-alert-for-comment,
   #warning-alert,
   #study-area-alert {
-    width: 87vw;
+    width: 95vw;
   }
 
   #click-map-text {

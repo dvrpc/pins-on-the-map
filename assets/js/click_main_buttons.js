@@ -64,12 +64,7 @@ const click_add_comment_button = () => {
 const click_comment_submit_button = async () => {
   let comment = document.getElementById("comment-text").value;
 
-  console.log(comment);
-
   let data = await add_comment_to_database(comment);
-
-  console.log("Thank you for your comment!");
-  console.log(data);
 
   reload_pins(map).then(() => {
     document.getElementById("comment-text").value = "";
@@ -77,6 +72,11 @@ const click_comment_submit_button = async () => {
     set_display_to_id("detail-form", "none");
     clear_selected_pin(map);
   });
+
+  // open the demographic survey if `data.user_was_added`
+  if (data.user_was_added) {
+    set_display_to_id("demographic-survey", "inline");
+  }
 };
 
 const click_submit_button = async () => {
@@ -106,7 +106,6 @@ const click_submit_button = async () => {
 
     // open the demographic survey if `data.user_was_added`
     if (data.user_was_added) {
-      console.log("OPEN DEMOGRAPHIC SURVEY");
       set_display_to_id("demographic-survey", "inline");
     }
   }
