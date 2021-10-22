@@ -9,6 +9,7 @@ import {
 import {
   add_comment_to_database,
   add_pin_to_database,
+  add_user_info_to_database,
 } from "./add_to_database";
 import {
   markers_are_not_on_the_map,
@@ -111,7 +112,7 @@ const click_submit_button = async () => {
   }
 };
 
-const click_demographic_submit_button = () => {
+const click_demographic_submit_button = async () => {
   /*
    * When a user submits the demographic survey,
    * scrape the info they provided from the form
@@ -161,9 +162,16 @@ const click_demographic_submit_button = () => {
     }
   });
 
-  //
+  // send data to API
+  let user_data = {
+    q1: hispanic,
+    q2: race,
+    q3: age,
+    q4: purpose,
+  };
 
-  console.log(hispanic, age, race, purpose);
+  let response = await add_user_info_to_database(user_data);
+  console.log(response);
 };
 
 const setup_button_listeners = () => {

@@ -15,6 +15,7 @@ urlpatterns = [
     path("api-auth/", include("rest_framework.urls", namespace="rest_framework")),
     path("add-pin/", views.add_pin, name="index"),
     path("add-comment/", views.add_comment, name="index"),
+    path("add-user-info/", views.add_user_info, name="index"),
     path("tags/", views.all_tags, name="index"),
     path("filter-pins/", views.PinFilterList.as_view(), name="index"),
 ]

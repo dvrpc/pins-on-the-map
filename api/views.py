@@ -148,3 +148,39 @@ def add_comment(request):
             return Response(response_data, status=status.HTTP_201_CREATED)
 
         return Response(comment_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(["POST"])
+def add_user_info(request):
+    if request.method == "POST":
+
+        client_ip, is_routable = get_client_ip(request)
+        data = request.data.copy()
+        data["responded_to_survey_question"] = True
+
+        # force list-based responses into a
+        # semi-colon-delimited string
+        for key, value in data.items():
+            if type(value) == list:
+                data[key] = ";".join(value)
+
+        try:
+
+            obj = MapUser.objects.get(ip_address=client_ip)
+            for key, value in data.items():
+                setattr(obj, key, str(value))
+
+            obj.save()
+
+            status_code = status.HTTP_200_OK
+
+        except MapUser.DoesNotExist:
+            data["ip_address"] = client_ip
+
+            obj = MapUser(**data)
+            obj.save()
+
+            status_code = status.HTTP_201_CREATED
+
+        finally:
+            return Response(request.data, status=status_code)

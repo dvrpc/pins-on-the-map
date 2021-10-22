@@ -57,4 +57,28 @@ const add_comment_to_database = async (comment) => {
     });
 };
 
-export { add_comment_to_database, add_pin_to_database };
+const add_user_info_to_database = async (user_data) => {
+  return fetch("/api/add-user-info/", {
+    method: "POST",
+    credentials: "same-origin",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(user_data),
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      return data;
+    })
+    .catch((ex) => {
+      console.log("parsing failed", ex);
+    });
+};
+
+export {
+  add_comment_to_database,
+  add_pin_to_database,
+  add_user_info_to_database,
+};
