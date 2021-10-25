@@ -115,7 +115,7 @@ const load_pins_from_api = async (map) => {
   get_data_from_api(map, PIN_URL, initial_pin_data_load);
 };
 
-const reload_pins_from_api = async (map, json) => {
+const reload_pins_from_api = (map, json) => {
   var json = move_pin_id_to_props(json);
 
   // update geojson source with the new data
