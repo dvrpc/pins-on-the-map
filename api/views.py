@@ -49,6 +49,10 @@ class PinGeoViewSet(viewsets.ReadOnlyModelViewSet):
 
 
 class PinFilterList(generics.ListAPIView):
+    """
+    API endpoint to see all pins that meet a specific tag column filter
+    """
+
     queryset = Pin.objects.all()
     serializer_class = PinGeoSerializer
     filter_backends = [DjangoFilterBackend]
@@ -57,6 +61,9 @@ class PinFilterList(generics.ListAPIView):
 
 @api_view(["GET"])
 def all_tags(request):
+    """
+    API endpoint to see all TAG_X environment variables
+    """
     return Response(TAGS, status=status.HTTP_200_OK)
 
 
@@ -86,7 +93,6 @@ def ensure_user_is_in_db(client_ip) -> bool:
 def add_pin(request):
     """
     Add a pin to the map.
-
     """
     if request.method == "POST":
 
@@ -99,8 +105,6 @@ def add_pin(request):
         # Insert the IP address into the user's data dict
         data = request.data.copy()
         data["ip_address"] = client_ip
-
-        print(data)
 
         # Insert the record into the database
         serializer = PinSerializer(data=data)
@@ -120,6 +124,9 @@ def add_pin(request):
 
 @api_view(["POST"])
 def add_comment(request):
+    """
+    Add a comment record tied to an existing pin
+    """
     if request.method == "POST":
 
         # Get the user's IP address
@@ -131,8 +138,6 @@ def add_comment(request):
         # Insert the IP address into the user's data dict
         data = request.data.copy()
         data["ip_address"] = client_ip
-
-        print(data)
 
         # Insert the record into the database
         comment_serializer = CommentSerializer(data=data)
@@ -152,6 +157,9 @@ def add_comment(request):
 
 @api_view(["POST"])
 def add_user_info(request):
+    """
+    Add user info to the database
+    """
     if request.method == "POST":
 
         client_ip, is_routable = get_client_ip(request)
@@ -164,8 +172,11 @@ def add_user_info(request):
             if type(value) == list:
                 data[key] = ";".join(value)
 
+        # Assuming the user already exists, update their record
         try:
 
+            # Assign whichever attributes are provided
+            # (can include q1 through q5)
             obj = MapUser.objects.get(ip_address=client_ip)
             for key, value in data.items():
                 setattr(obj, key, str(value))
@@ -174,6 +185,7 @@ def add_user_info(request):
 
             status_code = status.HTTP_200_OK
 
+        # If the user record does not exist, create it
         except MapUser.DoesNotExist:
             data["ip_address"] = client_ip
 
