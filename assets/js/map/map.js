@@ -21,7 +21,7 @@ const _make_control_with_project_button = (map) => {
   button.type = "button";
   icon.id = "project-extent-img";
   icon.alt = "DVRPC Alternative Logo";
-  icon.src = "/static/images/CBM.png";
+  icon.src = "/static/images/PROJECT-icon.png";
 
   button.classList.add("mapboxgl-ctrl-icon");
   button.classList.add("mapboxgl-ctrl-dvrpc");

@@ -5,6 +5,7 @@ import {
   clear_selected_pin,
 } from "../switches";
 import { remove_markers } from "../map/markers";
+import { CLIENT_URL } from "../project_settings";
 
 const setup_icon_listeners = (map) => {
   // Assign actions to all of the smaller icons or other clickable elements
@@ -72,8 +73,8 @@ const setup_icon_listeners = (map) => {
 
   // CLIENT logo opens a URL in new tab
   // ----------------------------------
-  document.getElementById("logo-city").onclick = () => {
-    window.open("http://www.phillyotis.com/", "_blank").focus();
+  document.getElementById("logo-client").onclick = () => {
+    window.open(CLIENT_URL, "_blank").focus();
   };
 
   // DVRPC logo opens a URL in new tab

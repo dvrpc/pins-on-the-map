@@ -14,6 +14,9 @@ const MAPBOX_BASEMAP = "mapbox://styles/dvrpcomad/cks6eiqga0tmc17p3ecw7ij53";
 const CLUSTER_LEVEL = 17;
 const CLUSTER_RADIUS = 50;
 
+// CLIENT_URL takes you to the client's webpage
+const CLIENT_URL = "http://www.phillyotis.com/";
+
 // MAP_STYLES is a centralized place to define all map styles
 // ----------------------------------------------------------
 const STYLES = {
@@ -119,4 +122,5 @@ export {
   CLUSTER_LEVEL,
   CLUSTER_RADIUS,
   STYLES,
+  CLIENT_URL,
 };
