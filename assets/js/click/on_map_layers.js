@@ -1,20 +1,24 @@
 import mapboxgl from "mapbox-gl";
-import { add_marker_to_map } from "./markers";
+import { add_marker_to_map } from "../map/markers";
 import {
   user_wants_to_add_pin,
   set_display_to_id,
   set_mouse_to_crosshair,
-} from "./switches";
+  select_pin_by_id,
+} from "../switches";
 
 const show_detail_for_existing_pin = (e, map) => {
+  // when you click a single pin, show a page
+  // that has all of the relevant details listed
+  // e.g. original comment, selected tags, and any responses from others
+
   // Add content to the DETAIL FORM
   var props = e.features[0].properties;
 
   // Use text or placeholder for primary reaction
   let text = "";
   if (props.prompt_1 == "") {
-    text =
-      "No comment was provided! \r\nNo comment was provided! \r\nNo comment was provided! \r\nNo comment was provided! \r\nNo comment was provided! \r\nNo comment was provided! \r\nNo comment was provided! \r\nNo comment was provided! \r\nNo comment was provided! \r\nNo comment was provided! \r\nNo comment was provided! \r\nNo comment was provided! \r\nNo comment was provided! \r\nNo comment was provided! \r\nNo comment was provided! \r\nNo comment was provided! \r\nNo comment was provided! \r\nNo comment was provided! \r\nNo comment was provided! \r\n";
+    text = "(No comment was provided)";
   } else {
     text = props.prompt_1;
   }
@@ -36,20 +40,16 @@ const show_detail_for_existing_pin = (e, map) => {
     }
   });
 
-  // // Show the topic heading if at least 1 topic was applied to this pin
-  // if (document.getElementsByClassName("selected-blue").length > 0) {
-  //   set_display_to_id("topic-title", "inline");
-  // } else {
-  //   set_display_to_id("topic-title", "none");
-  // }
-
+  // set the selected pin ID (this div is hidden from users, but used by JS)
   document.getElementById("selected-pin-id").innerText = props.pin_id;
 
+  // Remove all old comments from the prior pin
   let div = document.getElementById("comments-for-pin");
   while (div.firstChild) {
     div.removeChild(div.firstChild);
   }
 
+  // Add any comments related to this newly clicked pin
   let comment_data = JSON.parse(props.comments);
 
   if (comment_data.length > 0) {
@@ -65,19 +65,25 @@ const show_detail_for_existing_pin = (e, map) => {
     set_display_to_id("reaction-header", "none");
   }
 
+  // Show the detail form
   set_display_to_id("detail-form", "block");
+
+  // Ensure the filter box is off
   set_display_to_id("filter-box", "none");
 
+  // Center the map on the selected pin
   map.flyTo({
     center: e.lngLat,
     zoom: map.getZoom(),
     essential: true,
   });
 
-  map.setFilter("selected-pin", ["==", "pin_id", e.features[0].id]);
+  // Show this pin with the 'selected' style
+  select_pin_by_id(map, e.features[0].id);
 };
 
 const ungroup_a_pin_cluster = (e, map) => {
+  // When you click a cluster, expand the points within and zoom the map frame
   const features = map.queryRenderedFeatures(e.point, {
     layers: ["clusters"],
   });
@@ -92,14 +98,12 @@ const ungroup_a_pin_cluster = (e, map) => {
   });
 };
 
-const wire_click_logic = (map) => {
+const setup_map_click_functionality = (map) => {
   /**
    * Handle click events for map layers:
    *  -> unclustered-point
    *  -> clusters
    *  -> general click anywhere on the map
-   *
-   * @param {mapboxgl.Map} map - The map object for the page
    */
 
   // click on a single point
@@ -133,4 +137,4 @@ const wire_click_logic = (map) => {
   });
 };
 
-export { wire_click_logic };
+export { setup_map_click_functionality };

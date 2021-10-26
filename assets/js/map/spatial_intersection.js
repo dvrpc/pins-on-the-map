@@ -1,5 +1,5 @@
 import * as turf from "@turf/turf";
-import { STUDY_AREA } from "./study_area";
+import { STUDY_AREA } from "../project_settings";
 
 const point_is_outside_study_area = (lngLat) => {
   /*
