@@ -21,13 +21,13 @@ These examples assume you've installed [`httpie`](https://httpie.io/cli).
 #### Get all pins on the map as GeoJSON
 
 ```bash
-http http://localhost:8000/api/get-pins/
+http :8000/api/get-pins/
 ```
 
 #### Get a list of all tags defined by ID as JSON
 
 ```bash
-http http://localhost:8000/api/tags/
+http :8000/api/tags/
 ```
 
 #### Get all pins that have a specific tag as GeoJSON
@@ -35,7 +35,7 @@ http http://localhost:8000/api/tags/
 In this example, get all pins where TAG_1 is True
 
 ```bash
-http GET http://localhost:8000/api/filter-pins/ tag_1==True
+http GET :8000/api/filter-pins/ tag_1==True
 ```
 
 ### PUT data
@@ -45,7 +45,7 @@ http GET http://localhost:8000/api/filter-pins/ tag_1==True
 In this example, a specific lat/lng, text message, and tag selections are being passed to the API.
 
 ```bash
-http --form POST http://localhost:8000/api/add-pin/ geom="SRID=4326;POINT (-75.164 39.953)" prompt_1="There are potholes in the street here" tag_5=True tag_6=True
+http --form POST :8000/api/add-pin/ geom="SRID=4326;POINT(-75.164 39.953)" prompt_1="There are potholes in the street here" tag_5=True tag_6=True
 ```
 
 #### Add a comment to the database
@@ -53,7 +53,7 @@ http --form POST http://localhost:8000/api/add-pin/ geom="SRID=4326;POINT (-75.1
 Adding a comment to the database requires values for `text` and `pin_id`
 
 ```bash
-http --form POST http://localhost:8000/api/add-comment/ text="I agree that this is an issue" pin_id=70
+http --form POST :8000/api/add-comment/ text="I agree that this is an issue" pin_id=70
 ```
 
 #### Add user's survey info to the database
@@ -61,5 +61,5 @@ http --form POST http://localhost:8000/api/add-comment/ text="I agree that this 
 Users can answer up to 5 questions, all of which are optional.
 
 ```bash
-http --form POST http://localhost:8000/api/add-user-info/ q1="yes" q2="no"
+http --form POST :8000/api/add-user-info/ q1="yes" q2="no"
 ```
