@@ -3,16 +3,13 @@ channels:
   - conda-forge
 dependencies:
   - python=3.9*
-  - django
-  - gdal
-  - flake8
-  - psycopg2
-  - python-dotenv
-  - black
-  - gunicorn
-  - whitenoise
-  - djangorestframework
-  - djangorestframework-gis
-  - django-ipware
-  - django-filter
-  - pip
+  - django=3.2.8
+  - gdal=3.3.2
+  - psycopg2=2.9.1
+  - python-dotenv=0.19.0
+  - gunicorn=20.1.0
+  - whitenoise=5.3.0
+  - djangorestframework=3.12.4
+  - djangorestframework-gis=0.17.0
+  - django-ipware=4.0.0
+  - django-filter=21.1
