@@ -172,16 +172,24 @@ const _click_button_to_submit_demographic_survey = async () => {
     }
   });
 
-  // get all of the selected usages of the study area, including custom-entered 'other' values
-  let purpose = [];
-  document.querySelectorAll('[id ^= "usage"]').forEach((el) => {
+  // // get all of the selected usages of the study area, including custom-entered 'other' values
+  // let purpose = [];
+  // document.querySelectorAll('[id ^= "usage"]').forEach((el) => {
+  //   if (el.checked) {
+  //     if (el.id == "usage-other") {
+  //       let custom_value = document.getElementById("usage-other-input").value;
+  //       purpose.push(custom_value);
+  //     } else {
+  //       purpose.push(el.id.replace("usage-", ""));
+  //     }
+  //   }
+  // });
+
+  // get the disability yes/no selection
+  let disability = "";
+  document.querySelectorAll('[id ^= "disability"]').forEach((el) => {
     if (el.checked) {
-      if (el.id == "usage-other") {
-        let custom_value = document.getElementById("usage-other-input").value;
-        purpose.push(custom_value);
-      } else {
-        purpose.push(el.id.replace("usage-", ""));
-      }
+      disability = el.value;
     }
   });
 
@@ -193,7 +201,7 @@ const _click_button_to_submit_demographic_survey = async () => {
     q1: hispanic,
     q2: race,
     q3: age,
-    q4: purpose,
+    q4: disability,
     q5: zipcode,
   };
 

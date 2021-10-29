@@ -273,8 +273,16 @@
         >
         <h1>Would you like to tell us about yourself?</h1>
 
+        <p>
+          DVRPC’s public outreach process will ideally represent the residents
+          of the Cecil B. Moore Avenue project area by geographic and
+          demographic diversity. Please help us understand who is responding to
+          this survey by sharing some of your demographic characteristics. This
+          information will not be shared outside of the project team.
+        </p>
+
         <div id="demo-layout">
-          <div class="demographic-question">
+          <div class="demographic-question first-question">
             <p>Are you of Spanish/Hispanic/Latino origin?</p>
             <div>
               <input
@@ -285,8 +293,7 @@
               />
               <label for="yes">Yes</label>
             </div>
-
-            <div class="demographic-question">
+            <div>
               <input type="radio" id="hispanic-no" name="hispanic" value="no" />
               <label for="no">No</label>
             </div>
@@ -365,6 +372,31 @@
           </div>
 
           <div class="demographic-question">
+            <p>
+              Do you consider yourself someone with a disability that requires
+              mobile assistance, such as a cane, walker, scooter, or wheelchair?
+            </p>
+            <div>
+              <input
+                type="radio"
+                id="disability-yes"
+                name="disability"
+                value="yes"
+              />
+              <label for="yes">Yes</label>
+            </div>
+            <div>
+              <input
+                type="radio"
+                id="disability-no"
+                name="disability"
+                value="no"
+              />
+              <label for="no">No</label>
+            </div>
+          </div>
+
+          <!-- <div class="demographic-question">
             <p>What is your primary purpose in the study area?</p>
 
             <div>
@@ -387,7 +419,7 @@
                 <input type="text" id="usage-other-input" style="width: 50%" />
               </label>
             </div>
-          </div>
+          </div> -->
 
           <div class="demographic-question">
             <p>What is your zipcode?</p>

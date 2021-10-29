@@ -218,7 +218,7 @@
   max-height: 80vh;
   background-color: var(--theme-dark-gray);
   padding: 30px;
-  display: none;
+  /* display: none; */
   color: white;
   border-radius: 5px;
   box-shadow: var(--box-shadow);
@@ -231,7 +231,7 @@
 }
 
 #demo-layout div {
-  padding: 0px 5px;
+  /* padding: 0px 5px; */
 }
 .close-box-button {
   margin-left: 15px;
@@ -246,6 +246,14 @@
 .close-box-button:hover {
   color: var(--theme-yellow);
 }
+.first-question {
+  border-left: 1px solid white;
+}
 .demographic-question {
   padding: 20px;
+  /* max-width: 20%; */
+  flex-basis: 200px;
+  flex-grow: 0;
+  flex-shrink: 0;
+  border-right: 1px solid white;
 }
