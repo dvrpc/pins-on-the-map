@@ -18,6 +18,9 @@ const CLUSTER_RADIUS = 50;
 // CLIENT_URL takes you to the client's webpage
 const CLIENT_URL = "http://www.phillyotis.com/";
 
+// PROJECT_URL takes you to the project's homepage
+const PROJECT_URL = "https://www.dvrpc.org/cecilbmoore";
+
 // MAP_STYLES is a centralized place to define all map styles
 // ----------------------------------------------------------
 const STYLES = {
@@ -129,4 +132,5 @@ export {
   STYLES,
   CLIENT_URL,
   MINZOOM,
+  PROJECT_URL,
 };
