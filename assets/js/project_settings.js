@@ -30,16 +30,19 @@ const STYLES = {
   clusters: {
     paint: {
       "circle-opacity": 0.7,
-      "circle-color": [
-        "step",
-        ["get", "point_count"],
-        "#51bbd6",
-        5,
-        "#f1f075",
-        15,
-        "#f28cb1",
-      ],
+      // "circle-color": [
+      //   "step",
+      //   ["get", "point_count"],
+      //   "#51bbd6",
+      //   5,
+      //   "#f1f075",
+      //   15,
+      //   "#f28cb1",
+      // ],
+      "circle-color": "#11b4da",
       "circle-radius": ["step", ["get", "point_count"], 20, 5, 30, 15, 40],
+      "circle-stroke-width": 1.5,
+      "circle-stroke-color": "black",
     },
   },
 
@@ -56,9 +59,10 @@ const STYLES = {
   "unclustered-point": {
     paint: {
       "circle-color": "#11b4da",
-      "circle-radius": 4,
-      "circle-stroke-width": 1,
-      "circle-stroke-color": "#fff",
+      "circle-opacity": 0.7,
+      "circle-radius": 7,
+      "circle-stroke-width": 1.5,
+      "circle-stroke-color": "black",
     },
   },
 
