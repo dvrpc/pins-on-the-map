@@ -2,6 +2,7 @@ import mapboxgl from "mapbox-gl";
 import {
   CENTER,
   ZOOM,
+  MINZOOM,
   MAPBOX_BASEMAP,
   MAPBOX_TOKEN,
 } from "../project_settings";
@@ -48,6 +49,7 @@ const _make_map = () => {
     style: MAPBOX_BASEMAP,
     center: CENTER,
     zoom: ZOOM,
+    minZoom: MINZOOM,
   });
 
   // add the zoom control to the map frame

@@ -2,6 +2,7 @@
 // --------------------------------------------
 const CENTER = [-75.15672748733739, 39.97857408147478];
 const ZOOM = 16;
+const MINZOOM = 14;
 
 // MAPBOX_TOKEN and MAPBOX_BASEMAP define the base styles used
 // -----------------------------------------------------------
@@ -127,4 +128,5 @@ export {
   CLUSTER_RADIUS,
   STYLES,
   CLIENT_URL,
+  MINZOOM,
 };
