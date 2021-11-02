@@ -53,10 +53,13 @@ a {
   align-items: center;
   /* height: 10vh; */
   width: 18vw;
-  max-width: 200px;
+  max-width: 220px;
+  min-width: 200px;
+  /* height:0px; */
   outline: 3px solid white;
   box-shadow: 6px 6px 2px 1px rgba(0, 0, 0, 0.2);
   font-family: industry, sans-serif;
+  color: black;
 }
 
 .nav-button-text {
@@ -71,9 +74,9 @@ a {
 
 #button-to-add-comment {
   background-color: var(--theme-blue);
-  color: white;
   display: flex;
   align-items: center;
+  margin-left: 2vw;
 }
 #or-icon {
   max-height: 50px;
@@ -97,8 +100,6 @@ a {
 
 #logo-main {
   width: 80%;
-  height: 80%;
-  object-fit: cover;
   padding: 60px 10px 20px 10px;
   cursor: pointer;
 }

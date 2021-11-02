@@ -15,7 +15,12 @@
   #button-to-add-pin,
   #button-to-add-comment {
     width: 135px;
+    min-width: 100px;
+
     font-size: 12px;
+  }
+  #button-to-add-comment {
+    margin-left: 4vw;
   }
   #pin-icon {
     max-height: 30px;
@@ -31,6 +36,7 @@
 
   #logo-card {
     right: 1%;
+    bottom: 92vh;
     min-width: 150px;
   }
   .single-button {
@@ -52,7 +58,8 @@
   }
 
   #logo-main {
-    padding: 30px 10px 10px 10px;
+    /* padding: 10px 10px 10px 10px; */
+    margin-top: 20%;
   }
 
   #logo-dvrpc,

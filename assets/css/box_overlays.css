@@ -28,7 +28,6 @@
   flex-direction: row;
   align-items: center;
   position: absolute;
-  top: 0hv;
   left: 25vw;
   /* width: 80vw; */
   height: 50px;
@@ -88,10 +87,10 @@
   background-color: white;
   color: white;
   position: absolute;
-  top: 0vh;
+  bottom: 85vh;
   left: 2vw;
   width: 21vw;
-  /* height: 200px; */
+  height: 15vh;
   z-index: 2;
   text-align: center;
   box-shadow: var(--box-shadow);
@@ -100,7 +99,7 @@
 /* MAIN BUTTONS to right of logo-card */
 #header-block {
   position: absolute;
-  top: 8vh;
+  bottom: 85vh;
   left: 25vw;
   display: flex;
   /* width: 30vw;
@@ -254,6 +253,5 @@
   /* max-width: 20%; */
   flex-basis: 200px;
   flex-grow: 0;
-  flex-shrink: 0;
   border-right: 1px solid white;
 }
