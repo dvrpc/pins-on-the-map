@@ -7,3 +7,27 @@ def index(request):
     """
 
     return render(request, "landing_page.html")
+
+
+def longform_survey(request):
+    """
+    This is the full survey form
+    """
+
+    return render(request, "survey.html")
+
+
+def demographic_survey(request):
+    """
+    This is the demographic survey
+    """
+
+    return render(request, "survey_demographics.html")
+
+
+def survey_thanks(request):
+    """
+    This is the thank-you page for the survey
+    """
+
+    return render(request, "survey_thanks.html")

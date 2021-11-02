@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Pins on the Map</title>
+    <meta
+      name="viewport"
+      content="initial-scale=1,maximum-scale=1,user-scalable=no"
+    />
+
+    <!-- TO DO: clean up these values. -->
+    <meta name="author" content="DVRPC" />
+
+    <meta property="og:title" content="Pins on the Map" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="http://pins-on-the-map.dev.dvrpc.org" />
+    <meta
+      property="og:description"
+      content="A public engagement tool for planning projects"
+    />
+    <meta property="og:image" content="image.png" />
+
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <link rel="stylesheet" href="https://use.typekit.net/alv5tfj.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <!-- LOAD CSS FROM THIS REPO -->
+    {% load static %}
+
+    <!-- prettier-ignore -->
+    <link rel="stylesheet" type="text/css" href="{% static 'survey-demographics.css' %}">
+  </head>
+
+  <body>
+    <div id="map">
+      <div id="navbar">
+        <div id="box-for-logos">
+          <img
+            id="logo-client"
+            src="{% static 'images/CLIENT-logo.png' %}"
+            alt=""
+          />
+          <img
+            id="logo-dvrpc"
+            src="{% static 'images/DVRPC-logo.png' %}"
+            alt=""
+          />
+        </div>
+
+        <div id="box-for-buttons">
+          <a href="/">
+            <div id="about-button">
+              <img
+                id="about-icon"
+                src="{% static 'images/info.png' %}"
+                alt=""
+              />
+              <span class="nav-button-text">Add a pin to the map</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div id="logo-card">
+        <img
+          id="logo-main"
+          src="{% static 'images/PROJECT-logo.png' %}"
+          alt=""
+        />
+      </div>
+
+      <div id="longform-survey">
+        <div id="questions-about-demographics">
+          <h1>Would you like to tell us about yourself?</h1>
+          <p>
+            DVRPC’s public outreach process will ideally represent the residents
+            of the Cecil B. Moore Avenue project area by geographic and
+            demographic diversity. Please help us understand who is responding
+            to this survey by sharing some of your demographic characteristics.
+            This information will not be shared outside of the project team.
+          </p>
+        </div>
+
+        <div id="submit-survey">
+          <button id="submit-button">Submit</button>
+          <button id="nothanks-button">No thanks!</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- prettier-ignore -->
+    <script defer type="module" src="{% static 'survey-demographics-bundle.js' %}"></script>
+  </body>
+</html>
