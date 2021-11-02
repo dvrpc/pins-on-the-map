@@ -39,29 +39,6 @@ const _click_button_to_begin_pinning_a_commment_to_the_map = () => {
   set_mouse_to_crosshair(map);
 };
 
-const _click_button_to_begin_adding_a_general_comment_to_the_map = () => {
-  // logic for when user clicks the 'add a general comment to the map' button
-  // This lets users add comments without an associated pin location
-
-  // Turn off unneeded divs
-  [
-    "success-alert",
-    "warning-alert",
-    "detail-form",
-    "info-box",
-    "filter-box",
-    "click-map-text",
-  ].forEach((div_id) => set_display_to_id(div_id, "none"));
-
-  // Remove any selections, markers, and revert mouse type to normal
-  clear_selected_pin(map);
-  remove_markers();
-  set_mouse_to_normal(map);
-
-  // make the text-based form visible
-  set_display_to_id("survey-form", "inline");
-};
-
 const _click_button_to_submit_comment = async () => {
   // Allow users to add a comment to an existing pin
 
@@ -196,6 +173,9 @@ const _click_button_to_submit_demographic_survey = async () => {
   // Get the zipcode value provided by the user
   let zipcode = document.getElementById("zipcode").value;
 
+  // Get the email value provided by the user
+  let email = document.getElementById("email").value;
+
   // send data to API
   let user_data = {
     q1: hispanic,
@@ -203,6 +183,7 @@ const _click_button_to_submit_demographic_survey = async () => {
     q3: age,
     q4: disability,
     q5: zipcode,
+    q6: email,
   };
 
   let response = await add_user_info_to_database(user_data);
@@ -217,11 +198,6 @@ const setup_button_listeners = () => {
     {
       div_id: "button-to-add-pin",
       action: _click_button_to_begin_pinning_a_commment_to_the_map,
-    },
-
-    {
-      div_id: "button-to-add-comment",
-      action: _click_button_to_begin_adding_a_general_comment_to_the_map,
     },
 
     {
