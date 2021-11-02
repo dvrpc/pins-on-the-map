@@ -16,6 +16,7 @@ urlpatterns = [
     path("add-pin/", views.add_pin, name="index"),
     path("add-comment/", views.add_comment, name="index"),
     path("add-user-info/", views.add_user_info, name="index"),
+    path("add-longform-survey/", views.add_longform_survey, name="index"),
     path("tags/", views.all_tags, name="index"),
     path("filter-pins/", views.PinFilterList.as_view(), name="index"),
 ]

@@ -12,6 +12,7 @@ from .serializers import (
     UserSerializer,
     GroupSerializer,
     PinGeoSerializer,
+    LongformSurveySerializer,
 )
 from pins.models import Pin, MapUser
 
@@ -176,7 +177,7 @@ def add_user_info(request):
         try:
 
             # Assign whichever attributes are provided
-            # (can include q1 through q5)
+            # (can include q1 through q6)
             obj = MapUser.objects.get(ip_address=client_ip)
             for key, value in data.items():
                 setattr(obj, key, str(value))
@@ -196,3 +197,37 @@ def add_user_info(request):
 
         finally:
             return Response(request.data, status=status_code)
+
+
+@api_view(["POST"])
+def add_longform_survey(request):
+    """
+    Add longform survey to the database
+    """
+    if request.method == "POST":
+
+        client_ip, is_routable = get_client_ip(request)
+        data = request.data.copy()
+        data["ip_address"] = client_ip
+
+        user_was_added = ensure_user_is_in_db(client_ip)
+
+        data["user_was_added"] = user_was_added
+
+        # force list-based responses into a
+        # semi-colon-delimited string
+        for key, value in data.items():
+            if type(value) == list:
+                data[key] = ";".join(value)
+
+        survey_serializer = LongformSurveySerializer(data=data)
+
+        if survey_serializer.is_valid():
+            survey_serializer.save()
+
+            status_code = status.HTTP_201_CREATED
+
+        else:
+            status_code = status.HTTP_400_BAD_REQUEST
+
+        return Response(data, status=status_code)

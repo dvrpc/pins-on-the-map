@@ -3,7 +3,7 @@ from rest_framework import serializers
 from rest_framework_gis.serializers import GeoFeatureModelSerializer
 
 
-from pins.models import Pin, Comment, MapUser
+from pins.models import Pin, Comment, MapUser, LongformSurvey
 
 from .configuration import TAGS
 
@@ -74,7 +74,32 @@ class MapUserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = MapUser
-        fields = ["ip_address", "responded_to_survey_question", "q1", "q2", "q3", "q4"]
+        fields = ["ip_address", "responded_to_survey_question", "q1", "q2", "q3", "q4", "q5", "q6"]
+
+
+class LongformSurveySerializer(serializers.ModelSerializer):
+    """
+    Used to create/update a LongformSurvey
+    """
+
+    class Meta:
+        model = LongformSurvey
+        fields = [
+            "ip_address",
+            "usage",
+            "frequency",
+            "mode",
+            "mode_issues",
+            "condition_1",
+            "condition_2",
+            "condition_3",
+            "condition_4",
+            "condition_5",
+            "condition_6",
+            "condition_7",
+            "priorities",
+            "ideas",
+        ]
 
 
 class PinGeoSerializer(GeoFeatureModelSerializer):
