@@ -77,8 +77,29 @@ const add_user_info_to_database = async (user_data) => {
     });
 };
 
+const add_longform_survey_to_database = async (data) => {
+  return fetch("/api/add-longform-survey/", {
+    method: "POST",
+    credentials: "same-origin",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      return data;
+    })
+    .catch((ex) => {
+      console.log("parsing failed", ex);
+    });
+};
+
 export {
   add_comment_to_database,
   add_pin_to_database,
   add_user_info_to_database,
+  add_longform_survey_to_database,
 };
