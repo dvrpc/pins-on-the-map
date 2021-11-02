@@ -36,7 +36,7 @@
     {% load static %}
 
     <!-- prettier-ignore -->
-    <link rel="stylesheet" type="text/css" href="{% static 'main.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'index.css' %}">
   </head>
 
   <body>
@@ -118,31 +118,37 @@
       </div>
 
       <div id="header-block">
-        <div id="button-to-add-pin">
-          <div>
-            <img id="pin-icon" src="{% static 'images/pin.png' %}" alt="" />
+        <a href="#" style="text-decoration: none" onclick="return false;">
+          <div id="button-to-add-pin">
+            <div>
+              <img id="pin-icon" src="{% static 'images/pin.png' %}" alt="" />
+            </div>
+            <div>
+              Pin a <br />
+              comment
+              <br />
+              to the map
+            </div>
           </div>
-          <div>
-            Pin a comment
-            <br />
-            to the map
+        </a>
+
+        <!-- <img id="or-icon" src="{% static 'images/or.png' %}" alt="" /> -->
+        <a href="/survey" style="text-decoration: none">
+          <div id="button-to-add-comment">
+            <div>
+              <img
+                id="comment-icon"
+                src="{% static 'images/comment.png' %}"
+                alt=""
+              />
+            </div>
+            <div>
+              Share your <br />
+              ideas about <br />
+              Cecil B. Moore
+            </div>
           </div>
-        </div>
-        <img id="or-icon" src="{% static 'images/or.png' %}" alt="" />
-        <div id="button-to-add-comment">
-          <div>
-            <img
-              id="comment-icon"
-              src="{% static 'images/comment.png' %}"
-              alt=""
-            />
-          </div>
-          <div>
-            Add a general
-            <br />
-            comment
-          </div>
-        </div>
+        </a>
       </div>
 
       <div id="ui-message">
@@ -396,34 +402,17 @@
             </div>
           </div>
 
-          <!-- <div class="demographic-question">
-            <p>What is your primary purpose in the study area?</p>
-
-            <div>
-              <input type="checkbox" id="usage-live" name="usage" />
-              <label for="usage-live">I live in the study area</label>
-            </div>
-            <div>
-              <input type="checkbox" id="usage-work" name="usage" />
-              <label for="usage-work">I work in the study area</label>
-            </div>
-            <div>
-              <input type="checkbox" id="usage-school" name="usage" />
-              <label for="race-school">I go to school in the study area</label>
-            </div>
-
-            <div>
-              <input type="checkbox" id="usage-other" name="usage" />
-              <label for="usage-other"
-                >Other:
-                <input type="text" id="usage-other-input" style="width: 50%" />
-              </label>
-            </div>
-          </div> -->
-
           <div class="demographic-question">
             <p>What is your zipcode?</p>
             <input type="text" id="zipcode" />
+
+            <br />
+
+            <p>
+              Are you interested in receiving email updates about this project?
+              If so, please provide your email address:
+            </p>
+            <input type="text" id="email" />
           </div>
         </div>
         <div style="text-align: center">
