@@ -3,9 +3,15 @@ const TerserPlugin = require("terser-webpack-plugin");
 const path = require("path");
 
 module.exports = {
-  entry: "./assets/index.js", // path to our input file
+  entry: {
+    index: "./assets/index.js", // path to our input file
+    "survey-index": "./assets/longform_survey.js",
+    "survey-demographics": "./assets/demographic_survey.js",
+    "survey-thanks": "./assets/thanks.js",
+  },
+
   output: {
-    filename: "index-bundle.js", // output bundle file name
+    filename: "[name]-bundle.js", // output bundle file name
     path: path.resolve(__dirname, "../static"), // path to our Django static directory
   },
   plugins: [new MiniCssExtractPlugin()],
