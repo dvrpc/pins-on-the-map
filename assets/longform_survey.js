@@ -236,7 +236,10 @@ const load_prioritization_question = (question) => {
     counter++;
     // add the label
     let label = document.createElement("label");
-    label.innerHTML = option + "<br/>";
+    if (counter == 1) {
+      qdiv.appendChild(document.createElement("hr"));
+    }
+    label.innerHTML = option + "<br/> <hr>";
     label.className = "priority-choice";
     qdiv.appendChild(label);
 
