@@ -6,7 +6,7 @@ import "./css/alerts.css";
 import "./css/box_overlays.css";
 import "./css/mobile.css";
 import "./css/survey.css";
-import { add_longform_survey_to_database } from "./js/api/add_to_database";
+import { add_user_info_to_database } from "./js/api/add_to_database";
 
 const add_basic_question_to_survey = (question) => {
   let survey = document.getElementById(question.base_div);
@@ -140,7 +140,17 @@ let q5 = {
   loader_function: add_basic_question_to_survey,
 };
 
-[q1, q2, q3, q4, q5].forEach((q) => {
+let q6 = {
+  id: "q6",
+  base_div: "questions-about-demographics",
+  prompt:
+    "Are you interested in receiving email updates about this project? <br>If so, please provide your email address:",
+  type: "input",
+  other: false,
+  options: false,
+  loader_function: add_basic_question_to_survey,
+};
+[q1, q2, q3, q4, q5, q6].forEach((q) => {
   q.loader_function(q);
 });
 
@@ -195,27 +205,15 @@ const get_priority_ranking = (qid) => {
 
 document.getElementById("submit-button").onclick = () => {
   let data = {
-    usage: get_multiselect_input("q1"),
-    frequency: get_radio_input("q2"),
-    mode: get_multiselect_input("q3"),
-    mode_issues: get_textarea_input("q4"),
-    condition_1: get_radio_input("q5-1"),
-    condition_2: get_radio_input("q5-2"),
-    condition_3: get_radio_input("q5-3"),
-    condition_4: get_radio_input("q5-4"),
-    condition_5: get_radio_input("q5-5"),
-    condition_6: get_radio_input("q5-6"),
-    condition_7: get_radio_input("q5-7"),
-    priorities: get_priority_ranking("q6"),
-    ideas: get_textarea_input("q7"),
+    q1: get_radio_input("q1"),
+    q2: get_multiselect_input("q2"),
+    q3: get_radio_input("q3"),
+    q4: get_radio_input("q4"),
+    q5: get_textarea_input("q5"),
+    q6: get_textarea_input("q6"),
   };
 
-  add_longform_survey_to_database(data).then(async (response) => {
-    if (response.user_was_added) {
-      console.log("OPEN THE DEMO SURVEY");
-      window.location.replace("/demographics");
-    } else {
-      window.location.replace("/thanks");
-    }
+  add_user_info_to_database(data).then(async (response) => {
+    window.location.replace("/thanks");
   });
 };
