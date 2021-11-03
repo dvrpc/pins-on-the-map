@@ -217,7 +217,7 @@
   max-height: 80vh;
   background-color: var(--theme-dark-gray);
   padding: 30px;
-  /* display: none; */
+  display: none;
   color: white;
   border-radius: 5px;
   box-shadow: var(--box-shadow);
@@ -227,6 +227,16 @@
   display: flex;
   margin: 0px 25px;
   justify-content: space-around;
+}
+
+#demographic-survey,
+#info-box,
+#survey-form,
+#ui-message,
+#filter-box,
+#detail-form {
+  font-family: "Roboto", sans-serif !important;
+  font-size: 14px;
 }
 
 #demo-layout div {

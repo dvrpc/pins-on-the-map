@@ -8,12 +8,29 @@
 }
 
 body {
-  font-size: 16px;
+  font-size: 18px;
+}
+
+p {
+  font-weight: bold;
+}
+
+#description {
+  font-weight: normal;
+  font-size: 14px;
+}
+
+#action-text p {
+  font-weight: normal;
 }
 
 .question {
   /* color: red; */
   padding-top: 5px;
+}
+
+.question label {
+  font-size: 14px;
 }
 
 .select-one-to-five-topic {
@@ -45,6 +62,7 @@ select {
 
 textarea {
   height: 200px;
+  border: 1px dashed var(--theme-blue);
 }
 
 #submit-survey {
