@@ -208,12 +208,14 @@ let q5 = {
   other: false,
   options: [
     "Crash safety",
-    "Double parking issues",
-    "Existing road layout",
+    "Illegal parking issues",
+    "Use of roadway space (travel lanes, parking, bike lanes)",
+    "Traffic and congestion",
+    "Transit facilities",
     "Pavement markings",
-    "Road pavement condition",
-    "Sidewalk condition",
-    "Drainage",
+    "Potholes/road surface",
+    "Sidewalk",
+    "Drainage (ponding, flooding, etc.)",
   ],
   loader_function: load_1_to_5_question_set,
 };
@@ -239,7 +241,11 @@ const load_prioritization_question = (question) => {
     if (counter == 1) {
       qdiv.appendChild(document.createElement("hr"));
     }
-    label.innerHTML = option + "<br/> <hr>";
+    if (option != "Other:") {
+      label.innerHTML = option + "<br/> <hr>";
+    } else {
+      label.innerHTML = option + " ";
+    }
     label.className = "priority-choice";
     qdiv.appendChild(label);
 
@@ -261,6 +267,15 @@ const load_prioritization_question = (question) => {
       x.appendChild(choice);
     });
 
+    if (option == "Other:") {
+      // add the text input
+      var text = document.createElement("input");
+      text.type = "text";
+      text.id = question.id + "-" + counter + "-other-text";
+      label.append(text);
+      label.append(document.createElement("hr"));
+    }
+
     // add the event listener to prevent multiple choices of a single number
     x.addEventListener("change", (e) => {
       let newest_value = e.target.value;
@@ -272,10 +287,25 @@ const load_prioritization_question = (question) => {
           el.value = "(select a priority)";
         }
       });
-
-      // If so, reset that one to a default
     });
   });
+
+  // // add the "other" option
+  // let label = document.createElement("label");
+  // label.innerHTML = "Other: ";
+  // qdiv.appendChild(label);
+
+  // // add the checkbox
+  // var check = document.createElement("input");
+  // check.type = "checkbox";
+  // check.id = question.id + "-other-check";
+  // label.prepend(check);
+
+  // // add the text input
+  // var text = document.createElement("input");
+  // text.type = "text";
+  // text.id = question.id + "-other-text";
+  // label.append(text);
 };
 let q6 = {
   id: "q6",
@@ -284,14 +314,15 @@ let q6 = {
   type: "special",
   other: false,
   options: [
-    "Safe Pedestrian Crossings",
-    "Safe Bike Lanes",
-    "Less Aggressive Driving",
-    "Increased Pedestrian Space",
-    "Better Parking & Loading",
-    "Safe Bus Boarding",
-    "Quick Drive Times",
-    "Less Side Street Traffic",
+    "Safe pedestrian crossings",
+    "Safe bike lanes",
+    "Less aggressive driving",
+    "Increased pedestrian space",
+    "Better parking and loading",
+    "Safe bus boarding",
+    "Quick drive times",
+    "Less side street traffic",
+    "Other:",
   ],
   loader_function: load_prioritization_question,
 };
@@ -353,10 +384,15 @@ const get_priority_ranking = (qid) => {
 
   document.querySelectorAll(query).forEach((el) => {
     if (el.value != "(select a priority)") {
-      priorities[el.value - 1] = el.nextSibling.textContent;
+      let priority_text = el.nextSibling.textContent;
+      if (priority_text != "Other: ") {
+        priorities[el.value - 1] = priority_text;
+      } else {
+        let text_entry = el.nextSibling.nextSibling.value;
+        priorities[el.value - 1] = text_entry;
+      }
     }
   });
-  console.log(priorities);
   return priorities;
 };
 
@@ -373,13 +409,14 @@ document.getElementById("submit-button").onclick = () => {
     condition_5: get_radio_input("q5-5"),
     condition_6: get_radio_input("q5-6"),
     condition_7: get_radio_input("q5-7"),
+    condition_8: get_radio_input("q5-8"),
+    condition_9: get_radio_input("q5-9"),
     priorities: get_priority_ranking("q6"),
     ideas: get_textarea_input("q7"),
   };
 
   add_longform_survey_to_database(data).then(async (response) => {
     if (response.user_was_added) {
-      console.log("OPEN THE DEMO SURVEY");
       window.location.replace("/demographics");
     } else {
       window.location.replace("/thanks");

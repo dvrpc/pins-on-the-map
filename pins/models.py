@@ -99,6 +99,8 @@ class LongformSurvey(models.Model):
     condition_5 = models.TextField(blank=True)
     condition_6 = models.TextField(blank=True)
     condition_7 = models.TextField(blank=True)
+    condition_8 = models.TextField(blank=True)
+    condition_9 = models.TextField(blank=True)
 
     priorities = models.TextField(blank=True)
     ideas = models.TextField(blank=True)

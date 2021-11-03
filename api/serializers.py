@@ -97,6 +97,8 @@ class LongformSurveySerializer(serializers.ModelSerializer):
             "condition_5",
             "condition_6",
             "condition_7",
+            "condition_8",
+            "condition_9",
             "priorities",
             "ideas",
         ]
