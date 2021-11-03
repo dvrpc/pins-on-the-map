@@ -76,6 +76,34 @@ class MapUser(models.Model):
     q3 = models.TextField(blank=True)
     q4 = models.TextField(blank=True)
     q5 = models.TextField(blank=True)
+    q6 = models.TextField(blank=True)
+
+    def __str__(self):
+        return self.ip_address
+
+
+class LongformSurvey(models.Model):
+
+    ip_address = models.GenericIPAddressField(null=True)
+    created_on = models.DateTimeField(auto_now_add=True)
+
+    usage = models.TextField(blank=True)
+    frequency = models.TextField(blank=True)
+    mode = models.TextField(blank=True)
+    mode_issues = models.TextField(blank=True)
+
+    condition_1 = models.TextField(blank=True)
+    condition_2 = models.TextField(blank=True)
+    condition_3 = models.TextField(blank=True)
+    condition_4 = models.TextField(blank=True)
+    condition_5 = models.TextField(blank=True)
+    condition_6 = models.TextField(blank=True)
+    condition_7 = models.TextField(blank=True)
+    condition_8 = models.TextField(blank=True)
+    condition_9 = models.TextField(blank=True)
+
+    priorities = models.TextField(blank=True)
+    ideas = models.TextField(blank=True)
 
     def __str__(self):
         return self.ip_address

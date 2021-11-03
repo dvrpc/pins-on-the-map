@@ -28,7 +28,6 @@
   flex-direction: row;
   align-items: center;
   position: absolute;
-  top: 0hv;
   left: 25vw;
   /* width: 80vw; */
   height: 50px;
@@ -88,10 +87,10 @@
   background-color: white;
   color: white;
   position: absolute;
-  top: 0vh;
+  bottom: 85vh;
   left: 2vw;
   width: 21vw;
-  /* height: 200px; */
+  height: 15vh;
   z-index: 2;
   text-align: center;
   box-shadow: var(--box-shadow);
@@ -100,7 +99,7 @@
 /* MAIN BUTTONS to right of logo-card */
 #header-block {
   position: absolute;
-  top: 8vh;
+  bottom: 85vh;
   left: 25vw;
   display: flex;
   /* width: 30vw;
@@ -230,8 +229,18 @@
   justify-content: space-around;
 }
 
+#demographic-survey,
+#info-box,
+#survey-form,
+#ui-message,
+#filter-box,
+#detail-form {
+  font-family: "Roboto", sans-serif !important;
+  font-size: 14px;
+}
+
 #demo-layout div {
-  padding: 0px 5px;
+  /* padding: 0px 5px; */
 }
 .close-box-button {
   margin-left: 15px;
@@ -246,6 +255,13 @@
 .close-box-button:hover {
   color: var(--theme-yellow);
 }
+.first-question {
+  border-left: 1px solid white;
+}
 .demographic-question {
   padding: 20px;
+  /* max-width: 20%; */
+  flex-basis: 200px;
+  flex-grow: 0;
+  border-right: 1px solid white;
 }

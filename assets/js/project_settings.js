@@ -2,6 +2,7 @@
 // --------------------------------------------
 const CENTER = [-75.15672748733739, 39.97857408147478];
 const ZOOM = 16;
+const MINZOOM = 14;
 
 // MAPBOX_TOKEN and MAPBOX_BASEMAP define the base styles used
 // -----------------------------------------------------------
@@ -17,6 +18,9 @@ const CLUSTER_RADIUS = 50;
 // CLIENT_URL takes you to the client's webpage
 const CLIENT_URL = "http://www.phillyotis.com/";
 
+// PROJECT_URL takes you to the project's homepage
+const PROJECT_URL = "https://www.dvrpc.org/cecilbmoore";
+
 // MAP_STYLES is a centralized place to define all map styles
 // ----------------------------------------------------------
 const STYLES = {
@@ -30,16 +34,19 @@ const STYLES = {
   clusters: {
     paint: {
       "circle-opacity": 0.7,
-      "circle-color": [
-        "step",
-        ["get", "point_count"],
-        "#51bbd6",
-        5,
-        "#f1f075",
-        15,
-        "#f28cb1",
-      ],
+      // "circle-color": [
+      //   "step",
+      //   ["get", "point_count"],
+      //   "#51bbd6",
+      //   5,
+      //   "#f1f075",
+      //   15,
+      //   "#f28cb1",
+      // ],
+      "circle-color": "#11b4da",
       "circle-radius": ["step", ["get", "point_count"], 20, 5, 30, 15, 40],
+      "circle-stroke-width": 1.5,
+      "circle-stroke-color": "black",
     },
   },
 
@@ -56,9 +63,10 @@ const STYLES = {
   "unclustered-point": {
     paint: {
       "circle-color": "#11b4da",
-      "circle-radius": 4,
-      "circle-stroke-width": 1,
-      "circle-stroke-color": "#fff",
+      "circle-opacity": 0.7,
+      "circle-radius": 7,
+      "circle-stroke-width": 1.5,
+      "circle-stroke-color": "black",
     },
   },
 
@@ -123,4 +131,6 @@ export {
   CLUSTER_RADIUS,
   STYLES,
   CLIENT_URL,
+  MINZOOM,
+  PROJECT_URL,
 };

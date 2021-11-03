@@ -1,0 +1,112 @@
+#box-for-buttons a {
+  text-decoration: none;
+}
+
+#longform-survey {
+  margin-top: 20vh;
+  padding: 0 20vw;
+}
+
+body {
+  font-size: 18px;
+}
+
+p {
+  font-weight: bold;
+}
+
+#description {
+  font-weight: normal;
+  font-size: 14px;
+}
+
+#action-text p {
+  font-weight: normal;
+}
+
+.question {
+  /* color: red; */
+  padding-top: 5px;
+}
+
+.question label {
+  font-size: 14px;
+}
+
+.select-one-to-five-topic {
+  font-weight: bold;
+  padding-left: 5vw;
+  color: var(--theme-blue);
+}
+
+.select-one-to-five {
+  margin: 20px 0px;
+  display: flex;
+  justify-content: space-evenly;
+  font-weight: normal !important;
+  padding-left: 5vw;
+  color: black;
+}
+
+hr {
+  border-top: 1px dashed var(--theme-blue);
+}
+
+select {
+  margin-right: 20px;
+}
+
+.priority-choice {
+  color: var(--theme-blue);
+}
+
+textarea {
+  height: 200px;
+  border: 1px dashed var(--theme-blue);
+}
+
+#submit-survey {
+  margin: 20px 0;
+  text-align: center;
+}
+
+#submit-button {
+  background-color: var(--theme-blue); /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: 1px solid var(--theme-blue);
+}
+
+#submit-button:hover {
+  background-color: var(--theme-yellow);
+  color: black;
+  outline: 1px solid red;
+}
+
+#nothanks-button {
+  background-color: white; /* Green */
+  border: none;
+  color: red;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: 1px solid red;
+  margin-left: 20px;
+}
+
+#nothanks-button:hover {
+  background-color: black;
+  color: white;
+  outline: 1px solid black;
+}

@@ -36,7 +36,7 @@
     {% load static %}
 
     <!-- prettier-ignore -->
-    <link rel="stylesheet" type="text/css" href="{% static 'main.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'index.css' %}">
   </head>
 
   <body>
@@ -66,7 +66,7 @@
               src="{% static 'images/filter.png' %}"
               alt=""
             />
-            <span class="nav-button-text"> Filter Feedback </span>
+            <span class="nav-button-text"> Filter Comments </span>
           </div>
         </div>
       </div>
@@ -100,9 +100,12 @@
           >&times;</span
         >
         <p>
-          No pin was found on the map. Please click on the map to add a pin, or
-          click the "Add a General Comment" button to add your comment without a
-          location on the map.
+          No pin was found on the map!
+          <br />
+          <br />
+          Please click on the map to add a pin, or click the "submit your
+          comment" button again to add your comment without a location on the
+          map.
         </p>
       </div>
 
@@ -118,31 +121,37 @@
       </div>
 
       <div id="header-block">
-        <div id="button-to-add-pin">
-          <div>
-            <img id="pin-icon" src="{% static 'images/pin.png' %}" alt="" />
+        <a href="#" style="text-decoration: none" onclick="return false;">
+          <div id="button-to-add-pin">
+            <div>
+              <img id="pin-icon" src="{% static 'images/pin.png' %}" alt="" />
+            </div>
+            <div>
+              Pin a <br />
+              comment
+              <br />
+              to the map
+            </div>
           </div>
-          <div>
-            Pin a comment
-            <br />
-            to the map
+        </a>
+
+        <!-- <img id="or-icon" src="{% static 'images/or.png' %}" alt="" /> -->
+        <a href="/survey" style="text-decoration: none">
+          <div id="button-to-add-comment">
+            <div>
+              <img
+                id="comment-icon"
+                src="{% static 'images/comment.png' %}"
+                alt=""
+              />
+            </div>
+            <div>
+              Share your <br />
+              ideas about <br />
+              Cecil B. Moore
+            </div>
           </div>
-        </div>
-        <img id="or-icon" src="{% static 'images/or.png' %}" alt="" />
-        <div id="button-to-add-comment">
-          <div>
-            <img
-              id="comment-icon"
-              src="{% static 'images/comment.png' %}"
-              alt=""
-            />
-          </div>
-          <div>
-            Add a general
-            <br />
-            comment
-          </div>
-        </div>
+        </a>
       </div>
 
       <div id="ui-message">
@@ -168,7 +177,7 @@
         <div id="user-input">
           <textarea name="" id="prompt_1" cols="3" rows="5"></textarea>
 
-          <p>Select any categories that apply:</p>
+          <p>Select any topics that apply:</p>
         </div>
 
         <button id="submit-pin">submit your comment</button>
@@ -222,22 +231,25 @@
           >
 
           are studying Cecil B. Moore Avenue between 10th Street and Willington
-          Street, with the goal of improving safety for all road users. To learn
-          more, please visit
-          <a href="https://www.dvrpc.org/cecilbmoore" target="_blank"
-            >the project's website</a
-          >.
+          Street, with the goal of improving safety for all road users. This map
+          was created to help you share your thoughts about the study area with
+          the DVRPC / oTIS project team.
         </p>
-
-        <p>
-          This map was created to help you share your thoughts about the study
-          area with the DVRPC / oTIS project team.
-        </p>
-        <p>
-          If your comment is about a specific place, click the yellow button to
-          add a pin to the map. Otherwise, feel free to leave a general comment
-          by clicking the blue button.
-        </p>
+        <ul>
+          <li>
+            Click the yellow button to add a comment about a specific place
+          </li>
+          <li>
+            Click the blue button to tell us how you use Cecil B. Moore Avenue
+            today, and what your vision is for its future
+          </li>
+          <li>
+            To learn more, please visit
+            <a href="https://www.dvrpc.org/cecilbmoore" target="_blank"
+              >the project's website</a
+            >
+          </li>
+        </ul>
 
         <div id="info-footer">
           <a href="https://www.dvrpc.org/Products/TEM409" target="_blank"
@@ -277,8 +289,16 @@
         >
         <h1>Would you like to tell us about yourself?</h1>
 
+        <p>
+          DVRPC’s public outreach process will ideally represent the residents
+          of the Cecil B. Moore Avenue project area by geographic and
+          demographic diversity. Please help us understand who is responding to
+          this survey by sharing some of your demographic characteristics. This
+          information will not be shared outside of the project team.
+        </p>
+
         <div id="demo-layout">
-          <div class="demographic-question">
+          <div class="demographic-question first-question">
             <p>Are you of Spanish/Hispanic/Latino origin?</p>
             <div>
               <input
@@ -289,8 +309,7 @@
               />
               <label for="yes">Yes</label>
             </div>
-
-            <div class="demographic-question">
+            <div>
               <input type="radio" id="hispanic-no" name="hispanic" value="no" />
               <label for="no">No</label>
             </div>
@@ -369,33 +388,41 @@
           </div>
 
           <div class="demographic-question">
-            <p>What is your primary purpose in the study area?</p>
-
+            <p>
+              Do you consider yourself someone with a disability that requires
+              mobile assistance, such as a cane, walker, scooter, or wheelchair?
+            </p>
             <div>
-              <input type="checkbox" id="usage-live" name="usage" />
-              <label for="usage-live">I live in the study area</label>
+              <input
+                type="radio"
+                id="disability-yes"
+                name="disability"
+                value="yes"
+              />
+              <label for="yes">Yes</label>
             </div>
             <div>
-              <input type="checkbox" id="usage-work" name="usage" />
-              <label for="usage-work">I work in the study area</label>
-            </div>
-            <div>
-              <input type="checkbox" id="usage-school" name="usage" />
-              <label for="race-school">I go to school in the study area</label>
-            </div>
-
-            <div>
-              <input type="checkbox" id="usage-other" name="usage" />
-              <label for="usage-other"
-                >Other:
-                <input type="text" id="usage-other-input" style="width: 50%" />
-              </label>
+              <input
+                type="radio"
+                id="disability-no"
+                name="disability"
+                value="no"
+              />
+              <label for="no">No</label>
             </div>
           </div>
 
           <div class="demographic-question">
             <p>What is your zipcode?</p>
             <input type="text" id="zipcode" />
+
+            <br />
+
+            <p>
+              Are you interested in receiving email updates about this project?
+              If so, please provide your email address:
+            </p>
+            <input type="text" id="email" />
           </div>
         </div>
         <div style="text-align: center">

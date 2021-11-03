@@ -5,7 +5,7 @@ import {
   clear_selected_pin,
 } from "../switches";
 import { remove_markers } from "../map/markers";
-import { CLIENT_URL } from "../project_settings";
+import { CLIENT_URL, PROJECT_URL } from "../project_settings";
 
 const setup_icon_listeners = (map) => {
   // Assign actions to all of the smaller icons or other clickable elements
@@ -74,13 +74,19 @@ const setup_icon_listeners = (map) => {
   // CLIENT logo opens a URL in new tab
   // ----------------------------------
   document.getElementById("logo-client").onclick = () => {
-    window.open(CLIENT_URL, "_blank").focus();
+    window.open(CLIENT_URL, "_blank", "noopener");
   };
 
   // DVRPC logo opens a URL in new tab
   // ---------------------------------
   document.getElementById("logo-dvrpc").onclick = () => {
-    window.open("https://www.dvrpc.org/", "_blank").focus();
+    window.open("https://www.dvrpc.org/", "_blank", "noopener");
+  };
+
+  // PROJECT logo opens a URL in new tab
+  // ---------------------------------
+  document.getElementById("logo-main").onclick = () => {
+    window.open(PROJECT_URL, "_blank", "noopener");
   };
 
   // Toggle for full disclaimer text within the info box

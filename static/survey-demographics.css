@@ -58,7 +58,6 @@ body {
 body {
   margin: 0;
   padding: 0;
-  font-size: 12px;
 }
 
 .headings {
@@ -101,12 +100,16 @@ a {
   font-size: 16px;
   display: flex;
   align-items: center;
+  justify-content: center;
   /* height: 10vh; */
   width: 18vw;
-  max-width: 200px;
+  max-width: 220px;
+  min-width: 200px;
+  /* height:0px; */
   outline: 3px solid white;
   box-shadow: 6px 6px 2px 1px rgba(0, 0, 0, 0.2);
   font-family: industry, sans-serif;
+  color: black;
 }
 
 .nav-button-text {
@@ -121,9 +124,9 @@ a {
 
 #button-to-add-comment {
   background-color: var(--theme-blue);
-  color: white;
   display: flex;
   align-items: center;
+  margin-left: 2vw;
 }
 #or-icon {
   max-height: 50px;
@@ -147,9 +150,8 @@ a {
 
 #logo-main {
   width: 80%;
-  height: 80%;
-  object-fit: cover;
   padding: 60px 10px 20px 10px;
+  cursor: pointer;
 }
 
 textarea {
@@ -301,7 +303,9 @@ hr {
 
 #disclaimer {
   display: none;
-  font-size: 10px;
+  font-size: 12px;
+  font-style: italic;
+  /* line-height: normal; */
 }
 #disclaimer-toggle {
   text-decoration: underline;
@@ -387,7 +391,6 @@ hr {
   flex-direction: row;
   align-items: center;
   position: absolute;
-  top: 0hv;
   left: 25vw;
   /* width: 80vw; */
   height: 50px;
@@ -447,10 +450,10 @@ hr {
   background-color: white;
   color: white;
   position: absolute;
-  top: 0vh;
+  bottom: 85vh;
   left: 2vw;
   width: 21vw;
-  /* height: 200px; */
+  height: 15vh;
   z-index: 2;
   text-align: center;
   box-shadow: var(--box-shadow);
@@ -459,7 +462,7 @@ hr {
 /* MAIN BUTTONS to right of logo-card */
 #header-block {
   position: absolute;
-  top: 8vh;
+  bottom: 85vh;
   left: 25vw;
   display: flex;
   /* width: 30vw;
@@ -589,8 +592,18 @@ hr {
   justify-content: space-around;
 }
 
+#demographic-survey,
+#info-box,
+#survey-form,
+#ui-message,
+#filter-box,
+#detail-form {
+  font-family: "Roboto", sans-serif !important;
+  font-size: 14px;
+}
+
 #demo-layout div {
-  padding: 0px 5px;
+  /* padding: 0px 5px; */
 }
 .close-box-button {
   margin-left: 15px;
@@ -605,8 +618,15 @@ hr {
 .close-box-button:hover {
   color: var(--theme-yellow);
 }
+.first-question {
+  border-left: 1px solid white;
+}
 .demographic-question {
   padding: 20px;
+  /* max-width: 20%; */
+  flex-basis: 200px;
+  flex-grow: 0;
+  border-right: 1px solid white;
 }
 
 /*!*************************************************************************!*\
@@ -629,7 +649,12 @@ hr {
   #button-to-add-pin,
   #button-to-add-comment {
     width: 135px;
+    min-width: 100px;
+
     font-size: 12px;
+  }
+  #button-to-add-comment {
+    margin-left: 4vw;
   }
   #pin-icon {
     max-height: 30px;
@@ -645,6 +670,7 @@ hr {
 
   #logo-card {
     right: 1%;
+    bottom: 92vh;
     min-width: 150px;
   }
   .single-button {
@@ -666,7 +692,8 @@ hr {
   }
 
   #logo-main {
-    padding: 30px 10px 10px 10px;
+    /* padding: 10px 10px 10px 10px; */
+    margin-top: 20%;
   }
 
   #logo-dvrpc,
@@ -744,5 +771,135 @@ hr {
   #demo-layout {
     flex-direction: column;
   }
+
+  .demographic-question {
+    border-right: none;
+    border-bottom: 1px solid white;
+    flex-basis: 100px;
+  }
+  .first-question {
+    border-left: none;
+    border-top: 1px solid white;
+  }
+  #logo-dvrpc,
+  #logo-client {
+    height: 15px;
+  }
+}
+
+/*!*************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./assets/css/survey.css ***!
+  \*************************************************************************/
+#box-for-buttons a {
+  text-decoration: none;
+}
+
+#longform-survey {
+  margin-top: 20vh;
+  padding: 0 20vw;
+}
+
+body {
+  font-size: 18px;
+}
+
+p {
+  font-weight: bold;
+}
+
+#description {
+  font-weight: normal;
+  font-size: 14px;
+}
+
+#action-text p {
+  font-weight: normal;
+}
+
+.question {
+  /* color: red; */
+  padding-top: 5px;
+}
+
+.question label {
+  font-size: 14px;
+}
+
+.select-one-to-five-topic {
+  font-weight: bold;
+  padding-left: 5vw;
+  color: var(--theme-blue);
+}
+
+.select-one-to-five {
+  margin: 20px 0px;
+  display: flex;
+  justify-content: space-evenly;
+  font-weight: normal !important;
+  padding-left: 5vw;
+  color: black;
+}
+
+hr {
+  border-top: 1px dashed var(--theme-blue);
+}
+
+select {
+  margin-right: 20px;
+}
+
+.priority-choice {
+  color: var(--theme-blue);
+}
+
+textarea {
+  height: 200px;
+  border: 1px dashed var(--theme-blue);
+}
+
+#submit-survey {
+  margin: 20px 0;
+  text-align: center;
+}
+
+#submit-button {
+  background-color: var(--theme-blue); /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: 1px solid var(--theme-blue);
+}
+
+#submit-button:hover {
+  background-color: var(--theme-yellow);
+  color: black;
+  outline: 1px solid red;
+}
+
+#nothanks-button {
+  background-color: white; /* Green */
+  border: none;
+  color: red;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: 1px solid red;
+  margin-left: 20px;
+}
+
+#nothanks-button:hover {
+  background-color: black;
+  color: white;
+  outline: 1px solid black;
 }
 
