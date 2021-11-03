@@ -72,6 +72,7 @@ const _click_button_to_submit_pin = async () => {
 
   // Show an alert if there isn't a pin on the map yet
   if (user_wants_to_add_pin() && markers_are_not_on_the_map()) {
+    set_display_to_id("study-area-alert", "none");
     set_display_to_id("warning-alert", "inline-block");
   }
   // Otherwise, add the pin to the database
