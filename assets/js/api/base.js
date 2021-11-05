@@ -1,6 +1,25 @@
-const PIN_URL = "/api/get-pins";
-const TAG_URL = "/api/tags";
-const FILTER_URL = "/api/filter-pins";
+const api_url_base = () => {
+  // read webpack's 'mode' and alter the
+  // api route prefix in production
+  let current_env = process.env.NODE_ENV;
+
+  let url = "";
+
+  if (current_env == "production") {
+    url = "/webmaps/cbm";
+  }
+  return url;
+};
+
+let base = api_url_base();
+
+const PIN_URL = base + "/api/get-pins";
+const TAG_URL = base + "/api/tags";
+const FILTER_URL = base + "/api/filter-pins";
+const ADD_PIN_URL = base + "/api/add-pin/";
+const ADD_COMMENT_URL = base + "/api/add-comment/";
+const ADD_USER_INFO_URL = base + "/api/add-user-info/";
+const ADD_SURVEY_URL = base + "/api/add-longform-survey/";
 
 const get_data_from_api = async (map, url, inner_func) => {
   /*
@@ -21,4 +40,13 @@ const get_data_from_api = async (map, url, inner_func) => {
   request.send();
 };
 
-export { get_data_from_api, PIN_URL, TAG_URL, FILTER_URL };
+export {
+  get_data_from_api,
+  PIN_URL,
+  TAG_URL,
+  FILTER_URL,
+  ADD_PIN_URL,
+  ADD_COMMENT_URL,
+  ADD_USER_INFO_URL,
+  ADD_SURVEY_URL,
+};

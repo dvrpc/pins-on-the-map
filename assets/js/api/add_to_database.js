@@ -1,3 +1,10 @@
+import {
+  ADD_PIN_URL,
+  ADD_COMMENT_URL,
+  ADD_USER_INFO_URL,
+  ADD_SURVEY_URL,
+} from "./base";
+
 const add_pin_to_database = async (lngLat) => {
   let selected_tags = Array.from(document.getElementsByClassName("selected"));
 
@@ -13,7 +20,7 @@ const add_pin_to_database = async (lngLat) => {
 
   let new_id = -1;
 
-  return fetch("/api/add-pin/", {
+  return fetch(ADD_PIN_URL, {
     method: "POST",
     credentials: "same-origin",
     headers: {
@@ -38,7 +45,7 @@ const add_comment_to_database = async (comment) => {
     text: comment,
   };
 
-  return fetch("/api/add-comment/", {
+  return fetch(ADD_COMMENT_URL, {
     method: "POST",
     credentials: "same-origin",
     headers: {
@@ -58,7 +65,7 @@ const add_comment_to_database = async (comment) => {
 };
 
 const add_user_info_to_database = async (user_data) => {
-  return fetch("/api/add-user-info/", {
+  return fetch(ADD_USER_INFO_URL, {
     method: "POST",
     credentials: "same-origin",
     headers: {
@@ -78,7 +85,7 @@ const add_user_info_to_database = async (user_data) => {
 };
 
 const add_longform_survey_to_database = async (data) => {
-  return fetch("/api/add-longform-survey/", {
+  return fetch(ADD_SURVEY_URL, {
     method: "POST",
     credentials: "same-origin",
     headers: {
