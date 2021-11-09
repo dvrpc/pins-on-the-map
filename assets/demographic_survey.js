@@ -1,11 +1,13 @@
-import "mapbox-gl/dist/mapbox-gl.css";
-
 import "./css/settings.css";
+import "./css/base.css";
 import "./css/map_style.css";
 import "./css/alerts.css";
 import "./css/box_overlays.css";
+import "./css/buttons.css";
+import "./css/navbar.css";
 import "./css/mobile.css";
 import "./css/survey.css";
+
 import { add_user_info_to_database } from "./js/api/add_to_database";
 import { add_basic_question_to_survey } from "./js/survey/add_questions_to_html";
 import {
@@ -92,7 +94,7 @@ let q6 = {
   q.loader_function(q);
 });
 
-f; // wire the button click
+// wire the button click
 document
   .getElementById("form-for-survey")
   .addEventListener("submit", function (event) {
