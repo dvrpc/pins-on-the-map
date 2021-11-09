@@ -6,21 +6,23 @@
 <!-- prettier-ignore -->
 {% block content %}
 <div id="longform-survey">
-  <div id="questions-about-demographics">
-    <h1>Would you like to tell us about yourself?</h1>
-    <p id="description">
-      DVRPC’s public outreach process will ideally represent the residents of
-      the Cecil B. Moore Avenue project area by geographic and demographic
-      diversity. Please help us understand who is responding to this survey by
-      sharing some of your demographic characteristics. This information will
-      not be shared outside of the project team.
-    </p>
-  </div>
+  <form id="form-for-survey">
+    <div id="questions-about-demographics">
+      <h1>Would you like to tell us about yourself?</h1>
+      <p id="description">
+        DVRPC’s public outreach process will ideally represent the residents of
+        the Cecil B. Moore Avenue project area by geographic and demographic
+        diversity. Please help us understand who is responding to this survey by
+        sharing some of your demographic characteristics. This information will
+        not be shared outside of the project team.
+      </p>
+    </div>
 
-  <div id="submit-survey">
-    <button id="submit-button">Submit</button>
-    <button id="nothanks-button">No thanks!</button>
-  </div>
+    <div id="submit-survey">
+      <button id="submit-button">Submit</button>
+      <button id="nothanks-button">No thanks!</button>
+    </div>
+  </form>
 </div>
 {% endblock %}
 

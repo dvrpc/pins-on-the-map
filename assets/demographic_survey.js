@@ -92,7 +92,12 @@ let q6 = {
   q.loader_function(q);
 });
 
-// wire the button click
+f; // wire the button click
+document
+  .getElementById("form-for-survey")
+  .addEventListener("submit", function (event) {
+    event.preventDefault();
+  });
 
 document.getElementById("submit-button").onclick = () => {
   let data = {
