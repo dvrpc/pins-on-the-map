@@ -34,6 +34,7 @@
   </div>
 
   <div
+    id="standalone-yellow-button"
     style="
       display: flex;
       align-items: center;
@@ -41,18 +42,11 @@
       margin-top: 40px;
     "
   >
-    <a href="/" style="text-decoration: none">
-      <div id="button-to-add-pin">
-        <div>
-          <img id="pin-icon" src="{% static 'images/pin.png' %}" alt="" />
-        </div>
-        <div>
-          Pin a <br />
-          comment
-          <br />
-          to the map
-        </div>
-      </div>
+    <a href="./" style="text-decoration: none">
+      <button id="button-to-add-pin" style="margin-left: 0px">
+        <img id="pin-icon" src="{% static 'images/pin.png' %}" alt="" />
+        Pin a comment to the map
+      </button>
     </a>
   </div>
 </div>
