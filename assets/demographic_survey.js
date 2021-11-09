@@ -7,74 +7,12 @@ import "./css/box_overlays.css";
 import "./css/mobile.css";
 import "./css/survey.css";
 import { add_user_info_to_database } from "./js/api/add_to_database";
-
-const add_basic_question_to_survey = (question) => {
-  let survey = document.getElementById(question.base_div);
-
-  let qdiv = document.createElement("div");
-  qdiv.className = "question";
-  survey.appendChild(qdiv);
-
-  // add the question
-  let prompt = document.createElement("p");
-  prompt.innerHTML = question.prompt + "<br/>";
-  qdiv.appendChild(prompt);
-
-  // add the options if there are any
-  if (question.options) {
-    // add all of the canned options
-    let counter = 0;
-    question.options.forEach((option) => {
-      counter++;
-
-      // add the label
-      let label = document.createElement("label");
-      label.innerHTML = option + "<br/>";
-      qdiv.appendChild(label);
-
-      // add the input
-      var x = document.createElement("input");
-      x.type = question.type;
-      x.value = option;
-      x.name = question.id;
-      x.id = question.id + "-" + counter;
-
-      label.prepend(x);
-    });
-
-    // add the 'other' entry box if needed
-    if (question.other) {
-      // add the label
-      let label = document.createElement("label");
-      label.innerHTML = "Other: ";
-      qdiv.appendChild(label);
-
-      // add the checkbox
-      var check = document.createElement("input");
-      check.type = "checkbox";
-      check.id = question.id + "-other-check";
-      label.prepend(check);
-
-      // add the text input
-      var text = document.createElement("input");
-      text.type = "text";
-      text.id = question.id + "-other-text";
-      label.append(text);
-    }
-  }
-
-  // if not options are provided, use a single input
-  else {
-    var x = document.createElement(question.type);
-    x.name = question.id;
-    x.id = question.id;
-
-    qdiv.append(x);
-  }
-
-  //   // add the divider
-  //   qdiv.append(document.createElement("hr"));
-};
+import { add_basic_question_to_survey } from "./js/survey/add_questions_to_html";
+import {
+  get_multiselect_input,
+  get_radio_input,
+  get_textarea_input,
+} from "./js/survey/get_survey_responses_from_html";
 
 let q1 = {
   id: "q1",
@@ -155,53 +93,6 @@ let q6 = {
 });
 
 // wire the button click
-
-const get_multiselect_input = (qid) => {
-  let value = [];
-  let query = '[id ^= "' + qid + '"]';
-  document.querySelectorAll(query).forEach((el) => {
-    if (el.checked) {
-      if (el.id == qid + "-other-check") {
-        let custom_value = document.getElementById(qid + "-other-text").value;
-        value.push(custom_value);
-      } else {
-        value.push(el.value);
-      }
-    }
-  });
-
-  return value;
-};
-
-const get_radio_input = (qid) => {
-  let value = "";
-  let query = '[id ^= "' + qid + '"]';
-
-  document.querySelectorAll(query).forEach((el) => {
-    if (el.checked) {
-      value = el.value;
-    }
-  });
-  return value;
-};
-
-const get_textarea_input = (qid) => {
-  return document.getElementById(qid).value;
-};
-
-const get_priority_ranking = (qid) => {
-  let query = '[id ^= "' + qid + '"]';
-
-  let priorities = ["", "", "", "", ""];
-
-  document.querySelectorAll(query).forEach((el) => {
-    if (el.value != "(select a priority)") {
-      priorities[el.value - 1] = el.nextSibling.textContent;
-    }
-  });
-  console.log(priorities);
-  return priorities;
-};
 
 document.getElementById("submit-button").onclick = () => {
   let data = {

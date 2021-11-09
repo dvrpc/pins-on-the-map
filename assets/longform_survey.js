@@ -4,77 +4,24 @@ import "./css/settings.css";
 import "./css/map_style.css";
 import "./css/alerts.css";
 import "./css/box_overlays.css";
+import "./css/base.css";
+import "./css/buttons.css";
+import "./css/navbar.css";
+
 import "./css/mobile.css";
 import "./css/survey.css";
 import { add_longform_survey_to_database } from "./js/api/add_to_database";
-
-const add_basic_question_to_survey = (question) => {
-  let survey = document.getElementById(question.base_div);
-
-  let qdiv = document.createElement("div");
-  qdiv.className = "question";
-  survey.appendChild(qdiv);
-
-  // add the question
-  let prompt = document.createElement("p");
-  prompt.innerHTML = question.prompt + "<br/>";
-  qdiv.appendChild(prompt);
-
-  // add the options if there are any
-  if (question.options) {
-    // add all of the canned options
-    let counter = 0;
-    question.options.forEach((option) => {
-      counter++;
-
-      // add the label
-      let label = document.createElement("label");
-      label.innerHTML = option + "<br/>";
-      qdiv.appendChild(label);
-
-      // add the input
-      var x = document.createElement("input");
-      x.type = question.type;
-      x.value = option;
-      x.name = question.id;
-      x.id = question.id + "-" + counter;
-
-      label.prepend(x);
-    });
-
-    // add the 'other' entry box if needed
-    if (question.other) {
-      // add the label
-      let label = document.createElement("label");
-      label.innerHTML = "Other: ";
-      qdiv.appendChild(label);
-
-      // add the checkbox
-      var check = document.createElement("input");
-      check.type = "checkbox";
-      check.id = question.id + "-other-check";
-      label.prepend(check);
-
-      // add the text input
-      var text = document.createElement("input");
-      text.type = "text";
-      text.id = question.id + "-other-text";
-      label.append(text);
-    }
-  }
-
-  // if not options are provided, use a single input
-  else {
-    var x = document.createElement(question.type);
-    x.name = question.id;
-    x.id = question.id;
-
-    qdiv.append(x);
-  }
-
-  //   // add the divider
-  //   qdiv.append(document.createElement("hr"));
-};
+import {
+  add_basic_question_to_survey,
+  load_1_to_5_question_set,
+  load_prioritization_question,
+} from "./js/survey/add_questions_to_html";
+import {
+  get_multiselect_input,
+  get_radio_input,
+  get_textarea_input,
+  get_priority_ranking,
+} from "./js/survey/get_survey_responses_from_html";
 
 let q1 = {
   id: "q1",
@@ -142,63 +89,6 @@ let q4 = {
   loader_function: add_basic_question_to_survey,
 };
 
-const load_1_to_5_question_set = (question) => {
-  let survey = document.getElementById(question.base_div);
-
-  let qdiv = document.createElement("div");
-  qdiv.className = "question";
-  survey.appendChild(qdiv);
-
-  // add the question
-  let prompt = document.createElement("p");
-  prompt.innerHTML = question.prompt + "<br/>";
-  qdiv.appendChild(prompt);
-
-  // add all of the canned options
-  let counter = 0;
-  question.options.forEach((prompt) => {
-    counter++;
-
-    let subprompt = document.createElement("p");
-    subprompt.innerHTML = prompt;
-    subprompt.className = "select-one-to-five-topic";
-    qdiv.appendChild(subprompt);
-
-    if (counter == 1) {
-      subprompt.prepend(document.createElement("hr"));
-    }
-
-    let radio_group = document.createElement("div");
-
-    radio_group.className = "select-one-to-five";
-    subprompt.appendChild(radio_group);
-
-    [1, 2, 3, 4, 5].forEach((num) => {
-      // add the label
-      let label = document.createElement("label");
-      if (num == 1) {
-        label.innerHTML = num.toString() + " (Bad)";
-      } else if (num == 5) {
-        label.innerHTML = num.toString() + " (Great)";
-      } else {
-        label.innerHTML = num.toString();
-      }
-
-      radio_group.appendChild(label);
-
-      // add the input
-      var x = document.createElement("input");
-      x.type = question.type;
-      x.value = num;
-      x.name = question.id + "-" + counter;
-      x.id = question.id + "-" + counter + "-" + num;
-
-      label.prepend(x);
-    });
-    subprompt.appendChild(document.createElement("hr"));
-  });
-};
-
 let q5 = {
   id: "q5",
   base_div: "questions-about-priorities",
@@ -220,93 +110,6 @@ let q5 = {
   loader_function: load_1_to_5_question_set,
 };
 
-const load_prioritization_question = (question) => {
-  let survey = document.getElementById(question.base_div);
-
-  let qdiv = document.createElement("div");
-  qdiv.className = "question";
-  survey.appendChild(qdiv);
-
-  // add the question
-  let prompt = document.createElement("p");
-  prompt.innerHTML = question.prompt + "<br/>";
-  qdiv.appendChild(prompt);
-
-  // add each option
-  let counter = 0;
-  question.options.forEach((option) => {
-    counter++;
-    // add the label
-    let label = document.createElement("label");
-    if (counter == 1) {
-      qdiv.appendChild(document.createElement("hr"));
-    }
-    if (option != "Other:") {
-      label.innerHTML = option + "<br/> <hr>";
-    } else {
-      label.innerHTML = option + " ";
-    }
-    label.className = "priority-choice";
-    qdiv.appendChild(label);
-
-    // add the input
-    var x = document.createElement("select");
-    x.name = question.id;
-    x.id = question.id + "-" + counter;
-
-    label.prepend(x);
-
-    ["(select a priority)", 1, 2, 3, 4, 5].forEach((num) => {
-      let choice = document.createElement("option");
-      choice.value = num;
-      if (num == "(select a priority)") {
-        choice.text = num;
-      } else {
-        choice.text = "Priority #" + num;
-      }
-      x.appendChild(choice);
-    });
-
-    if (option == "Other:") {
-      // add the text input
-      var text = document.createElement("input");
-      text.type = "text";
-      text.id = question.id + "-" + counter + "-other-text";
-      label.append(text);
-      label.append(document.createElement("hr"));
-    }
-
-    // add the event listener to prevent multiple choices of a single number
-    x.addEventListener("change", (e) => {
-      let newest_value = e.target.value;
-      let changed_id = e.target.id;
-
-      // do other dropdowns have this value?
-      document.querySelectorAll('[id ^= "q6"]').forEach((el) => {
-        if (el.value == newest_value && el.id != changed_id) {
-          el.value = "(select a priority)";
-        }
-      });
-    });
-  });
-
-  // // add the "other" option
-  // let label = document.createElement("label");
-  // label.innerHTML = "Other: ";
-  // qdiv.appendChild(label);
-
-  // // add the checkbox
-  // var check = document.createElement("input");
-  // check.type = "checkbox";
-  // check.id = question.id + "-other-check";
-  // label.prepend(check);
-
-  // // add the text input
-  // var text = document.createElement("input");
-  // text.type = "text";
-  // text.id = question.id + "-other-text";
-  // label.append(text);
-};
 let q6 = {
   id: "q6",
   base_div: "questions-about-priorities",
@@ -343,58 +146,11 @@ let q7 = {
 });
 
 // wire the button click
-
-const get_multiselect_input = (qid) => {
-  let value = [];
-  let query = '[id ^= "' + qid + '"]';
-  document.querySelectorAll(query).forEach((el) => {
-    if (el.checked) {
-      if (el.id == qid + "-other-check") {
-        let custom_value = document.getElementById(qid + "-other-text").value;
-        value.push(custom_value);
-      } else {
-        value.push(el.value);
-      }
-    }
+document
+  .getElementById("form-for-survey")
+  .addEventListener("submit", function (event) {
+    event.preventDefault();
   });
-
-  return value;
-};
-
-const get_radio_input = (qid) => {
-  let value = "";
-  let query = '[id ^= "' + qid + '"]';
-
-  document.querySelectorAll(query).forEach((el) => {
-    if (el.checked) {
-      value = el.value;
-    }
-  });
-  return value;
-};
-
-const get_textarea_input = (qid) => {
-  return document.getElementById(qid).value;
-};
-
-const get_priority_ranking = (qid) => {
-  let query = '[id ^= "' + qid + '"]';
-
-  let priorities = ["", "", "", "", ""];
-
-  document.querySelectorAll(query).forEach((el) => {
-    if (el.value != "(select a priority)") {
-      let priority_text = el.nextSibling.textContent;
-      if (priority_text != "Other: ") {
-        priorities[el.value - 1] = priority_text;
-      } else {
-        let text_entry = el.nextSibling.nextSibling.value;
-        priorities[el.value - 1] = text_entry;
-      }
-    }
-  });
-  return priorities;
-};
 
 document.getElementById("submit-button").onclick = () => {
   let data = {
@@ -414,6 +170,8 @@ document.getElementById("submit-button").onclick = () => {
     priorities: get_priority_ranking("q6"),
     ideas: get_textarea_input("q7"),
   };
+
+  console.log(data);
 
   add_longform_survey_to_database(data).then(async (response) => {
     if (response.user_was_added) {
