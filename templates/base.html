@@ -8,21 +8,22 @@
       name="viewport"
       content="initial-scale=1,maximum-scale=1,user-scalable=no"
     />
-
-    <!-- TO DO: clean up these values. -->
     <meta name="author" content="DVRPC" />
 
     <meta
       property="og:title"
       content="Cecil B. Moore Vision Zero Engagement Map"
     />
+
+    {% load static %}
+
     <meta property="og:type" content="website" />
     <meta property="og:url" content="http://pins-on-the-map.dev.dvrpc.org" />
     <meta
       property="og:description"
       content="A public engagement map and survey for the Cecil B. Moore Vision Zero project"
     />
-    <meta property="og:image" content="image.png" />
+    <meta property="og:image" content="{% static 'images/screenshot.png' %}" />
 
     <link rel="icon" href="/favicon.ico" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
@@ -31,7 +32,6 @@
     <link rel="stylesheet" href="https://use.typekit.net/alv5tfj.css" />
 
     <!-- LOAD CSS FROM THIS REPO -->
-    {% load static %}
 
     <!-- prettier-ignore -->
     {% block cssfile %}{% endblock %}
