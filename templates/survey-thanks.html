@@ -1,4 +1,16 @@
-{% extends "survey-navbar.html" %} {% load static %}
+{% extends "survey-navbar.html" %}
+
+<!-- prettier-ignore -->
+{% load static %}
+
+<!-- prettier-ignore -->
+{% block cssfile %}
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'survey-thanks.css' %}"
+/>
+{% endblock %}
 
 <!-- prettier-ignore -->
 {% block content %}

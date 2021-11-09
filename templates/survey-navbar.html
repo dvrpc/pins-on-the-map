@@ -1,94 +1,14 @@
-<!DOCTYPE html>
+{% extends "base-navbar.html" %}
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>Pins on the Map</title>
-    <meta
-      name="viewport"
-      content="initial-scale=1,maximum-scale=1,user-scalable=no"
-    />
+<!-- prettier-ignore -->
+{% load static %}
 
-    <!-- TO DO: clean up these values. -->
-    <meta name="author" content="DVRPC" />
-
-    <meta property="og:title" content="Pins on the Map" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="http://pins-on-the-map.dev.dvrpc.org" />
-    <meta
-      property="og:description"
-      content="A public engagement tool for planning projects"
-    />
-    <meta property="og:image" content="image.png" />
-
-    <link rel="icon" href="/favicon.ico" />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-
-    <link rel="stylesheet" href="https://use.typekit.net/alv5tfj.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
-      rel="stylesheet"
-    />
-    <!-- LOAD CSS FROM THIS REPO -->
-    {% load static %}
-
-    <!-- prettier-ignore -->
-    <link rel="stylesheet" type="text/css" href="{% static 'survey-index.css' %}">
-  </head>
-
-  <body>
-    <div id="navbar-gray"></div>
-    <div id="navbar">
-      <div id="nav-logo">
-        <img
-          id="logo-main"
-          src="{% static 'images/PROJECT-logo.png' %}"
-          alt=""
-        />
-      </div>
-
-      <div id="nav-buttons">
-        <div id="nav-level1">
-          <div id="level1-left">
-            <a href="/" style="text-decoration: none">
-              <button id="about-button">
-                <img
-                  id="about-icon"
-                  src="{% static 'images/smallpin.png' %}"
-                  alt=""
-                />
-                <span class="nav-button-text"> Add a Pin to the Map </span>
-              </button>
-            </a>
-          </div>
-          <div id="level1-right">
-            <a href="">
-              <img
-                id="logo-dvrpc"
-                src="{% static 'images/DVRPC-logo.png' %}"
-                alt=""
-              />
-            </a>
-            <a href="">
-              <img
-                id="logo-client"
-                src="{% static 'images/CLIENT-logo.png' %}"
-                alt=""
-              />
-            </a>
-          </div>
-        </div>
-        <div id="nav-level2"></div>
-      </div>
-    </div>
-
-    <div>{% block content %}{% endblock %}</div>
-
-    <!-- prettier-ignore -->
-
-    {% block jsscript %}{% endblock %}
-  </body>
-</html>
+<!-- prettier-ignore -->
+{% block internalbuttons %}
+<a href="/" style="text-decoration: none">
+  <button id="about-button">
+    <img id="about-icon" src="{% static 'images/smallpin.png' %}" alt="" />
+    <span class="nav-button-text"> Add a Pin to the Map </span>
+  </button>
+</a>
+{% endblock %}

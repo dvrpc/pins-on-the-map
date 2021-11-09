@@ -6,7 +6,7 @@ def index(request):
     This is the main landing page, at the root '/' path.
     """
 
-    return render(request, "landing_page.html")
+    return render(request, "landing-page.html")
 
 
 def longform_survey(request):
@@ -22,7 +22,7 @@ def demographic_survey(request):
     This is the demographic survey
     """
 
-    return render(request, "survey_demographics.html")
+    return render(request, "survey-demographics.html")
 
 
 def survey_thanks(request):
@@ -30,4 +30,4 @@ def survey_thanks(request):
     This is the thank-you page for the survey
     """
 
-    return render(request, "survey_thanks.html")
+    return render(request, "survey-thanks.html")

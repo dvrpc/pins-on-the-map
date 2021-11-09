@@ -3,6 +3,10 @@
 <!-- prettier-ignore -->
 {% load static %}
 
+{% block cssfile %}
+<link rel="stylesheet" type="text/css" href="{% static 'survey-index.css' %}" />
+{% endblock %}
+
 <!-- prettier-ignore -->
 {% block content %}
 <div id="longform-survey">

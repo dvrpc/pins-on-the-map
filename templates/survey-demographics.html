@@ -4,6 +4,12 @@
 {% load static %}
 
 <!-- prettier-ignore -->
+{% block cssfile %}
+<!-- prettier-ignore -->
+<link rel="stylesheet" type="text/css" href="{% static 'survey-demographics.css' %}" />
+{% endblock %}
+
+<!-- prettier-ignore -->
 {% block content %}
 <div id="longform-survey">
   <form id="form-for-survey">
