@@ -7,7 +7,7 @@
 
 #ui-message {
   position: absolute;
-  top: 22vh;
+  top: 150px;
   left: 2vw;
   z-index: 1;
   color: white;

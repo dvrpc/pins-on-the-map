@@ -89,8 +89,8 @@
   }
 
   .alert {
-    top: 95px;
-    right: 50px;
+    top: 150px;
+    left: 2vw;
     font-size: 11px;
     padding: 5px;
     width: 80%;
@@ -127,5 +127,9 @@
   #logo-dvrpc,
   #logo-client {
     height: 15px;
+  }
+
+  #ui-message {
+    top: 90px;
   }
 }

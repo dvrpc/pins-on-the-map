@@ -46,49 +46,51 @@
 <!-- prettier-ignore -->
 {% block content %}
 <div id="map">
-  <div id="success-alert" class="alert">
-    <span class="closebtn" onclick="this.parentElement.style.display='none';"
-      >&times;</span
-    >
-    <p>Thank you for sharing your comment!</p>
-    <p>
-      Please feel free to add another one and/or explore comments left by
-      others.
-    </p>
-  </div>
-
-  <div id="success-alert-for-comment" class="alert">
-    <span class="closebtn" onclick="this.parentElement.style.display='none';"
-      >&times;</span
-    >
-    <p>Thank you for sharing your reaction!</p>
-  </div>
-
-  <div id="warning-alert" class="alert">
-    <span class="closebtn" onclick="this.parentElement.style.display='none';"
-      >&times;</span
-    >
-    <p>
-      No pin was found on the map!
-      <br />
-      <br />
-      Please click on the map to add a pin, or click the "submit your comment"
-      button again to add your comment without a location on the map.
-    </p>
-  </div>
-
-  <div id="study-area-alert" class="alert">
-    <span class="closebtn" onclick="this.parentElement.style.display='none';"
-      >&times;</span
-    >
-    <p>Please click within the project's study area to add a pin to the map</p>
-  </div>
-
-  <div id="ui-message">
-    <div id="click-map-text">
-      <h3>click the map to select a location</h3>
+  <div id="messages">
+    <div id="success-alert" class="alert">
+      <span class="closebtn" onclick="this.parentElement.style.display='none';"
+        >&times;</span
+      >
+      <p>Thank you for sharing your comment!</p>
+      <p>
+        Please feel free to add another one and/or explore comments left by
+        others.
+      </p>
     </div>
-    <div id="active-filter-text">filter text</div>
+
+    <div id="success-alert-for-comment" class="alert">
+      <span class="closebtn" onclick="this.parentElement.style.display='none';"
+        >&times;</span
+      >
+      <p>Thank you for sharing your reaction!</p>
+    </div>
+
+    <div id="warning-alert" class="alert">
+      <span class="closebtn" onclick="this.parentElement.style.display='none';"
+        >&times;</span
+      >
+      <p>
+        No pin was found on the map! Please click on the map to add a pin, or
+        click the "submit your comment" button again to add your comment without
+        a location on the map.
+      </p>
+    </div>
+
+    <div id="study-area-alert" class="alert">
+      <span class="closebtn" onclick="this.parentElement.style.display='none';"
+        >&times;</span
+      >
+      <p>
+        Please click within the project's study area to add a pin to the map
+      </p>
+    </div>
+
+    <div id="ui-message">
+      <div id="click-map-text">
+        <h3>click the map to select a location</h3>
+      </div>
+      <div id="active-filter-text">filter text</div>
+    </div>
   </div>
 
   <div id="survey-form">

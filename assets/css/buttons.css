@@ -32,7 +32,8 @@
   "Pin a comment to the map" & 
   "Share your ideas about ..."
 ----------------------------------------- */
-#nav-level2 button {
+#nav-level2 button,
+#standalone-yellow-button button {
   display: flex;
   align-items: center;
   width: 220px;
