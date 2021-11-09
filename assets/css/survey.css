@@ -110,3 +110,10 @@ textarea {
   color: white;
   outline: 1px solid black;
 }
+
+@media only screen and (max-width: 760px) {
+  #longform-survey {
+    margin-top: 20vh;
+    padding: 0 2vw;
+  }
+}
