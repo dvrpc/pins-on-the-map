@@ -12,6 +12,13 @@ const user_wants_to_add_pin = () => {
   return document.getElementById("click-map-text").style.display == "inline";
 };
 
+const user_wants_to_add_pin_without_xy = () => {
+  // return True if the 'warning-alert' is present on the screen
+  return (
+    document.getElementById("warning-alert").style.display == "inline-block"
+  );
+};
+
 const toggle_button_state = (div, class_name) => {
   // For a given div and classname, add the class
   // if it's not already set. If it is set, remove it.
@@ -102,4 +109,5 @@ export {
   clear_selected_pin,
   toggle_tags_when_adding_pin,
   toggle_tags_when_filtering_map,
+  user_wants_to_add_pin_without_xy,
 };

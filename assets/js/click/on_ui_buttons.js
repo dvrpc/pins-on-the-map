@@ -4,6 +4,7 @@ import {
   set_mouse_to_crosshair,
   set_mouse_to_normal,
   clear_selected_pin,
+  user_wants_to_add_pin_without_xy,
 } from "../switches";
 import {
   add_comment_to_database,
@@ -42,6 +43,9 @@ const _click_button_to_begin_pinning_a_commment_to_the_map = () => {
 const _click_button_to_submit_comment = async () => {
   // Allow users to add a comment to an existing pin
 
+  // turn off the alert for having added a pin to the map
+  set_display_to_id("success-alert", "none");
+
   // Get the user's comment text
   let comment = document.getElementById("comment-text").value;
 
@@ -71,7 +75,11 @@ const _click_button_to_submit_pin = async () => {
   // Allow users to add a pin to the map
 
   // Show an alert if there isn't a pin on the map yet
-  if (user_wants_to_add_pin() && markers_are_not_on_the_map()) {
+  if (
+    user_wants_to_add_pin() &&
+    markers_are_not_on_the_map() &&
+    !user_wants_to_add_pin_without_xy()
+  ) {
     set_display_to_id("study-area-alert", "none");
     set_display_to_id("warning-alert", "inline-block");
   }
