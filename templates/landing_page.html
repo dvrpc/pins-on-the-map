@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Pins on the Map</title>
+    <title>Cecil B. Moore Vision Zero Map</title>
     <meta
       name="viewport"
       content="initial-scale=1,maximum-scale=1,user-scalable=no"
@@ -12,12 +12,15 @@
     <!-- TO DO: clean up these values. -->
     <meta name="author" content="DVRPC" />
 
-    <meta property="og:title" content="Pins on the Map" />
+    <meta
+      property="og:title"
+      content="Cecil B. Moore Vision Zero Engagement Map"
+    />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="http://pins-on-the-map.dev.dvrpc.org" />
     <meta
       property="og:description"
-      content="A public engagement tool for planning projects"
+      content="A public engagement map and survey for the Cecil B. Moore Vision Zero project"
     />
     <meta property="og:image" content="image.png" />
 
@@ -26,12 +29,7 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
     <link rel="stylesheet" href="https://use.typekit.net/alv5tfj.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
-      rel="stylesheet"
-    />
+
     <!-- LOAD CSS FROM THIS REPO -->
     {% load static %}
 
@@ -40,37 +38,78 @@
   </head>
 
   <body>
-    <div id="map">
-      <div id="navbar">
-        <div id="box-for-logos">
-          <img
-            id="logo-client"
-            src="{% static 'images/CLIENT-logo.png' %}"
-            alt=""
-          />
-          <img
-            id="logo-dvrpc"
-            src="{% static 'images/DVRPC-logo.png' %}"
-            alt=""
-          />
-        </div>
-
-        <div id="box-for-buttons">
-          <div id="about-button">
-            <img id="about-icon" src="{% static 'images/info.png' %}" alt="" />
-            <span class="nav-button-text"> How to Use the Map </span>
-          </div>
-          <div id="filter-button">
-            <img
-              id="filter-icon"
-              src="{% static 'images/filter.png' %}"
-              alt=""
-            />
-            <span class="nav-button-text"> Filter Comments </span>
-          </div>
-        </div>
+    <div id="navbar-gray"></div>
+    <div id="navbar">
+      <div id="nav-logo">
+        <img
+          id="logo-main"
+          src="{% static 'images/PROJECT-logo.png' %}"
+          alt=""
+        />
       </div>
 
+      <div id="nav-buttons">
+        <div id="nav-level1">
+          <div id="level1-left">
+            <button id="about-button">
+              <img
+                id="about-icon"
+                src="{% static 'images/info.png' %}"
+                alt=""
+              />
+              <span class="nav-button-text"> How to Use the Map </span>
+            </button>
+
+            <button id="filter-button">
+              <img
+                id="filter-icon"
+                src="{% static 'images/filter.png' %}"
+                alt=""
+              />
+
+              <span class="nav-button-text"> Filter Comments </span>
+            </button>
+          </div>
+          <div id="level1-right">
+            <a href="">
+              <img
+                id="logo-dvrpc"
+                src="{% static 'images/DVRPC-logo.png' %}"
+                alt=""
+              />
+            </a>
+            <a href="">
+              <img
+                id="logo-client"
+                src="{% static 'images/CLIENT-logo.png' %}"
+                alt=""
+              />
+            </a>
+          </div>
+        </div>
+        <div id="nav-level2">
+          <a href="#" style="text-decoration: none" onclick="return false;">
+            <button id="button-to-add-pin">
+              <img id="pin-icon" src="{% static 'images/pin.png' %}" alt="" />
+              Pin a comment <br />
+              to the map
+            </button>
+          </a>
+
+          <a href="/survey" style="text-decoration: none">
+            <button id="button-to-add-survey">
+              <img
+                id="comment-icon"
+                src="{% static 'images/comment.png' %}"
+                alt=""
+              />Share your ideas about Cecil B. Moore
+            </button>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div id="map">
       <div id="success-alert" class="alert">
         <span
           class="closebtn"
@@ -120,53 +159,11 @@
         </p>
       </div>
 
-      <div id="header-block">
-        <a href="#" style="text-decoration: none" onclick="return false;">
-          <div id="button-to-add-pin">
-            <div>
-              <img id="pin-icon" src="{% static 'images/pin.png' %}" alt="" />
-            </div>
-            <div>
-              Pin a <br />
-              comment
-              <br />
-              to the map
-            </div>
-          </div>
-        </a>
-
-        <!-- <img id="or-icon" src="{% static 'images/or.png' %}" alt="" /> -->
-        <a href="/survey" style="text-decoration: none">
-          <div id="button-to-add-comment">
-            <div>
-              <img
-                id="comment-icon"
-                src="{% static 'images/comment.png' %}"
-                alt=""
-              />
-            </div>
-            <div>
-              Share your <br />
-              ideas about <br />
-              Cecil B. Moore
-            </div>
-          </div>
-        </a>
-      </div>
-
       <div id="ui-message">
         <div id="click-map-text">
           <h3>click the map to select a location</h3>
         </div>
         <div id="active-filter-text">filter text</div>
-      </div>
-
-      <div id="logo-card">
-        <img
-          id="logo-main"
-          src="{% static 'images/PROJECT-logo.png' %}"
-          alt=""
-        />
       </div>
 
       <div id="survey-form">
