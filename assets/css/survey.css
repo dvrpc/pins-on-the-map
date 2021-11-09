@@ -72,7 +72,7 @@ textarea {
 
 #submit-button {
   background-color: var(--theme-blue); /* Green */
-  border: none;
+  border: 1px solid #333333;
   color: white;
   padding: 15px 32px;
   text-align: center;
@@ -85,9 +85,9 @@ textarea {
 }
 
 #submit-button:hover {
-  background-color: var(--theme-yellow);
-  color: black;
-  outline: 1px solid red;
+  background-color: #333333;
+  color: var(--theme-yellow);
+  outline: 1px solid var(--theme-blue);
 }
 
 #nothanks-button {

@@ -1,0 +1,94 @@
+/* -----------------------------------------
+  Buttons in the top-left header:
+  "How to use the map" & "Filter comments"
+----------------------------------------- */
+#level1-left button {
+  background-color: #333333;
+  border: none;
+}
+
+#filter-icon,
+#about-icon {
+  height: 20px;
+  margin-right: 5px;
+}
+
+#filter-button,
+#about-button {
+  color: #a19fa0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  margin-right: 50px;
+}
+
+#filter-button:hover,
+#about-button:hover {
+  color: var(--theme-blue);
+}
+
+/* --------------------------------------
+  Primary map buttons: 
+  "Pin a comment to the map" & 
+  "Share your ideas about ..."
+----------------------------------------- */
+#nav-level2 button {
+  display: flex;
+  align-items: center;
+  width: 220px;
+  font-family: industry, sans-serif;
+  text-align: left;
+  height: 50px;
+  margin-left: 15px;
+  border: 2px solid white;
+  box-shadow: 6px 6px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+#button-to-add-pin {
+  background-color: var(--theme-yellow);
+  text-align: left;
+  display: flex;
+  align-items: center;
+}
+
+#button-to-add-survey {
+  background-color: var(--theme-blue);
+  display: flex;
+  align-items: center;
+}
+
+#nav-level2 button:hover {
+  background-color: #333333;
+  color: white;
+}
+
+#pin-icon,
+#comment-icon {
+  max-height: 40px;
+  z-index: 2;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+@media only screen and (max-width: 760px) {
+  #nav-level2 button {
+    width: 120px;
+    height: 50px;
+    font-size: 11px;
+    margin-left: 5px;
+  }
+  #pin-icon,
+  #comment-icon {
+    max-height: 15px;
+    z-index: 2;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+  #filter-button,
+  #about-button {
+    margin-right: 5px;
+  }
+}

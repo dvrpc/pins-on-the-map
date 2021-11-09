@@ -1,18 +1,5 @@
 @media only screen and (max-width: 760px) {
-  #header-block {
-    /* flex-direction: column; */
-    /* right: 10px;
-    left: auto; */
-    left: 3vw;
-    top: 11vh;
-  }
-  #or-icon {
-    max-height: 30px;
-    /* margin: -3% 0% -3% 0%; */
-    padding: 2% 0%;
-    z-index: 2;
-  }
-  #button-to-add-pin,
+  /* #button-to-add-pin,
   #button-to-add-comment {
     width: 135px;
     min-width: 100px;
@@ -21,19 +8,7 @@
   }
   #button-to-add-comment {
     margin-left: 4vw;
-  }
-  #pin-icon {
-    max-height: 30px;
-    padding-left: 5px;
-    padding-right: 5px;
-  }
-  #comment-icon {
-    max-height: 30px;
-    z-index: 2;
-    padding-left: 5px;
-    padding-right: 5px;
-  }
-
+  } */
   #logo-card {
     right: 1%;
     bottom: 92vh;
@@ -98,7 +73,7 @@
   .mapboxgl-ctrl-bottom-left {
     right: 2vw;
     left: auto;
-    top: 7.5vh;
+    top: 95px;
   }
 
   textarea {
@@ -114,16 +89,18 @@
   }
 
   .alert {
-    top: 20vh;
+    top: 95px;
+    right: 50px;
     font-size: 11px;
     padding: 5px;
+    width: 80%;
   }
-  #success-alert,
+  /* #success-alert,
   #success-alert-for-comment,
   #warning-alert,
   #study-area-alert {
     width: 95vw;
-  }
+  } */
 
   #click-map-text {
     top: 57vh;

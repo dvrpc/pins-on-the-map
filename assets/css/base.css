@@ -1,0 +1,34 @@
+html,
+body {
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.headings {
+  font-family: "Oswald", sans-serif;
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: industry, sans-serif;
+}
+
+a {
+  color: white;
+}
+
+span,
+p,
+li,
+div {
+  font: none;
+  font-family: roboto !important;
+}
