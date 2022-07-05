@@ -1,4 +1,4 @@
-django==3.2.9
+django==3.2.14
 djangorestframework==3.12.4
 djangorestframework-gis==0.17.0
 django-ipware==4.0.0
